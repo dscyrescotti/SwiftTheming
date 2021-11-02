@@ -1,6 +1,6 @@
 import SwiftUI
 
-protocol Themeable: Codable, Equatable {
+public protocol Themeable: Codable, Equatable {
     associatedtype ThemeAsset: Assetable
     
     func theme() -> Themed<ThemeAsset>

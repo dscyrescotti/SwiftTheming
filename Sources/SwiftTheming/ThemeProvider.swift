@@ -8,20 +8,20 @@
 import SwiftUI
 import Combine
 
-class ThemeProvider<Theme: Themeable>: ObservableObject {
+public class ThemeProvider<Theme: Themeable>: ObservableObject {
     @Published private(set) var theme: Theme
     @Published private(set) var colorScheme: ColorScheme? = nil
     @Published private(set) var preferredAppearance: PreferredAppearance
     private var cancellables: Set<AnyCancellable> = []
     
-    init(defaultTheme: Theme, preferredAppearance: PreferredAppearance) {
+    public init(defaultTheme: Theme, preferredAppearance: PreferredAppearance) {
         self.theme = UserDefaults.get(Theme.self, key: .theme) ?? defaultTheme
         self.preferredAppearance = UserDefaults.get(PreferredAppearance.self, key: .preferredAppearance) ?? preferredAppearance
         self.bind()
     }
 
     // MARK: - color
-    func color(for asset: Theme.ThemeAsset.ColorAsset) -> Color {
+    public func color(for asset: Theme.ThemeAsset.ColorAsset) -> Color {
         switch theme.colorSet(for: asset).appearance {
         case .static(let color): return color
         case .dynamic(let light, let dark):
@@ -41,7 +41,7 @@ class ThemeProvider<Theme: Themeable>: ObservableObject {
         }
     }
     
-    func color(for asset: Theme.ThemeAsset.ColorAsset, preferredAppearance: PreferredAppearance) -> Color {
+    public func color(for asset: Theme.ThemeAsset.ColorAsset, preferredAppearance: PreferredAppearance) -> Color {
         switch theme.colorSet(for: asset).appearance {
         case .static(let color): return color
         case .dynamic(let light, let dark):
@@ -62,7 +62,7 @@ class ThemeProvider<Theme: Themeable>: ObservableObject {
     }
     
     // MARK: - image
-    func image(for asset: Theme.ThemeAsset.ImageAsset) -> Image {
+    public func image(for asset: Theme.ThemeAsset.ImageAsset) -> Image {
         switch theme.imageSet(for: asset).appearance {
         case .static(let image): return image
         case .dynamic(let light, let dark):
@@ -82,7 +82,7 @@ class ThemeProvider<Theme: Themeable>: ObservableObject {
         }
     }
     
-    func image(for asset: Theme.ThemeAsset.ImageAsset, preferredAppearance: PreferredAppearance) -> Image {
+    public func image(for asset: Theme.ThemeAsset.ImageAsset, preferredAppearance: PreferredAppearance) -> Image {
         switch theme.imageSet(for: asset).appearance {
         case .static(let image): return image
         case .dynamic(let light, let dark):
@@ -103,7 +103,7 @@ class ThemeProvider<Theme: Themeable>: ObservableObject {
     }
     
     // MARK: - font
-    func font(for asset: Theme.ThemeAsset.FontAsset) -> Font {
+    public func font(for asset: Theme.ThemeAsset.FontAsset) -> Font {
         switch theme.fontSet(for: asset).appearance {
         case .static(let font): return font
         case .dynamic(let light, let dark):
@@ -123,7 +123,7 @@ class ThemeProvider<Theme: Themeable>: ObservableObject {
         }
     }
     
-    func font(for asset: Theme.ThemeAsset.FontAsset, preferredAppearance: PreferredAppearance) -> Font {
+    public func font(for asset: Theme.ThemeAsset.FontAsset, preferredAppearance: PreferredAppearance) -> Font {
         switch theme.fontSet(for: asset).appearance {
         case .static(let font): return font
         case .dynamic(let light, let dark):
@@ -144,7 +144,7 @@ class ThemeProvider<Theme: Themeable>: ObservableObject {
     }
     
     // MARK: - gradient
-    func gradient(for asset: Theme.ThemeAsset.GradientAsset) -> Gradient {
+    public func gradient(for asset: Theme.ThemeAsset.GradientAsset) -> Gradient {
         switch theme.gradientSet(for: asset).appearance {
         case .static(let gradient): return gradient
         case .dynamic(let light, let dark):
@@ -164,7 +164,7 @@ class ThemeProvider<Theme: Themeable>: ObservableObject {
         }
     }
     
-    func gradient(for asset: Theme.ThemeAsset.GradientAsset, preferredAppearance: PreferredAppearance) -> Gradient {
+    public func gradient(for asset: Theme.ThemeAsset.GradientAsset, preferredAppearance: PreferredAppearance) -> Gradient {
         switch theme.gradientSet(for: asset).appearance {
         case .static(let gradient): return gradient
         case .dynamic(let light, let dark):
@@ -184,17 +184,17 @@ class ThemeProvider<Theme: Themeable>: ObservableObject {
         }
     }
 
-    func setTheme(with theme: Theme) {
+    public func setTheme(with theme: Theme) {
         self.theme = theme
         UserDefaults.set(theme, key: .theme)
     }
     
-    func setPreferredAppearance(with appearance: PreferredAppearance) {
+    public func setPreferredAppearance(with appearance: PreferredAppearance) {
         self.preferredAppearance = appearance
         UserDefaults.set(appearance, key: .preferredAppearance)
     }
     
-    func changeColorScheme(with colorScheme: ColorScheme) {
+    public func changeColorScheme(with colorScheme: ColorScheme) {
         self.colorScheme = colorScheme
     }
     

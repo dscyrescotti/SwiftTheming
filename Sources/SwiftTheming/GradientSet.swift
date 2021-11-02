@@ -1,13 +1,13 @@
 import SwiftUI
 
-struct GradientSet {
+public struct GradientSet {
     let appearance: Appearance<Gradient>
     
-    init(`default` gradient: Gradient) {
+    public init(`default` gradient: Gradient) {
         self.appearance = .static(gradient)
     }
     
-    init(light: Gradient, dark: Gradient) {
+    public init(light: Gradient, dark: Gradient) {
         self.appearance = .dynamic(light: light, dark: dark)
     }
 }

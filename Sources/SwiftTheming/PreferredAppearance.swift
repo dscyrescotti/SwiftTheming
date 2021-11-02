@@ -1,6 +1,6 @@
 import SwiftUI
 
-enum PreferredAppearance: Codable {
+public enum PreferredAppearance: Codable {
     case system
     case light
     case dark

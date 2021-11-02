@@ -1,6 +1,6 @@
 import SwiftUI
 
-protocol Assetable {
+ public protocol Assetable {
     associatedtype ColorAsset
     associatedtype ImageAsset
     associatedtype GradientAsset

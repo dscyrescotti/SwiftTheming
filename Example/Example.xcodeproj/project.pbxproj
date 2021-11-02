@@ -11,8 +11,8 @@
 		E68CB3CD2731139400440CE1 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68CB3CC2731139400440CE1 /* Tests_iOSLaunchTests.swift */; };
 		E68CB3D72731139400440CE1 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68CB3D62731139400440CE1 /* Tests_macOS.swift */; };
 		E68CB3D92731139400440CE1 /* Tests_macOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68CB3D82731139400440CE1 /* Tests_macOSLaunchTests.swift */; };
-		E68CB3DA2731139400440CE1 /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68CB3B22731139000440CE1 /* ExampleApp.swift */; };
-		E68CB3DB2731139400440CE1 /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68CB3B22731139000440CE1 /* ExampleApp.swift */; };
+		E68CB3DA2731139400440CE1 /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68CB3B22731139000440CE1 /* MainApp.swift */; };
+		E68CB3DB2731139400440CE1 /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68CB3B22731139000440CE1 /* MainApp.swift */; };
 		E68CB3DC2731139400440CE1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68CB3B32731139000440CE1 /* ContentView.swift */; };
 		E68CB3DD2731139400440CE1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68CB3B32731139000440CE1 /* ContentView.swift */; };
 		E68CB3DE2731139400440CE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E68CB3B42731139400440CE1 /* Assets.xcassets */; };
@@ -39,7 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E68CB3B22731139000440CE1 /* ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleApp.swift; sourceTree = "<group>"; };
+		E68CB3B22731139000440CE1 /* MainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApp.swift; sourceTree = "<group>"; };
 		E68CB3B32731139000440CE1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E68CB3B42731139400440CE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E68CB3B92731139400440CE1 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,7 +104,7 @@
 		E68CB3B12731139000440CE1 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				E68CB3B22731139000440CE1 /* ExampleApp.swift */,
+				E68CB3B22731139000440CE1 /* MainApp.swift */,
 				E68CB3B32731139000440CE1 /* ContentView.swift */,
 				E68CB3B42731139400440CE1 /* Assets.xcassets */,
 			);
@@ -323,7 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E68CB3DC2731139400440CE1 /* ContentView.swift in Sources */,
-				E68CB3DA2731139400440CE1 /* ExampleApp.swift in Sources */,
+				E68CB3DA2731139400440CE1 /* MainApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,7 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E68CB3DD2731139400440CE1 /* ContentView.swift in Sources */,
-				E68CB3DB2731139400440CE1 /* ExampleApp.swift in Sources */,
+				E68CB3DB2731139400440CE1 /* MainApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

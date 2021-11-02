@@ -1,13 +1,13 @@
 import SwiftUI
 
-struct FontSet {
+public struct FontSet {
     let appearance: Appearance<Font>
     
-    init(`default` font: Font) {
+    public init(`default` font: Font) {
         self.appearance = .static(font)
     }
     
-    init(light: Font, dark: Font) {
+    public init(light: Font, dark: Font) {
         self.appearance = .dynamic(light: light, dark: dark)
     }
 }
