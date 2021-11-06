@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftTheming
 
 @main
 struct MainApp: App {
