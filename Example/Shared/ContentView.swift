@@ -12,37 +12,40 @@ struct ContentView: View {
     @State private var isShowing: Bool = false
     @ScaledMetric(relativeTo: .title3) var imageSize: CGFloat = 20
     var body: some View {
-        NavigationView {
-            Color.clear
-                .overlay(alignment: .bottomTrailing, content: {
-                    Button(action: {
-                        isShowing.toggle()
-                    }) {
-                        Color.white
-                            .frame(width: 30, height: 30)
-                            .mask(
-                                Image("palette")
-                                    .resizable()
-                            )
-                            .padding()
-                            .background(Color.blue)
-                            .clipShape(Circle())
-                    }
-                    .padding()
-                })
-                .navigationTitle("SwiftTheming")
-        }
-        .overlay {
+        ZStack {
+            NavigationView {
+                Color.clear
+                    .overlay(alignment: .bottomTrailing, content: {
+                        Button(action: {
+                            withAnimation(.spring()) {
+                                isShowing.toggle()
+                            }
+                        }) {
+                            Color.white
+                                .frame(width: 30, height: 30)
+                                .mask(
+                                    Image("palette")
+                                        .resizable()
+                                )
+                                .padding()
+                                .background(Color.blue)
+                                .clipShape(Circle())
+                        }
+                        .padding()
+                    })
+                    .navigationTitle("SwiftTheming")
+            }
             if isShowing {
                 Color.clear
-                    .background(.ultraThinMaterial)
-                    .transition(.opacity.animation(.spring()))
+                    .background(Material.ultraThinMaterial)
+                    .transition(.opacity)
                     .onTapGesture {
-                        isShowing.toggle()
+                        withAnimation(.spring()) {
+                            isShowing.toggle()
+                        }
                     }
+                    .zIndex(1)
             }
-        }
-        .overlay {
             if isShowing {
                 VStack {
                     HStack {
@@ -56,21 +59,42 @@ struct ContentView: View {
                         })
                         Spacer()
                         Button(action: {
-                            isShowing.toggle()
+                            withAnimation(.spring()) {
+                                isShowing.toggle()
+                            }
                         }) {
                             Image(systemName: "xmark")
                                 .font(.headline.bold())
                         }
                         .foregroundColor(.primary)
                     }
-                    Spacer()
+                    ScrollView(.vertical, showsIndicators: false) {
+                        VStack {
+                            ForEach(0..<10) { index in
+                                Text("hello \(index)")
+                            }
+                        }
+                    }
+                    Button(action: {
+                        
+                    }) {
+                        Text("Done")
+                            .foregroundColor(.primary)
+                            .colorInvert()
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 10)
+                            .background(.green)
+                            .clipShape(Capsule())
+                    }
                 }
                 .padding()
                 .frame(maxWidth: 400, maxHeight: 500)
                 .background(.background)
                 .cornerRadius(20)
                 .padding(.all, 30)
-                .transition(AnyTransition.move(edge: .bottom).animation(.default))
+                .compositingGroup()
+                .transition(.move(edge: .bottom).combined(with: .opacity))
+                .zIndex(2)
             }
         }
     }
