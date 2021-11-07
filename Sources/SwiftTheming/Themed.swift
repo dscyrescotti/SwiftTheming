@@ -1,6 +1,6 @@
 import SwiftUI
 
-public class Themed<Asset: Assetable> {
+open class Themed<Asset: Assetable> {
     open func colorSet(for asset: Asset.ColorAsset) -> ColorSet {
         fatalError("Need to override the \(#function) method.")
     }
