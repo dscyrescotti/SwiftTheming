@@ -10,91 +10,124 @@ import SwiftTheming
 
 struct ContentView: View {
     @State private var isShowing: Bool = false
+    @State private var isChanging: Bool = false
+    @State private var isOverlaying: Bool = false
     @ScaledMetric(relativeTo: .title3) var imageSize: CGFloat = 20
     var body: some View {
-        ZStack {
-            NavigationView {
-                Color.clear
-                    .overlay(alignment: .bottomTrailing, content: {
-                        Button(action: {
-                            withAnimation(.spring()) {
-                                isShowing.toggle()
+        GeometryReader { proxy in
+            ZStack {
+                NavigationView {
+                    Color.clear
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background {
+                            ZStack(alignment: .bottomTrailing) {
+                                if isOverlaying {
+                                    let size = max(proxy.size.height, proxy.size.width) * 2.5
+                                    Color.blue
+                                        .frame(width: isChanging ? size : 30, height: isChanging ? size : 30)
+                                        .padding()
+                                        .background(.blue)
+                                        .clipShape(Circle())
+                                        .transition(.opacity)
+                                }
                             }
-                        }) {
-                            Color.white
-                                .frame(width: 30, height: 30)
-                                .mask(
-                                    Image("palette")
-                                        .resizable()
-                                )
-                                .padding()
-                                .background(Color.blue)
-                                .clipShape(Circle())
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                            .padding()
                         }
-                        .padding()
-                    })
-                    .navigationTitle("SwiftTheming")
-            }
-            if isShowing {
-                Color.clear
-                    .background(Material.ultraThinMaterial)
-                    .transition(.opacity)
-                    .onTapGesture {
+                        .navigationTitle("SwiftTheming")
+                }
+                .overlay(alignment: .bottomTrailing, content: {
+                    Button(action: {
                         withAnimation(.spring()) {
                             isShowing.toggle()
                         }
+                        isOverlaying.toggle()
+                    }) {
+                        Color.white
+                            .frame(width: 30, height: 30)
+                            .mask(
+                                Image("palette")
+                                    .resizable()
+                            )
+                            .padding()
+                            .background(Color.blue)
+                            .clipShape(Circle())
                     }
-                    .zIndex(1)
-            }
-            if isShowing {
-                VStack {
-                    HStack {
-                        Label(title: {
-                            Text("Color Themes")
-                                .font(.title3.bold())
-                        }, icon: {
-                            Image("palette")
-                                .resizable()
-                                .frame(width: imageSize, height: imageSize)
-                        })
-                        Spacer()
+                    .padding()
+                })
+                if isShowing {
+                    Color.clear
+                        .background(Material.ultraThinMaterial)
+                        .transition(.opacity)
+                        .onTapGesture {
+                            withAnimation(.spring()) {
+                                isShowing.toggle()
+                            }
+                            isOverlaying.toggle()
+                        }
+                        .zIndex(1)
+                }
+                if isShowing {
+                    VStack {
+                        HStack {
+                            Label(title: {
+                                Text("Color Themes")
+                                    .font(.title3.bold())
+                            }, icon: {
+                                Image("palette")
+                                    .resizable()
+                                    .frame(width: imageSize, height: imageSize)
+                            })
+                            Spacer()
+                            Button(action: {
+                                withAnimation(.spring()) {
+                                    isShowing.toggle()
+                                }
+                                isOverlaying.toggle()
+                            }) {
+                                Image(systemName: "xmark")
+                                    .font(.headline.bold())
+                            }
+                            .foregroundColor(.primary)
+                        }
+                        ScrollView(.vertical, showsIndicators: false) {
+                            VStack {
+                                ForEach(0..<10) { index in
+                                    Text("hello \(index)")
+                                }
+                            }
+                        }
                         Button(action: {
                             withAnimation(.spring()) {
                                 isShowing.toggle()
                             }
-                        }) {
-                            Image(systemName: "xmark")
-                                .font(.headline.bold())
-                        }
-                        .foregroundColor(.primary)
-                    }
-                    ScrollView(.vertical, showsIndicators: false) {
-                        VStack {
-                            ForEach(0..<10) { index in
-                                Text("hello \(index)")
+                            withAnimation(.spring().delay(0.4)) {
+                                isChanging.toggle()
                             }
+                            withAnimation(.spring().delay(1)) {
+                                isOverlaying.toggle()
+                                isChanging.toggle()
+                            }
+                            
+                        }) {
+                            Text("Done")
+                                .foregroundColor(.primary)
+                                .colorInvert()
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 10)
+                                .background(.green)
+                                .clipShape(Capsule())
                         }
                     }
-                    Button(action: {
-                        
-                    }) {
-                        Text("Done")
-                            .foregroundColor(.primary)
-                            .colorInvert()
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 10)
-                            .background(.green)
-                            .clipShape(Capsule())
-                    }
+                    .padding()
+                    .frame(maxWidth: 400, maxHeight: 500)
+                    .background(.background)
+                    .cornerRadius(20)
+                    .padding(.all, 30)
+                    .compositingGroup()
+                    .transition(.opacity.combined(with: .move(edge: .bottom)))
+                    .zIndex(2)
                 }
-                .padding()
-                .frame(maxWidth: 400, maxHeight: 500)
-                .background(.background)
-                .cornerRadius(20)
-                .padding(.all, 30)
-                .compositingGroup()
-                .transition(.move(edge: .bottom).combined(with: .opacity))
-                .zIndex(2)
             }
         }
     }
