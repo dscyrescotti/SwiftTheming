@@ -7,29 +7,29 @@ import SwiftUI
     associatedtype FontAsset
 }
 
-extension Assetable {
+public extension Assetable {
     typealias ColorAsset = EmptyColorAsset
     typealias ImageAsset = EmptyImageAsset
     typealias GradientAsset = EmptyGradientAsset
     typealias FontAsset = EmptyFontAsset
 }
 
-struct EmptyColorAsset {
+public struct EmptyColorAsset {
     private init() { }
     static let empty: Self = .init()
 }
 
-struct EmptyImageAsset {
+public struct EmptyImageAsset {
     private init() { }
     static let empty: Self = .init()
 }
 
-struct EmptyGradientAsset {
+public struct EmptyGradientAsset {
     private init() { }
     static let empty: Self = .init()
 }
 
-struct EmptyFontAsset {
+public struct EmptyFontAsset {
     private init() { }
     static let empty: Self = .init()
 }
