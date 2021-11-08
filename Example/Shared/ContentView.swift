@@ -24,7 +24,7 @@ struct ContentView: View {
                             ZStack(alignment: .bottomTrailing) {
                                 if isOverlaying {
                                     let size = max(proxy.size.height, proxy.size.width) * 2.5
-                                    themeProvider.color(for: .background)
+                                    themeProvider.color(for: .backgroundColor)
                                         .frame(width: isChanging ? size : 30, height: isChanging ? size : 30)
                                         .padding()
                                         .background(.blue)

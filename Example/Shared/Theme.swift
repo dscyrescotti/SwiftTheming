@@ -9,11 +9,13 @@ import SwiftUI
 import SwiftTheming
 
 enum Theme: Themeable {
-    case caelumTheme
+    case bluoTheme
+    case jadoTheme
     
     func theme() -> Themed<Asset> {
         switch self {
-        case .caelumTheme: return CaelumTheme()
+        case .bluoTheme: return BluoTheme()
+        case .jadoTheme: return JadoTheme()
         }
     }
 }
@@ -25,30 +27,24 @@ struct Asset: Assetable {
     }
 }
 
-class CaelumTheme: Themed<Asset> {
+class BluoTheme: Themed<Asset> {
     override func colorSet(for asset: Asset.ColorAsset) -> ColorSet {
         switch asset {
         case .backgroundColor:
-            return ColorSet(light: Color(hex: 0xB2C4FF), dark: Color(hex: 0x172453))
+            return ColorSet(light: Color(hex: 0xD6E0FF), dark: Color(hex: 0x162350))
         case .accentColor:
             return ColorSet(light: Color(hex: 0x788CFF), dark: Color(hex: 0x323D77))
         }
     }
 }
 
-extension UIColor {
-    convenience init(hex: Int) {
-        let components = (
-            R: CGFloat((hex >> 16) & 0xff) / 255,
-            G: CGFloat((hex >> 08) & 0xff) / 255,
-            B: CGFloat((hex >> 00) & 0xff) / 255
-        )
-        self.init(red: components.R, green: components.G, blue: components.B, alpha: 1)
+class JadoTheme: Themed<Asset> {
+    override func colorSet(for asset: Asset.ColorAsset) -> ColorSet {
+        switch asset {
+        case .backgroundColor:
+            return ColorSet(light: Color(hex: 0xDEF8EA), dark: Color(hex: 0x22442E))
+        case .accentColor:
+            return ColorSet(light: Color(hex: 0x97DDB4), dark: Color(hex: 0x97DDB4))
+        }
     }
-}
-
-extension Color {
-    public init(hex: Int) {
-        self.init(UIColor(hex: hex))
-   }
 }
