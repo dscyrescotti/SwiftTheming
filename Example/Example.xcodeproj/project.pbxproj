@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E67268F72737C3590025608F /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67268F62737C3580025608F /* Theme.swift */; };
+		E67268F82737C3590025608F /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67268F62737C3580025608F /* Theme.swift */; };
 		E68CB3CB2731139400440CE1 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68CB3CA2731139400440CE1 /* Tests_iOS.swift */; };
 		E68CB3CD2731139400440CE1 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68CB3CC2731139400440CE1 /* Tests_iOSLaunchTests.swift */; };
 		E68CB3D72731139400440CE1 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68CB3D62731139400440CE1 /* Tests_macOS.swift */; };
@@ -39,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E67268F62737C3580025608F /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		E68CB3B22731139000440CE1 /* MainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApp.swift; sourceTree = "<group>"; };
 		E68CB3B32731139000440CE1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E68CB3B42731139400440CE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -107,6 +110,7 @@
 				E68CB3B22731139000440CE1 /* MainApp.swift */,
 				E68CB3B32731139000440CE1 /* ContentView.swift */,
 				E68CB3B42731139400440CE1 /* Assets.xcassets */,
+				E67268F62737C3580025608F /* Theme.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -323,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E68CB3DC2731139400440CE1 /* ContentView.swift in Sources */,
+				E67268F72737C3590025608F /* Theme.swift in Sources */,
 				E68CB3DA2731139400440CE1 /* MainApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E68CB3DD2731139400440CE1 /* ContentView.swift in Sources */,
+				E67268F82737C3590025608F /* Theme.swift in Sources */,
 				E68CB3DB2731139400440CE1 /* MainApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

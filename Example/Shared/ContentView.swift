@@ -13,6 +13,7 @@ struct ContentView: View {
     @State private var isChanging: Bool = false
     @State private var isOverlaying: Bool = false
     @ScaledMetric(relativeTo: .title3) var imageSize: CGFloat = 20
+    @EnvironmentObject var themeProvider: ThemeProvider<Theme>
     var body: some View {
         GeometryReader { proxy in
             ZStack {
@@ -23,7 +24,7 @@ struct ContentView: View {
                             ZStack(alignment: .bottomTrailing) {
                                 if isOverlaying {
                                     let size = max(proxy.size.height, proxy.size.width) * 2.5
-                                    Color.blue
+                                    themeProvider.color(for: .background)
                                         .frame(width: isChanging ? size : 30, height: isChanging ? size : 30)
                                         .padding()
                                         .background(.blue)
