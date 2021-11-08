@@ -33,7 +33,7 @@ class BluoTheme: Themed<Asset> {
         case .backgroundColor:
             return ColorSet(light: Color(hex: 0xD6E0FF), dark: Color(hex: 0x162350))
         case .accentColor:
-            return ColorSet(light: Color(hex: 0x788CFF), dark: Color(hex: 0x323D77))
+            return ColorSet(light: Color(hex: 0x788CFF), dark: Color(hex: 0x42529E))
         }
     }
 }
@@ -44,7 +44,7 @@ class JadoTheme: Themed<Asset> {
         case .backgroundColor:
             return ColorSet(light: Color(hex: 0xDEF8EA), dark: Color(hex: 0x22442E))
         case .accentColor:
-            return ColorSet(light: Color(hex: 0x97DDB4), dark: Color(hex: 0x97DDB4))
+            return ColorSet(light: Color(hex: 0x97DDB4), dark: Color(hex: 0x499767))
         }
     }
 }
