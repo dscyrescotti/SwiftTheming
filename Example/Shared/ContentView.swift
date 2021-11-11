@@ -9,17 +9,24 @@ import SwiftUI
 import SwiftTheming
 
 struct ContentView: View {
-    @State private var isShowing: Bool = false
     @EnvironmentObject var themeProvider: ThemeProvider<Theme>
+    @State private var isShowing: Bool = false
+    @State private var theme: Theme? = nil
     var body: some View {
         GeometryReader { proxy in
             ZStack {
                 NavigationView {
                     Text("Welcome to SwiftTheming")
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(content: {
+                            
+                        })
                         .background(themeProvider.color(for: .backgroundColor))
                         .navigationTitle("")
                 }
+                .onReceive(themeProvider.objectWillChange, perform: { _ in
+                    self.theme = themeProvider.theme
+                })
                 .overlay(alignment: .bottom, content: {
                     Button(action: {
                         withAnimation(.spring()) {
@@ -38,14 +45,14 @@ struct ContentView: View {
                     }
                     .padding()
                 })
-                Color.clear
-                    .background(Material.ultraThinMaterial)
-                    .transition(.opacity)
-                    .onTapGesture {
-                        withAnimation(.spring()) {
-                            
-                        }
-                    }
+//                Color.clear
+//                    .background(Material.ultraThinMaterial)
+//                    .transition(.opacity)
+//                    .onTapGesture {
+//                        withAnimation(.spring()) {
+//
+//                        }
+//                    }
             }
         }
     }

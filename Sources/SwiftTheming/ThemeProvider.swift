@@ -9,9 +9,9 @@ import SwiftUI
 import Combine
 
 public class ThemeProvider<Theme: Themeable>: ObservableObject {
-    @Published private(set) var theme: Theme
-    @Published private(set) var colorScheme: ColorScheme? = nil
-    @Published private(set) var preferredAppearance: PreferredAppearance
+    @Published public private(set) var theme: Theme
+    @Published public private(set) var colorScheme: ColorScheme? = nil
+    @Published public private(set) var preferredAppearance: PreferredAppearance
     private var cancellables: Set<AnyCancellable> = []
     
     public init(defaultTheme: Theme, preferredAppearance: PreferredAppearance) {
