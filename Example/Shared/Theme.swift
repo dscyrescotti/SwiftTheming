@@ -18,12 +18,21 @@ enum Theme: Themeable {
         case .jadoTheme: return JadoTheme()
         }
     }
+    
+    func named() -> String {
+        switch self {
+        case .bluoTheme: return "Bluo Theme"
+        case .jadoTheme: return "Jado Theme"
+        }
+    }
 }
 
 struct Asset: Assetable {
     enum ColorAsset {
         case backgroundColor
         case accentColor
+        case borderColor
+        case contentColor
     }
 }
 
@@ -33,7 +42,11 @@ class BluoTheme: Themed<Asset> {
         case .backgroundColor:
             return ColorSet(light: Color(hex: 0xD6E0FF), dark: Color(hex: 0x162350))
         case .accentColor:
-            return ColorSet(light: Color(hex: 0x788CFF), dark: Color(hex: 0x42529E))
+            return ColorSet(light: Color(hex: 0x667DFF), dark: Color(hex: 0x5C74FF))
+        case .borderColor:
+            return ColorSet(default: Color(hex: 0x6F7FC3))
+        case .contentColor:
+            return ColorSet(default: Color(hex: 0xF3F5F7))
         }
     }
 }
@@ -44,7 +57,11 @@ class JadoTheme: Themed<Asset> {
         case .backgroundColor:
             return ColorSet(light: Color(hex: 0xDEF8EA), dark: Color(hex: 0x22442E))
         case .accentColor:
-            return ColorSet(light: Color(hex: 0x97DDB4), dark: Color(hex: 0x499767))
+            return ColorSet(light: Color(hex: 0x4DCC82), dark: Color(hex: 0x37BE6F))
+        case .borderColor:
+            return ColorSet(default: Color(hex: 0x83AF94))
+        case .contentColor:
+            return ColorSet(default: Color(hex: 0xF3F5F7))
         }
     }
 }

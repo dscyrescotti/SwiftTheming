@@ -12,6 +12,13 @@ struct ContentView: View {
     @EnvironmentObject var themeProvider: ThemeProvider<Theme>
     @State private var isShowing: Bool = false
     @State private var theme: Theme? = nil
+    @State private var selectedTheme: Theme? = nil
+    @ScaledMetric(relativeTo: .title3) var imageSize: CGFloat = 20
+    
+    @State private var size: CGFloat = 50
+    @State private var offset: CGFloat = 60
+    
+    let themes: [Theme] = .themes
     var body: some View {
         GeometryReader { proxy in
             ZStack {
@@ -19,13 +26,23 @@ struct ContentView: View {
                     Text("Welcome to SwiftTheming")
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .background(content: {
-                            
+                            let y = proxy.size.height - proxy.safeAreaInsets.top - proxy.safeAreaInsets.bottom - offset
+                            Color.clear
+                                .frame(width: size, height: size)
+                                .padding(10)
+                                .background(themeProvider.color(for: .backgroundColor, on: theme))
+                                .clipShape(Circle())
+                                .ignoresSafeArea()
+                                .position(x: proxy.frame(in: .local).midX, y: y)
                         })
-                        .background(themeProvider.color(for: .backgroundColor))
+                        .background {
+                            themeProvider.color(for: .backgroundColor)
+                                .ignoresSafeArea()
+                        }
                         .navigationTitle("")
                 }
-                .onReceive(themeProvider.objectWillChange, perform: { _ in
-                    self.theme = themeProvider.theme
+                .onReceive(themeProvider.$theme, perform: { theme in
+                    self.theme = theme
                 })
                 .overlay(alignment: .bottom, content: {
                     Button(action: {
@@ -33,26 +50,86 @@ struct ContentView: View {
                             isShowing.toggle()
                         }
                     }) {
-                        Color.white
-                            .frame(width: 30, height: 30)
+                        themeProvider.color(for: .contentColor)
+                            .frame(width: 50, height: 50)
                             .mask(
                                 Image("palette")
                                     .resizable()
+                                    .padding(5)
                             )
-                            .padding()
-                            .background(themeProvider.color(for: .accentColor))
+                            .padding(10)
+                            .background(themeProvider.color(for: .accentColor, on: theme))
                             .clipShape(Circle())
                     }
-                    .padding()
+                    .padding(10)
                 })
-//                Color.clear
-//                    .background(Material.ultraThinMaterial)
-//                    .transition(.opacity)
-//                    .onTapGesture {
-//                        withAnimation(.spring()) {
-//
-//                        }
-//                    }
+                if isShowing {
+                    GeometryReader { geometry in
+                        VStack(spacing: 20) {
+                            HStack {
+                                Spacer()
+                                Button(action: {
+                                    withAnimation(.spring()) {
+                                        isShowing.toggle()
+                                    }
+                                }) {
+                                    Image(systemName: "xmark")
+                                        .font(.title2.bold())
+                                }
+                                .foregroundColor(.primary)
+                            }
+                            ScrollView(.vertical, showsIndicators: false) {
+                                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 2)) {
+                                    ForEach(themes, id: \.self) { theme in
+                                        ThemeView(theme: theme, selectedTheme: $selectedTheme)
+                                    }
+                                }
+                            }
+                            Button(action: {
+                                doneTrigger(height: max(proxy.size.height, proxy.size.width))
+                            }) {
+                                Text("Done")
+                                    .font(.headline.bold())
+                                    .foregroundColor(themeProvider.color(for: .contentColor))
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 10)
+                                    .background(themeProvider.color(for: .accentColor))
+                                    .clipShape(Capsule())
+                            }
+                        }
+                    }
+                    .padding()
+                    .background(.ultraThinMaterial)
+                    .compositingGroup()
+                    .transition(.opacity)
+                    .zIndex(1)
+                    .edgesIgnoringSafeArea([])
+                }
+            }
+            .onAppear {
+                selectedTheme = themeProvider.theme
+            }
+        }
+    }
+    
+    func doneTrigger(height: CGFloat) {
+        withAnimation(.spring()) {
+            isShowing.toggle()
+        }
+        if let theme = selectedTheme, theme != self.theme {
+            withAnimation(.linear.delay(0.3)) {
+                self.theme = theme
+            }
+            withAnimation(.linear(duration: 1).delay(0.3)) {
+                size = height * 1.5
+            }
+            withAnimation(.easeOut(duration: 0.4).delay(0.9)) {
+                offset = 360
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                size = 50
+                offset = 60
+                themeProvider.setTheme(with: theme)
             }
         }
     }
