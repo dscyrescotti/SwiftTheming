@@ -34,6 +34,11 @@ struct Asset: Assetable {
         case borderColor
         case contentColor
     }
+    
+    enum ImageAsset {
+        case planetImage
+        case cloudImage
+    }
 }
 
 class BluoTheme: Themed<Asset> {
@@ -49,6 +54,15 @@ class BluoTheme: Themed<Asset> {
             return ColorSet(default: Color(hex: 0xF3F5F7))
         }
     }
+    
+    override func imageSet(for asset: Asset.ImageAsset) -> ImageSet {
+        switch asset {
+        case .planetImage:
+            return ImageSet(light: Image("sun"), dark: Image("moon"))
+        case .cloudImage:
+            return ImageSet(name: "cloud")
+        }
+    }
 }
 
 class JadoTheme: Themed<Asset> {
@@ -62,6 +76,15 @@ class JadoTheme: Themed<Asset> {
             return ColorSet(default: Color(hex: 0x83AF94))
         case .contentColor:
             return ColorSet(default: Color(hex: 0xF3F5F7))
+        }
+    }
+    
+    override func imageSet(for asset: Asset.ImageAsset) -> ImageSet {
+        switch asset {
+        case .planetImage:
+            return ImageSet(light: Image("sun"), dark: Image("moon"))
+        case .cloudImage:
+            return ImageSet(name: "cloud")
         }
     }
 }
