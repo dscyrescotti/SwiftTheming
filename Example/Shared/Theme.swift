@@ -33,11 +33,13 @@ struct Asset: Assetable {
         case accentColor
         case borderColor
         case contentColor
+        case fontColor
     }
     
     enum ImageAsset {
         case planetImage
         case cloudImage
+        case planetIcon
     }
 }
 
@@ -52,6 +54,8 @@ class BluoTheme: Themed<Asset> {
             return ColorSet(default: Color(hex: 0x6F7FC3))
         case .contentColor:
             return ColorSet(default: Color(hex: 0xF3F5F7))
+        case .fontColor:
+            return ColorSet(light: Color(hex: 0x1e1e1f), dark: Color(hex: 0xF3F5F7))
         }
     }
     
@@ -61,6 +65,8 @@ class BluoTheme: Themed<Asset> {
             return ImageSet(light: Image("sun"), dark: Image("moon"))
         case .cloudImage:
             return ImageSet(name: "cloud")
+        case .planetIcon:
+            return ImageSet(light: Image(systemName: "sun.max.fill"), dark: Image(systemName: "moon.fill"))
         }
     }
 }
@@ -76,6 +82,8 @@ class JadoTheme: Themed<Asset> {
             return ColorSet(default: Color(hex: 0x83AF94))
         case .contentColor:
             return ColorSet(default: Color(hex: 0xF3F5F7))
+        case .fontColor:
+            return ColorSet(light: Color(hex: 0x1e1e1f), dark: Color(hex: 0xF3F5F7))
         }
     }
     
@@ -85,6 +93,8 @@ class JadoTheme: Themed<Asset> {
             return ImageSet(light: Image("sun"), dark: Image("moon"))
         case .cloudImage:
             return ImageSet(name: "cloud")
+        case .planetIcon:
+            return ImageSet(light: Image(systemName: "sun.max.fill"), dark: Image(systemName: "moon.fill"))
         }
     }
 }

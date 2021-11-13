@@ -14,11 +14,13 @@ struct ContentView: View {
     @State private var theme: Theme? = nil
     @State private var selectedTheme: Theme? = nil
     @State private var appearance: PreferredAppearance? = nil
+    @State private var textAppearance: PreferredAppearance? = nil
     @ScaledMetric(relativeTo: .title3) var imageSize: CGFloat = 20
     
     @State private var size: CGFloat = 50
     @State private var offset: CGFloat = 60
     @State private var angle: CGFloat = -90
+    @State private var xPosition: CGFloat = 0
     
     let themes: [Theme] = .themes
     var body: some View {
@@ -26,18 +28,24 @@ struct ContentView: View {
             ZStack {
                 NavigationView {
                     ZStack {
-                        themeProvider.image(for: .planetImage, preferredAppearance: appearance ?? themeProvider.preferredAppearance)
+                        themeProvider.image(for: .planetImage)
                                 .resizable()
                                 .frame(width: 100, height: 100)
                                 .rotationEffect(.degrees(-angle))
                                 .offset(y: -proxy.frame(in: .local).midX + (1 - abs(angle / 90)) * 200 - 50)
                                 .rotationEffect(.degrees(angle))
                                 .zIndex(0)
-                        
-                        themeProvider.image(for: .cloudImage, preferredAppearance: appearance ?? themeProvider.preferredAppearance)
+                        themeProvider.image(for: .cloudImage)
                                 .resizable()
                                 .frame(width: 140, height: 70)
-                                .offset(y: (-proxy.frame(in: .local).midX) + (1 - CGFloat(1 / 3)) * 200 - 70)
+                                .offset(x: -proxy.frame(in: .local).midX - 70 + xPosition, y: (-proxy.frame(in: .local).midX) + (1 - CGFloat(1 / 3)) * 200 - 70)
+                                .zIndex(1)
+                        Text(textAppearance == .light ? "Buenos Días" : "Buenas Noches")
+                            .font(.title.bold())
+                            .multilineTextAlignment(.center)
+                            .foregroundColor(themeProvider.color(for: .fontColor, preferredAppearance: textAppearance, on: theme))
+                            .offset(y: 50)
+                            .zIndex(3)
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(content: {
@@ -45,7 +53,7 @@ struct ContentView: View {
                         Color.clear
                             .frame(width: size, height: size)
                             .padding(10)
-                            .background(themeProvider.color(for: .backgroundColor, on: theme))
+                            .background(themeProvider.color(for: .backgroundColor, preferredAppearance: appearance, on: theme))
                             .clipShape(Circle())
                             .ignoresSafeArea()
                             .position(x: proxy.frame(in: .local).midX, y: y)
@@ -56,12 +64,46 @@ struct ContentView: View {
                     }
                     .onAppear {
                         DispatchQueue.main.async {
-                            withAnimation(.easeInOut(duration: 4).delay(1)) {
+                            withAnimation(.easeOut(duration: 0.6).delay(0.3)) {
                                 angle = 30
+                                xPosition = proxy.frame(in: .local).midX + 80
                             }
                         }
                     }
-                    .navigationBarTitle(Text("SwiftTheming"))
+                    .navigationBarItems(trailing: Button(action: {
+                        if let appearance = self.appearance {
+                            self.appearance = appearance == .light ? .dark : .light
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                                textAppearance = self.appearance
+                            }
+                            let height = max(proxy.size.height, proxy.size.width)
+                            withAnimation(.linear(duration: 1).delay(0.3)) {
+                                size = height * 1.5
+                            }
+                            withAnimation(.easeOut(duration: 0.4).delay(0.9)) {
+                                offset = 360
+                            }
+                            withAnimation(.easeOut(duration: 0.6).delay(0.9)) {
+                                angle = 90
+                                xPosition = (proxy.frame(in: .local).midX + 70) * 2
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                size = 50
+                                offset = 60
+                                themeProvider.setPreferredAppearance(with: appearance == .light ? .dark : .light)
+                                angle = -90
+                                xPosition = 0
+                                withAnimation(.easeOut(duration: 0.6).delay(0.1)) {
+                                    angle = 30
+                                    xPosition = proxy.frame(in: .local).midX + 80
+                                }
+                            }
+                            
+                        }
+                    }) {
+                        themeProvider.image(for: .planetIcon, preferredAppearance: appearance, on: theme)
+                            .foregroundColor(themeProvider.color(for: .fontColor, preferredAppearance: textAppearance, on: theme))
+                    })
                 }
                 .onReceive(themeProvider.$theme, perform: { theme in
                     self.theme = theme
@@ -130,6 +172,8 @@ struct ContentView: View {
             }
             .onAppear {
                 selectedTheme = themeProvider.theme
+                appearance = themeProvider.preferredAppearance
+                textAppearance = appearance
             }
         }
     }
