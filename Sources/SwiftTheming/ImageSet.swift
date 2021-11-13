@@ -17,7 +17,7 @@ public struct ImageSet {
     }
     
     public init(light: Image, dark: Image) {
-        self.appearance = .dynamic(light: light, dark: light)
+        self.appearance = .dynamic(light: light, dark: dark)
     }
     
     @available(macOS 11.0, *)
