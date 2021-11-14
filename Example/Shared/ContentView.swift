@@ -102,7 +102,10 @@ struct ContentView: View {
                         }
                     }) {
                         themeProvider.image(for: .planetIcon, preferredAppearance: appearance, on: theme)
-                            .foregroundColor(themeProvider.color(for: .fontColor, preferredAppearance: textAppearance, on: theme))
+                            .foregroundColor(themeProvider.color(for: .contentColor))
+                            .padding(5)
+                            .background(themeProvider.color(for: .accentColor))
+                            .clipShape(Circle())
                     })
                 }
                 .onReceive(themeProvider.$theme, perform: { theme in
@@ -207,4 +210,3 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
-

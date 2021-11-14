@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E620C0272740139800AB1148 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E620C0262740139800AB1148 /* Launch Screen.storyboard */; };
-		E620C0282740139800AB1148 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E620C0262740139800AB1148 /* Launch Screen.storyboard */; };
 		E624D0962738CFE300287E21 /* Color++.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624D0952738CFE300287E21 /* Color++.swift */; };
-		E624D0972738CFE300287E21 /* Color++.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624D0952738CFE300287E21 /* Color++.swift */; };
 		E624D0992738D03A00287E21 /* Theme+Array++.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624D0982738D03A00287E21 /* Theme+Array++.swift */; };
 		E624D09A2738D03A00287E21 /* Theme+Array++.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624D0982738D03A00287E21 /* Theme+Array++.swift */; };
 		E67268F72737C3590025608F /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67268F62737C3580025608F /* Theme.swift */; };
@@ -22,13 +20,12 @@
 		E68CB3DA2731139400440CE1 /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68CB3B22731139000440CE1 /* MainApp.swift */; };
 		E68CB3DB2731139400440CE1 /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68CB3B22731139000440CE1 /* MainApp.swift */; };
 		E68CB3DC2731139400440CE1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68CB3B32731139000440CE1 /* ContentView.swift */; };
-		E68CB3DD2731139400440CE1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68CB3B32731139000440CE1 /* ContentView.swift */; };
 		E68CB3DE2731139400440CE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E68CB3B42731139400440CE1 /* Assets.xcassets */; };
 		E68CB3DF2731139400440CE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E68CB3B42731139400440CE1 /* Assets.xcassets */; };
 		E68CB3F02731159A00440CE1 /* SwiftTheming in Frameworks */ = {isa = PBXBuildFile; productRef = E68CB3EF2731159A00440CE1 /* SwiftTheming */; };
 		E68CB3F4273115B800440CE1 /* SwiftTheming in Frameworks */ = {isa = PBXBuildFile; productRef = E68CB3F3273115B800440CE1 /* SwiftTheming */; };
+		E69AA69A2740CD7400381827 /* Color++.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624D0952738CFE300287E21 /* Color++.swift */; };
 		E6B9384C273D3FE4003ADA98 /* ThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B9384B273D3FE4003ADA98 /* ThemeView.swift */; };
-		E6B9384D273D3FE4003ADA98 /* ThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B9384B273D3FE4003ADA98 /* ThemeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -318,7 +315,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E620C0282740139800AB1148 /* Launch Screen.storyboard in Resources */,
 				E68CB3DF2731139400440CE1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,10 +354,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E624D09A2738D03A00287E21 /* Theme+Array++.swift in Sources */,
-				E68CB3DD2731139400440CE1 /* ContentView.swift in Sources */,
-				E624D0972738CFE300287E21 /* Color++.swift in Sources */,
+				E69AA69A2740CD7400381827 /* Color++.swift in Sources */,
 				E67268F82737C3590025608F /* Theme.swift in Sources */,
-				E6B9384D273D3FE4003ADA98 /* ThemeView.swift in Sources */,
 				E68CB3DB2731139400440CE1 /* MainApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -529,6 +523,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -542,7 +537,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -560,6 +555,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -573,7 +569,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

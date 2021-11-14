@@ -7,13 +7,19 @@
 
 import SwiftUI
 
+#if os(macOS)
+typealias _Color = NSColor
+#else
+typealias _Color = UIColor
+#endif
+
 extension Color {
     public init(hex: Int) {
-        self.init(UIColor(hex: hex))
+        self.init(_Color(hex: hex))
    }
 }
 
-extension UIColor {
+extension _Color {
     convenience init(hex: Int) {
         let components = (
             R: CGFloat((hex >> 16) & 0xff) / 255,
