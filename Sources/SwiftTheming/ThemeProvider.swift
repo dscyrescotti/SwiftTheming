@@ -351,19 +351,15 @@ public class ThemeProvider<Theme: Themeable>: ObservableObject {
     /// A method to change the current theme of an app.
     /// - Parameter theme: theme to which the current theme of an app is changed
     public func setTheme(with theme: Theme) {
-        if self.theme != theme {
-            self.theme = theme
-            UserDefaults.set(theme, key: .theme)
-        }
+        self.theme = theme
+        UserDefaults.set(theme, key: .theme)
     }
     
     /// A method to change the preferred appearance of an app
     /// - Parameter appearance: appearance to which the preferred appearance of an app is changed
     public func setPreferredAppearance(with appearance: PreferredAppearance) {
-        if self.preferredAppearance != appearance {
-            self.preferredAppearance = appearance
-            UserDefaults.set(appearance, key: .preferredAppearance)
-        }
+        self.preferredAppearance = appearance
+        UserDefaults.set(appearance, key: .preferredAppearance)
     }
     
     internal func changeColorScheme(with colorScheme: ColorScheme) {
@@ -379,11 +375,13 @@ public class ThemeProvider<Theme: Themeable>: ObservableObject {
             }
             .store(in: &cancellables)
         $theme
+            .removeDuplicates()
             .sink { [unowned self] _ in
                 self.objectWillChange.send()
             }
             .store(in: &cancellables)
         $preferredAppearance
+            .removeDuplicates()
             .sink { [unowned self] _ in
                 self.objectWillChange.send()
             }
