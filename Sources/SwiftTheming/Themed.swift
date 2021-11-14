@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// An object to define any type of set based on predefined assets.
 open class Themed<Asset: Assetable> {
     public init() { }
     

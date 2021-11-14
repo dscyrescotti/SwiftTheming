@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// An abstraction layer to define themes based on theme asset.
 public protocol Themeable: Codable, Equatable {
     associatedtype ThemeAsset: Assetable
     

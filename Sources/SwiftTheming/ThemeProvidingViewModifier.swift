@@ -24,6 +24,10 @@ struct ThemeProvidingViewModifier<Theme: Themeable>: ViewModifier {
             .environmentObject(themeProvider)
     }
     
+    /// An initializer that takes default theme and preferred appearance for first time running.
+    /// - Parameters:
+    ///   - defaultTheme: default theme for first time running
+    ///   - defaultAppearance: preferred appearance for first time running
     init(defaultTheme: Theme, defaultAppearance: PreferredAppearance) {
         self._themeProvider = ObservedObject<ThemeProvider<Theme>>(wrappedValue: .init(defaultTheme: defaultTheme, preferredAppearance: defaultAppearance))
     }
