@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  
-//
-//  Created by Dscyre Scotti on 02/11/2021.
-//
-
 import SwiftUI
 
 extension UserDefaults {

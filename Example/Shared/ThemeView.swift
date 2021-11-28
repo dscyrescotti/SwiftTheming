@@ -15,14 +15,14 @@ struct ThemeView: View {
     var body: some View {
         VStack(spacing: 10) {
             HStack(spacing: 0) {
-                themeProvider.color(for: .backgroundColor, preferredAppearance: .light, on: theme)
-                themeProvider.color(for: .backgroundColor, preferredAppearance: .dark, on: theme)
+                Color(on: themeProvider, for: .backgroundColor, preferredAppearance: .light, theme: theme)
+                Color(on: themeProvider, for: .backgroundColor, preferredAppearance: .dark, theme: theme)
             }
             .frame(width: 60, height: 60)
             .clipShape(Circle())
             .overlay {
                 Circle()
-                    .stroke(themeProvider.color(for: .borderColor, on: theme), lineWidth: 5)
+                    .stroke(Color(on: themeProvider, for: .borderColor, theme: theme), lineWidth: 5)
             }
             .padding()
             Text(theme.named())
