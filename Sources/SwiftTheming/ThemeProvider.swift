@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  
-//
-//  Created by Dscyre Scotti on 02/11/2021.
-//
-
 import SwiftUI
 import Combine
 
@@ -35,7 +28,7 @@ public class ThemeProvider<Theme: Themeable>: ObservableObject {
     ///   - preferredAppearance: preferred appearance to override
     ///   - theme: theme to override
     /// - Returns: color
-    public func color(for asset: Theme.ThemeAsset.ColorAsset, preferredAppearance: PreferredAppearance?, on theme: Theme?) -> Color {
+    func color(for asset: Theme.ThemeAsset.ColorAsset, preferredAppearance: PreferredAppearance?, on theme: Theme?) -> Color {
         switch (theme ?? self.theme).colorSet(for: asset).appearance {
         case .static(let color): return color
         case .dynamic(let light, let dark):
@@ -62,7 +55,7 @@ public class ThemeProvider<Theme: Themeable>: ObservableObject {
     ///   - preferredAppearance: preferred appearance to override
     ///   - theme: theme to override
     /// - Returns: image
-    public func image(for asset: Theme.ThemeAsset.ImageAsset, preferredAppearance: PreferredAppearance?, on theme: Theme?) -> Image {
+    func image(for asset: Theme.ThemeAsset.ImageAsset, preferredAppearance: PreferredAppearance?, on theme: Theme?) -> Image {
         switch (theme ?? self.theme).imageSet(for: asset).appearance {
         case .static(let image): return image
         case .dynamic(let light, let dark):
@@ -89,7 +82,7 @@ public class ThemeProvider<Theme: Themeable>: ObservableObject {
     ///   - preferredAppearance: preferred appearance to override
     ///   - theme: theme to override
     /// - Returns: font
-    public func font(for asset: Theme.ThemeAsset.FontAsset, preferredAppearance: PreferredAppearance?, on theme: Theme?) -> Font {
+    func font(for asset: Theme.ThemeAsset.FontAsset, preferredAppearance: PreferredAppearance?, on theme: Theme?) -> Font {
         switch (theme ?? self.theme).fontSet(for: asset).appearance {
         case .static(let font): return font
         case .dynamic(let light, let dark):
@@ -116,7 +109,7 @@ public class ThemeProvider<Theme: Themeable>: ObservableObject {
     ///   - preferredAppearance: preferred appearance to override
     ///   - theme: theme to override
     /// - Returns: gradient
-    public func gradient(for asset: Theme.ThemeAsset.GradientAsset, preferredAppearance: PreferredAppearance?, on theme: Theme?) -> Gradient {
+    func gradient(for asset: Theme.ThemeAsset.GradientAsset, preferredAppearance: PreferredAppearance?, on theme: Theme?) -> Gradient {
         switch (theme ?? self.theme).gradientSet(for: asset).appearance {
         case .static(let gradient): return gradient
         case .dynamic(let light, let dark):
