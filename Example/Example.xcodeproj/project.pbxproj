@@ -22,10 +22,10 @@
 		E68CB3DC2731139400440CE1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68CB3B32731139000440CE1 /* ContentView.swift */; };
 		E68CB3DE2731139400440CE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E68CB3B42731139400440CE1 /* Assets.xcassets */; };
 		E68CB3DF2731139400440CE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E68CB3B42731139400440CE1 /* Assets.xcassets */; };
-		E68CB3F02731159A00440CE1 /* SwiftTheming in Frameworks */ = {isa = PBXBuildFile; productRef = E68CB3EF2731159A00440CE1 /* SwiftTheming */; };
-		E68CB3F4273115B800440CE1 /* SwiftTheming in Frameworks */ = {isa = PBXBuildFile; productRef = E68CB3F3273115B800440CE1 /* SwiftTheming */; };
 		E69AA69A2740CD7400381827 /* Color++.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624D0952738CFE300287E21 /* Color++.swift */; };
 		E6B9384C273D3FE4003ADA98 /* ThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B9384B273D3FE4003ADA98 /* ThemeView.swift */; };
+		EC1278F6275372AB003F9C56 /* SwiftTheming in Frameworks */ = {isa = PBXBuildFile; productRef = EC1278F5275372AB003F9C56 /* SwiftTheming */; };
+		EC1278F8275372B7003F9C56 /* SwiftTheming in Frameworks */ = {isa = PBXBuildFile; productRef = EC1278F7275372B7003F9C56 /* SwiftTheming */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,7 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E68CB3F02731159A00440CE1 /* SwiftTheming in Frameworks */,
+				EC1278F6275372AB003F9C56 /* SwiftTheming in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,7 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E68CB3F4273115B800440CE1 /* SwiftTheming in Frameworks */,
+				EC1278F8275372B7003F9C56 /* SwiftTheming in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,7 +189,7 @@
 			);
 			name = "Example (iOS)";
 			packageProductDependencies = (
-				E68CB3EF2731159A00440CE1 /* SwiftTheming */,
+				EC1278F5275372AB003F9C56 /* SwiftTheming */,
 			);
 			productName = "Example (iOS)";
 			productReference = E68CB3B92731139400440CE1 /* Example.app */;
@@ -209,7 +209,7 @@
 			);
 			name = "Example (macOS)";
 			packageProductDependencies = (
-				E68CB3F3273115B800440CE1 /* SwiftTheming */,
+				EC1278F7275372B7003F9C56 /* SwiftTheming */,
 			);
 			productName = "Example (macOS)";
 			productReference = E68CB3BF2731139400440CE1 /* Example.app */;
@@ -287,7 +287,7 @@
 			);
 			mainGroup = E68CB3AC2731139000440CE1;
 			packageReferences = (
-				E68CB3EE2731159A00440CE1 /* XCRemoteSwiftPackageReference "SwiftTheming" */,
+				EC1278F4275372AB003F9C56 /* XCRemoteSwiftPackageReference "SwiftTheming" */,
 			);
 			productRefGroup = E68CB3BA2731139400440CE1 /* Products */;
 			projectDirPath = "";
@@ -516,6 +516,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9TYSSFKV5U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Example--iOS--Info.plist";
@@ -547,6 +548,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9TYSSFKV5U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Example--iOS--Info.plist";
@@ -774,9 +776,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E68CB3EE2731159A00440CE1 /* XCRemoteSwiftPackageReference "SwiftTheming" */ = {
+		EC1278F4275372AB003F9C56 /* XCRemoteSwiftPackageReference "SwiftTheming" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = /Users/phoelapyae/Documents/All/SPM/SwiftTheming;
+			repositoryURL = /Users/dscyrescotti/Documents/Projects/SwiftTheming;
 			requirement = {
 				branch = develop;
 				kind = branch;
@@ -785,14 +787,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E68CB3EF2731159A00440CE1 /* SwiftTheming */ = {
+		EC1278F5275372AB003F9C56 /* SwiftTheming */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E68CB3EE2731159A00440CE1 /* XCRemoteSwiftPackageReference "SwiftTheming" */;
+			package = EC1278F4275372AB003F9C56 /* XCRemoteSwiftPackageReference "SwiftTheming" */;
 			productName = SwiftTheming;
 		};
-		E68CB3F3273115B800440CE1 /* SwiftTheming */ = {
+		EC1278F7275372B7003F9C56 /* SwiftTheming */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E68CB3EE2731159A00440CE1 /* XCRemoteSwiftPackageReference "SwiftTheming" */;
+			package = EC1278F4275372AB003F9C56 /* XCRemoteSwiftPackageReference "SwiftTheming" */;
 			productName = SwiftTheming;
 		};
 /* End XCSwiftPackageProductDependency section */
