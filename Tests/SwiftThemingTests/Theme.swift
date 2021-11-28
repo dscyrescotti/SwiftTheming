@@ -33,6 +33,7 @@ struct Asset: Assetable {
         case planetImage
         case cloudImage
         case planetIcon
+        case smokeImage
     }
 }
 
@@ -60,6 +61,8 @@ class BluoTheme: Themed<Asset> {
             return ImageSet(name: "cloud")
         case .planetIcon:
             return ImageSet(light: Image(systemName: "sun.max.fill"), dark: Image(systemName: "moon.fill"))
+        case .smokeImage:
+            return ImageSet(name: "blue")
         }
     }
 }
@@ -88,6 +91,8 @@ class JadoTheme: Themed<Asset> {
             return ImageSet(name: "cloud")
         case .planetIcon:
             return ImageSet(light: Image(systemName: "sun.max.fill"), dark: Image(systemName: "moon.fill"))
+        case .smokeImage:
+            return ImageSet(name: "green")
         }
     }
 }

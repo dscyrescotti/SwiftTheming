@@ -16,13 +16,15 @@ let package = Package(
             name: "SwiftTheming",
             targets: ["SwiftTheming"]),
     ],
-    dependencies: [],
+    dependencies: [
+        .package(name: "ViewInspector", url: "https://github.com/nalexn/ViewInspector.git", from: "0.0.1")
+    ],
     targets: [
         .target(
             name: "SwiftTheming",
             dependencies: []),
         .testTarget(
             name: "SwiftThemingTests",
-            dependencies: ["SwiftTheming"]),
+            dependencies: ["SwiftTheming", "ViewInspector"]),
     ]
 )
