@@ -28,14 +28,14 @@ struct ContentView: View {
             ZStack {
                 NavigationView {
                     ZStack {
-                        themeProvider.image(for: .planetImage)
+                        Image(on: themeProvider, for: .planetImage)
                                 .resizable()
                                 .frame(width: 100, height: 100)
                                 .rotationEffect(.degrees(-angle))
                                 .offset(y: -proxy.frame(in: .local).midX + (1 - abs(angle / 90)) * 200 - 50)
                                 .rotationEffect(.degrees(angle))
                                 .zIndex(0)
-                        themeProvider.image(for: .cloudImage)
+                        Image(on: themeProvider, for: .cloudImage)
                                 .resizable()
                                 .frame(width: 140, height: 70)
                                 .offset(x: -proxy.frame(in: .local).midX - 70 + xPosition, y: (-proxy.frame(in: .local).midX) + (1 - CGFloat(1 / 3)) * 200 - 70)
@@ -101,7 +101,7 @@ struct ContentView: View {
                             
                         }
                     }) {
-                        themeProvider.image(for: .planetIcon, preferredAppearance: appearance, on: theme)
+                        Image(on: themeProvider, for: .planetIcon, preferredAppearance: appearance, theme: theme)
                             .foregroundColor(themeProvider.color(for: .contentColor))
                             .padding(5)
                             .background(themeProvider.color(for: .accentColor))
