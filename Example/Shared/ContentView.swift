@@ -43,7 +43,7 @@ struct ContentView: View {
                         Text(textAppearance == .light ? "Buenos Días" : "Buenas Noches")
                             .font(.title.bold())
                             .multilineTextAlignment(.center)
-                            .foregroundColor(themeProvider.color(for: .fontColor, preferredAppearance: textAppearance, on: theme))
+                            .foregroundColor(Color(on: themeProvider, for: .fontColor, preferredAppearance: textAppearance, theme: theme))
                             .offset(y: 50)
                             .zIndex(3)
                     }
@@ -53,13 +53,13 @@ struct ContentView: View {
                         Color.clear
                             .frame(width: size, height: size)
                             .padding(10)
-                            .background(themeProvider.color(for: .backgroundColor, preferredAppearance: appearance, on: theme))
+                            .background(Color(on: themeProvider, for: .backgroundColor, preferredAppearance: appearance, theme: theme))
                             .clipShape(Circle())
                             .ignoresSafeArea()
                             .position(x: proxy.frame(in: .local).midX, y: y)
                     })
                     .background {
-                        themeProvider.color(for: .backgroundColor)
+                        Color(on: themeProvider, for: .backgroundColor)
                             .ignoresSafeArea()
                     }
                     .onAppear {
@@ -102,9 +102,9 @@ struct ContentView: View {
                         }
                     }) {
                         Image(on: themeProvider, for: .planetIcon, preferredAppearance: appearance, theme: theme)
-                            .foregroundColor(themeProvider.color(for: .contentColor))
+                            .foregroundColor(Color(on: themeProvider, for: .contentColor))
                             .padding(5)
-                            .background(themeProvider.color(for: .accentColor))
+                            .background(Color(on: themeProvider, for: .accentColor))
                             .clipShape(Circle())
                     })
                 }
@@ -117,15 +117,15 @@ struct ContentView: View {
                             isShowing.toggle()
                         }
                     }) {
-                        themeProvider.color(for: .contentColor)
+                        Color(on: themeProvider, for: .contentColor)
                             .frame(width: 50, height: 50)
                             .mask(
-                                Image("palette")
+                                Image(systemName: "paintpalette.fill")
                                     .resizable()
                                     .padding(5)
                             )
                             .padding(10)
-                            .background(themeProvider.color(for: .accentColor, on: theme))
+                            .background(Color(on: themeProvider, for: .accentColor, theme: theme))
                             .clipShape(Circle())
                     }
                     .padding(10)
@@ -157,10 +157,10 @@ struct ContentView: View {
                             }) {
                                 Text("Done")
                                     .font(.headline.bold())
-                                    .foregroundColor(themeProvider.color(for: .contentColor))
+                                    .foregroundColor(Color(on: themeProvider, for: .contentColor))
                                     .frame(maxWidth: .infinity)
                                     .padding(.vertical, 10)
-                                    .background(themeProvider.color(for: .accentColor))
+                                    .background(Color(on: themeProvider, for: .accentColor))
                                     .clipShape(Capsule())
                             }
                         }
