@@ -18,7 +18,6 @@ public class ThemeProvider<Theme: Themeable>: ObservableObject {
     public init(defaultTheme: Theme, preferredAppearance: PreferredAppearance) {
         self.theme = UserDefaults.get(Theme.self, key: .theme) ?? defaultTheme
         self.preferredAppearance = UserDefaults.get(PreferredAppearance.self, key: .preferredAppearance) ?? preferredAppearance
-        self.bind()
     }
 
     // MARK: - color
@@ -132,6 +131,7 @@ public class ThemeProvider<Theme: Themeable>: ObservableObject {
     /// A method to change the current theme of an app.
     /// - Parameter theme: theme to which the current theme of an app is changed
     public func setTheme(with theme: Theme) {
+        guard self.theme != theme else { return }
         self.theme = theme
         UserDefaults.set(theme, key: .theme)
     }
@@ -139,33 +139,13 @@ public class ThemeProvider<Theme: Themeable>: ObservableObject {
     /// A method to change the preferred appearance of an app
     /// - Parameter appearance: appearance to which the preferred appearance of an app is changed
     public func setPreferredAppearance(with appearance: PreferredAppearance) {
+        guard self.preferredAppearance != appearance else { return }
         self.preferredAppearance = appearance
         UserDefaults.set(appearance, key: .preferredAppearance)
     }
     
     internal func changeColorScheme(with colorScheme: ColorScheme) {
+        guard self.colorScheme != colorScheme else { return }
         self.colorScheme = colorScheme
-    }
-    
-    private func bind() {
-        $colorScheme
-            .dropFirst()
-            .removeDuplicates()
-            .sink { [unowned self] _ in
-                self.objectWillChange.send()
-            }
-            .store(in: &cancellables)
-        $theme
-            .removeDuplicates()
-            .sink { [unowned self] _ in
-                self.objectWillChange.send()
-            }
-            .store(in: &cancellables)
-        $preferredAppearance
-            .removeDuplicates()
-            .sink { [unowned self] _ in
-                self.objectWillChange.send()
-            }
-            .store(in: &cancellables)
     }
 }
