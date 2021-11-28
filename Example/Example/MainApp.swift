@@ -12,13 +12,11 @@ import SwiftTheming
 struct MainApp: App {
     var body: some Scene {
         WindowGroup {
-            #if os(iOS)
             ContentView()
                 .themeProviding(defaultTheme: Theme.bluoTheme, defaultAppearance: .light)
-            #else
-            Text("Not implemented yet!")
+                #if os(macOS)
                 .frame(width: 400, height: 300)
-            #endif
+                #endif
         }
     }
 }
