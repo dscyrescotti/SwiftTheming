@@ -35,6 +35,10 @@ struct Asset: Assetable {
         case planetIcon
         case smokeImage
     }
+    
+    enum FontAsset {
+        case titleFont
+    }
 }
 
 class BluoTheme: Themed<Asset> {
@@ -65,6 +69,13 @@ class BluoTheme: Themed<Asset> {
             return ImageSet(name: "blue")
         }
     }
+    
+    override func fontSet(for asset: Asset.FontAsset) -> FontSet {
+        switch asset {
+        case .titleFont:
+            return FontSet(light: .headline, dark: .title3)
+        }
+    }
 }
 
 class JadoTheme: Themed<Asset> {
@@ -93,6 +104,14 @@ class JadoTheme: Themed<Asset> {
             return ImageSet(light: Image(systemName: "sun.max.fill"), dark: Image(systemName: "moon.fill"))
         case .smokeImage:
             return ImageSet(name: "green")
+        }
+    }
+    
+    
+    override func fontSet(for asset: Asset.FontAsset) -> FontSet {
+        switch asset {
+        case .titleFont:
+            return FontSet(light: .title, dark: .title2)
         }
     }
 }

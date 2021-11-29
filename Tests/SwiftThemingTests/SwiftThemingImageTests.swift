@@ -60,4 +60,6 @@ final class SwiftThemingImageTests: XCTestCase {
         XCTAssertEqual(try view3.inspect().find(SpyView<Image>.self).actualView().inspect().image().actualImage(), Image("green"))
         XCTAssertEqual(try view4.inspect().find(SpyView<Image>.self).actualView().inspect().image().actualImage(), Image("blue"))
     }
+    
+    
 }

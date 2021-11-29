@@ -39,4 +39,13 @@ final class SwiftThemingColorTests: XCTestCase {
         XCTAssertEqual(try view3.inspect().find(SpyView<Color>.self).actualView().inspect().color().value(), Color(hex: 0x22442E))
         XCTAssertEqual(try view4.inspect().find(SpyView<Color>.self).actualView().inspect().color().value(), Color(hex: 0xDEF8EA))
     }
+    
+    func testColorSet() {
+        let colorSet1 = ColorSet(light: .white, dark: .black)
+        XCTAssertEqual(colorSet1.appearance, .dynamic(light: .white, dark: .black))
+        let colorSet2 = ColorSet(default: .red)
+        XCTAssertEqual(colorSet2.appearance, .static(.red))
+        let colorSet3 = ColorSet(name: "color")
+        XCTAssertEqual(colorSet3.appearance, .static(Color("color")))
+    }
 }
