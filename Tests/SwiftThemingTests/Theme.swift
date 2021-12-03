@@ -39,6 +39,10 @@ struct Asset: Assetable {
     enum FontAsset {
         case titleFont
     }
+    
+    enum GradientAsset {
+        case backgroundGradient
+    }
 }
 
 class BluoTheme: Themed<Asset> {
@@ -74,6 +78,13 @@ class BluoTheme: Themed<Asset> {
         switch asset {
         case .titleFont:
             return FontSet(light: .headline, dark: .title3)
+        }
+    }
+    
+    override func gradientSet(for asset: Asset.GradientAsset) -> GradientSet {
+        switch asset {
+        case .backgroundGradient:
+            return GradientSet(light: Gradient(colors: [.blue, .white]), dark: Gradient(colors: [.blue, .black]))
         }
     }
 }
@@ -112,6 +123,13 @@ class JadoTheme: Themed<Asset> {
         switch asset {
         case .titleFont:
             return FontSet(light: .title, dark: .title2)
+        }
+    }
+    
+    override func gradientSet(for asset: Asset.GradientAsset) -> GradientSet {
+        switch asset {
+        case .backgroundGradient:
+            return GradientSet(light: Gradient(colors: [.green, .white]), dark: Gradient(colors: [.green, .black]))
         }
     }
 }

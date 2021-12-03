@@ -29,5 +29,14 @@ final class SwiftThemingUserDefaultsTests: XCTestCase {
         
         UserDefaults.set(PreferredAppearance.dark, key: .preferredAppearance)
         XCTAssertEqual(UserDefaults.get(PreferredAppearance.self, key: .preferredAppearance), .dark)
+        
+        UserDefaults.set(FailedEcodeObject(), key: .theme)
+        XCTAssertEqual(UserDefaults.get(Theme.self, key: .theme), .bluoTheme)
+    }
+}
+
+struct FailedEcodeObject: Codable {
+    func encode(to encoder: Encoder) throws {
+        throw EncodingError.invalidValue("", .init(codingPath: [], debugDescription: "", underlyingError: nil))
     }
 }
