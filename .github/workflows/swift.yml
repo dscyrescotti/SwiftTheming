@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: maxim-lobanov/setup-xcode@v1
       with:
-        xcode-version: latest
+        xcode-version: '13.0'
     - uses: actions/checkout@v2
     - name: Build
       run: swift build -v
