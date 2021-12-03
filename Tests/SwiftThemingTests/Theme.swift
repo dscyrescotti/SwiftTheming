@@ -33,6 +33,15 @@ struct Asset: Assetable {
         case planetImage
         case cloudImage
         case planetIcon
+        case smokeImage
+    }
+    
+    enum FontAsset {
+        case titleFont
+    }
+    
+    enum GradientAsset {
+        case backgroundGradient
     }
 }
 
@@ -60,6 +69,22 @@ class BluoTheme: Themed<Asset> {
             return ImageSet(name: "cloud")
         case .planetIcon:
             return ImageSet(light: Image(systemName: "sun.max.fill"), dark: Image(systemName: "moon.fill"))
+        case .smokeImage:
+            return ImageSet(name: "blue")
+        }
+    }
+    
+    override func fontSet(for asset: Asset.FontAsset) -> FontSet {
+        switch asset {
+        case .titleFont:
+            return FontSet(light: .headline, dark: .title3)
+        }
+    }
+    
+    override func gradientSet(for asset: Asset.GradientAsset) -> GradientSet {
+        switch asset {
+        case .backgroundGradient:
+            return GradientSet(light: Gradient(colors: [.blue, .white]), dark: Gradient(colors: [.blue, .black]))
         }
     }
 }
@@ -88,6 +113,23 @@ class JadoTheme: Themed<Asset> {
             return ImageSet(name: "cloud")
         case .planetIcon:
             return ImageSet(light: Image(systemName: "sun.max.fill"), dark: Image(systemName: "moon.fill"))
+        case .smokeImage:
+            return ImageSet(name: "green")
+        }
+    }
+    
+    
+    override func fontSet(for asset: Asset.FontAsset) -> FontSet {
+        switch asset {
+        case .titleFont:
+            return FontSet(light: .title, dark: .title2)
+        }
+    }
+    
+    override func gradientSet(for asset: Asset.GradientAsset) -> GradientSet {
+        switch asset {
+        case .backgroundGradient:
+            return GradientSet(light: Gradient(colors: [.green, .white]), dark: Gradient(colors: [.green, .black]))
         }
     }
 }
