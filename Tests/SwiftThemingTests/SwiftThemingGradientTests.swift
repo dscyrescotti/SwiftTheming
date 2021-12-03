@@ -40,7 +40,7 @@ final class SwiftThemingGradientTests: XCTestCase {
         XCTAssertEqual(try view4.inspect().find(SpyView<LinearGradient>.self).actualView().inspect().linearGradient().gradient(), Gradient(colors: [.green, .white]))
     }
     
-    func testFontSet() {
+    func testGradientSet() {
         let gradientSet1 = GradientSet(default: Gradient(colors: [.green, .blue]))
         XCTAssertEqual(gradientSet1.appearance, .static(Gradient(colors: [.green, .blue])))
         let gradientSet2 = GradientSet(light: Gradient(colors: [.red, .white]), dark: Gradient(colors: [.red, .black]))

@@ -61,5 +61,18 @@ final class SwiftThemingImageTests: XCTestCase {
         XCTAssertEqual(try view4.inspect().find(SpyView<Image>.self).actualView().inspect().image().actualImage(), Image("blue"))
     }
     
+    func testImageSet() {
+        let imageSet1 = ImageSet(light: Image(systemName: "heart.fill"), dark: Image(systemName: "heart"))
+        XCTAssertEqual(imageSet1.appearance, .dynamic(light: Image(systemName: "heart.fill"), dark: Image(systemName: "heart")))
+        let imageSet2 = ImageSet(systemNameLight: "heart.fill", systemNameDark: "heart")
+        XCTAssertEqual(imageSet2.appearance, .dynamic(light: Image(systemName: "heart.fill"), dark: Image(systemName: "heart")))
+        let imageSet3 = ImageSet(systemName: "heart.fill")
+        XCTAssertEqual(imageSet3.appearance, .static(Image(systemName: "heart.fill")))
+        let imageSet4 = ImageSet(default: Image(systemName: "heart.fill"))
+        XCTAssertEqual(imageSet4.appearance, .static(Image(systemName: "heart.fill")))
+        let imageSet5 = ImageSet(name: "green")
+        XCTAssertEqual(imageSet5.appearance, .static(Image("green")))
+    }
+    
     
 }
