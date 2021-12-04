@@ -17,7 +17,7 @@ struct ContentView: View {
     @State private var textAppearance: PreferredAppearance? = nil
     @ScaledMetric(relativeTo: .title3) var imageSize: CGFloat = 20
     
-    @State private var size: CGFloat = 50
+    @State private var size: CGFloat = 0
     @State private var offset: CGFloat = 60
     @State private var angle: CGFloat = -90
     @State private var xPosition: CGFloat = 0
@@ -85,7 +85,7 @@ struct ContentView: View {
                 offset = 360
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                size = 50
+                size = 0
                 offset = 60
                 themeProvider.setTheme(with: theme)
             }
@@ -198,7 +198,7 @@ struct ContentView: View {
                     xPosition = (proxy.frame(in: .local).midX + 70) * 2
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                    size = 50
+                    size = 0
                     offset = 60
                     themeProvider.setPreferredAppearance(with: appearance == .light ? .dark : .light)
                     angle = -90
