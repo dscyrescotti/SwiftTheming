@@ -8,6 +8,7 @@ coverage:
   ignore:
     - Example/*
     - Tests/*
+    - Tests/SwiftThemingTests/*
     - Sources/SwiftTheming/Themed.swift
 
 parsers:
