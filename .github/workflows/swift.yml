@@ -21,7 +21,7 @@ jobs:
     - name: Run tests
       run: swift test --enable-code-coverage
     - name: Convert code coverage
-      run: xcrun llvm-cov export -format="lcov" -instr-profile=$(find .build -name default.profdata) $(find .build -name NDHpplePackageTests) > info.lcov
+      run: xcrun llvm-cov export -format="lcov" -instr-profile=$(find .build -name default.profdata) $(find .build -name SwiftThemingPackageTests) > info.lcov
     - name: Codecov
       uses: codecov/codecov-action@v1.0.13
       with:
