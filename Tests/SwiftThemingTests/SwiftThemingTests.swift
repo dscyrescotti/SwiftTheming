@@ -40,4 +40,12 @@ final class SwiftThemingTests: XCTestCase {
         XCTAssertEqual(colorSchemeSpy.values, [.light, .dark, .light])
     }
     
+    func testModifier() {
+        let sub = EmptyView().themeProviding(defaultTheme: Theme.bluoTheme)
+        XCTAssertNoThrow(try sub.inspect().modifier(ThemeProvidingViewModifier<Theme>.self, 0))
+        XCTAssertNoThrow(try sub.inspect().modifier(ThemeProvidingViewModifier<Theme>.self, 0).viewModifierContent())
+    }
+    
 }
+
+extension ThemeProvidingViewModifier: Inspectable { }
