@@ -17,7 +17,7 @@ jobs:
       with:
         xcode-version: '13.0'
     - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1.2.1
+      uses: codecov/codecov-action@v1.2.1
     - name: Build
       run: swift build -v
     - name: Run tests
