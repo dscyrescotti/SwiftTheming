@@ -46,6 +46,53 @@ final class SwiftThemingTests: XCTestCase {
         XCTAssertNoThrow(try sub.inspect().modifier(ThemeProvidingViewModifier<Theme>.self, 0).viewModifierContent())
     }
     
+    func testColor() {
+        let themeProvider = ThemeProvider<Theme>(defaultTheme: .bluoTheme, preferredAppearance: .light)
+        themeProvider.setTheme(with: .bluoTheme)
+        themeProvider.setPreferredAppearance(with: .system)
+        XCTAssertEqual(themeProvider.color(for: .backgroundColor, preferredAppearance: nil, on: nil), Color(hex: 0xD6E0FF))
+        themeProvider.changeColorScheme(with: .light)
+        XCTAssertEqual(themeProvider.color(for: .backgroundColor, preferredAppearance: nil, on: nil), Color(hex: 0xD6E0FF))
+        themeProvider.changeColorScheme(with: .dark)
+        XCTAssertEqual(themeProvider.color(for: .backgroundColor, preferredAppearance: nil, on: nil), Color(hex: 0x162350))
+        XCTAssertEqual(themeProvider.color(for: .borderColor, preferredAppearance: nil, on: nil), Color(hex: 0x6F7FC3))
+    }
+    
+    func testImage() {
+        let themeProvider = ThemeProvider<Theme>(defaultTheme: .bluoTheme, preferredAppearance: .light)
+        themeProvider.setTheme(with: .bluoTheme)
+        themeProvider.setPreferredAppearance(with: .system)
+        XCTAssertEqual(themeProvider.image(for: .planetImage, preferredAppearance: nil, on: nil), Image("sun"))
+        themeProvider.changeColorScheme(with: .light)
+        XCTAssertEqual(themeProvider.image(for: .planetImage, preferredAppearance: nil, on: nil), Image("sun"))
+        themeProvider.changeColorScheme(with: .dark)
+        XCTAssertEqual(themeProvider.image(for: .planetImage, preferredAppearance: nil, on: nil), Image("moon"))
+    }
+    
+    func testFont() {
+        let themeProvider = ThemeProvider<Theme>(defaultTheme: .bluoTheme, preferredAppearance: .light)
+        themeProvider.setTheme(with: .bluoTheme)
+        themeProvider.setPreferredAppearance(with: .system)
+        XCTAssertEqual(themeProvider.font(for: .titleFont, preferredAppearance: nil, on: nil), .headline)
+        themeProvider.changeColorScheme(with: .light)
+        XCTAssertEqual(themeProvider.font(for: .titleFont, preferredAppearance: nil, on: nil), .headline)
+        themeProvider.changeColorScheme(with: .dark)
+        XCTAssertEqual(themeProvider.font(for: .titleFont, preferredAppearance: nil, on: nil), .title3)
+        XCTAssertEqual(themeProvider.font(for: .staticFont, preferredAppearance: nil, on: nil), .title2)
+    }
+    
+    func testGradient() {
+        let themeProvider = ThemeProvider<Theme>(defaultTheme: .bluoTheme, preferredAppearance: .light)
+        themeProvider.setTheme(with: .bluoTheme)
+        themeProvider.setPreferredAppearance(with: .system)
+        XCTAssertEqual(themeProvider.gradient(for: .backgroundGradient, preferredAppearance: nil, on: nil), Gradient(colors: [.blue, .white]))
+        themeProvider.changeColorScheme(with: .light)
+        XCTAssertEqual(themeProvider.gradient(for: .backgroundGradient, preferredAppearance: nil, on: nil), Gradient(colors: [.blue, .white]))
+        themeProvider.changeColorScheme(with: .dark)
+        XCTAssertEqual(themeProvider.gradient(for: .backgroundGradient, preferredAppearance: nil, on: nil), Gradient(colors: [.blue, .black]))
+        XCTAssertEqual(themeProvider.gradient(for: .staticGradient, preferredAppearance: nil, on: nil), Gradient(colors: [.red, .yellow]))
+    }
+    
 }
 
 extension ThemeProvidingViewModifier: Inspectable { }

@@ -38,10 +38,12 @@ struct Asset: Assetable {
     
     enum FontAsset {
         case titleFont
+        case staticFont
     }
     
     enum GradientAsset {
         case backgroundGradient
+        case staticGradient
     }
 }
 
@@ -78,6 +80,8 @@ class BluoTheme: Themed<Asset> {
         switch asset {
         case .titleFont:
             return FontSet(light: .headline, dark: .title3)
+        case .staticFont:
+            return FontSet(default: .title2)
         }
     }
     
@@ -85,6 +89,8 @@ class BluoTheme: Themed<Asset> {
         switch asset {
         case .backgroundGradient:
             return GradientSet(light: Gradient(colors: [.blue, .white]), dark: Gradient(colors: [.blue, .black]))
+        case .staticGradient:
+            return GradientSet(default: Gradient(colors: [.red, .yellow]))
         }
     }
 }
@@ -123,6 +129,8 @@ class JadoTheme: Themed<Asset> {
         switch asset {
         case .titleFont:
             return FontSet(light: .title, dark: .title2)
+        case .staticFont:
+            return FontSet(default: .title2)
         }
     }
     
@@ -130,6 +138,8 @@ class JadoTheme: Themed<Asset> {
         switch asset {
         case .backgroundGradient:
             return GradientSet(light: Gradient(colors: [.green, .white]), dark: Gradient(colors: [.green, .black]))
+        case .staticGradient:
+            return GradientSet(default: Gradient(colors: [.red, .yellow]))
         }
     }
 }
