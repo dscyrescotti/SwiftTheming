@@ -103,13 +103,13 @@ struct ContentView: View {
 ### Switching theme and appearance
 You can change theme and appearance by calling`setTheme(with:)`and `setPreferredAppearance(with:)`respectively.
 
-## Author
+## Author 🖋
 **Dscyre Scotti** (**[@dscyrescotti](https://twitter.com/dscyrescotti)**)
 
-## Contributions
+## Contributions 👨‍💻🧑‍💻👩‍💻
 
 **SwiftTheming 🎨**  welcomes all developers to contribute if you have any idea to enhance and open an issue if you encounter any bug.
 
-## License
+## License 📃
 
 **SwiftTheming 🎨** is available under the MIT license. See the  [LICENSE](https://github.com/dscyrescotti/SwiftTheming/blob/main/LICENSE)  file for more info.
