@@ -3,6 +3,12 @@
 </p>
 
 <p align="center">
+    <a href="https://swiftpackageindex.com/dscyrescotti/SwiftTheming">
+	    <img  src="https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fdscyrescotti%2FSwiftTheming%2Fbadge%3Ftype%3Dplatforms"/> 
+    </a>
+    <a href="https://swiftpackageindex.com/dscyrescotti/SwiftTheming">
+	    <img  src="https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fdscyrescotti%2FSwiftTheming%2Fbadge%3Ftype%3Dswift-versions"/> 
+    </a>
     <a href="https://codecov.io/gh/dscyrescotti/SwiftTheming">
 	    <img  src="https://codecov.io/gh/dscyrescotti/SwiftTheming/branch/main/graph/badge.svg?token=D7DRKAD0VP"/> 
     </a>
