@@ -20,7 +20,7 @@
     </a>
 </p>
 
-**SwiftTheming 🎨** is a lightweight and handy theme manager which handles multiple themes based on system-wide appearances - light and dark appearances and overrides the system appearance for the application.
+**SwiftTheming 🎨** is a handy lightweight handy theme manager which handles multiple themes based on system-wide appearances - light and dark appearances and overrides the system appearance for the application.
 
 ## Demo📱
 <img src="https://github.com/dscyrescotti/SwiftTheming/blob/main/Assets/Demo.gif?raw=true" alt="this slowpoke moves"  width="40%"/><br/>
@@ -89,7 +89,7 @@ enum Theme: Themeable {
 }
 ```
 ### Accessing theme provider across views
-Yay! you are ready to use themes in your views. Let's get started to pass `ThemeProvider` across view hierarchy. Here's you can set default theme and default appearance for first time running.
+Yay! you are ready to use themes in your views. Let's get started to pass `ThemeProvider` across view hierarchy. Here you can set default theme and default appearance for first time running.
 ```swift
 WindowGroup {
     ContentView()
