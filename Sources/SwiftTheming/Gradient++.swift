@@ -21,3 +21,26 @@ public extension Gradient {
         self = themeProvider.gradient(for: asset, preferredAppearance: preferredAppearance, on: theme)
     }
 }
+
+// MARK: - LinearGradient
+extension LinearGradient {
+    /// A linear gradient of a given asset.
+    init<Theme: Themeable>(on themeProvider: ThemeProvider<Theme>, for asset: Theme.ThemeAsset.GradientAsset, startPoint: UnitPoint, endPoint: UnitPoint) {
+        self.init(gradient: Gradient(on: themeProvider, for: asset), startPoint: startPoint, endPoint: endPoint)
+    }
+    
+    /// A linear gradient of a given asset that allows to override the preferred appearance.
+    init<Theme: Themeable>(on themeProvider: ThemeProvider<Theme>, for asset: Theme.ThemeAsset.GradientAsset, preferredAppearance: PreferredAppearance?, startPoint: UnitPoint, endPoint: UnitPoint) {
+        self.init(gradient: Gradient(on: themeProvider, for: asset, preferredAppearance: preferredAppearance), startPoint: startPoint, endPoint: endPoint)
+    }
+    
+    /// A linear gradient of a given asset that allows to override the current theme optionally.
+    init<Theme: Themeable>(on themeProvider: ThemeProvider<Theme>, for asset: Theme.ThemeAsset.GradientAsset, theme: Theme?, startPoint: UnitPoint, endPoint: UnitPoint) {
+        self.init(gradient: Gradient(on: themeProvider, for: asset, theme: theme), startPoint: startPoint, endPoint: endPoint)
+    }
+    
+    /// A linear gradient of a given asset that allows to override the preferred appearance and the current theme optionally.
+    init<Theme: Themeable>(on themeProvider: ThemeProvider<Theme>, for asset: Theme.ThemeAsset.GradientAsset, preferredAppearance: PreferredAppearance?, theme: Theme?, startPoint: UnitPoint, endPoint: UnitPoint) {
+        self.init(gradient: Gradient(on: themeProvider, for: asset, preferredAppearance: preferredAppearance, theme: theme), startPoint: startPoint, endPoint: endPoint)
+    }
+}

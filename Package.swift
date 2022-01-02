@@ -25,6 +25,7 @@ let package = Package(
             dependencies: []),
         .testTarget(
             name: "SwiftThemingTests",
-            dependencies: ["SwiftTheming", "ViewInspector"]),
+            dependencies: ["SwiftTheming", "ViewInspector"],
+            exclude: ["Assets.xcassets"]),
     ]
 )
