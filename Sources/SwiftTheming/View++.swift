@@ -17,41 +17,25 @@ extension View {
     /// A background color of a given asset.
     @ViewBuilder
     public func background<Theme: Themeable>(on themeProvider: ThemeProvider<Theme>, for asset: Theme.ThemeAsset.ColorAsset) -> some View {
-        if #available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *) {
-            self.background { Color(on: themeProvider, for: asset) }
-        } else {
-            self.background(Color(on: themeProvider, for: asset))
-        }
+        self.background(Color(on: themeProvider, for: asset))
     }
     
     /// A background color of a given asset that allows to override the preferred appearance.
     @ViewBuilder
     public func background<Theme: Themeable>(on themeProvider: ThemeProvider<Theme>, for asset: Theme.ThemeAsset.ColorAsset, preferredAppearance: PreferredAppearance?) -> some View {
-        if #available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *) {
-            self.background { Color(on: themeProvider, for: asset, preferredAppearance: preferredAppearance) }
-        } else {
-            self.background(Color(on: themeProvider, for: asset, preferredAppearance: preferredAppearance))
-        }
+        self.background(Color(on: themeProvider, for: asset, preferredAppearance: preferredAppearance))
     }
     
     /// A background color of a given asset that allows to override the current theme optionally.
     @ViewBuilder
     public func background<Theme: Themeable>(on themeProvider: ThemeProvider<Theme>, for asset: Theme.ThemeAsset.ColorAsset, theme: Theme?) -> some View {
-        if #available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *) {
-            self.background { Color(on: themeProvider, for: asset, theme: theme) }
-        } else {
-            self.background(Color(on: themeProvider, for: asset, theme: theme))
-        }
+        self.background(Color(on: themeProvider, for: asset, theme: theme))
     }
     
     /// A background color of a given asset that allows to override the preferred appearance and the current theme optionally.
     @ViewBuilder
     public func background<Theme: Themeable>(on themeProvider: ThemeProvider<Theme>, for asset: Theme.ThemeAsset.ColorAsset, preferredAppearance: PreferredAppearance?, theme: Theme?) -> some View {
-        if #available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *) {
-            self.background { Color(on: themeProvider, for: asset, preferredAppearance: preferredAppearance, theme: theme) }
-        } else {
-            self.background(Color(on: themeProvider, for: asset, preferredAppearance: preferredAppearance, theme: theme))
-        }
+        self.background(Color(on: themeProvider, for: asset, preferredAppearance: preferredAppearance, theme: theme))
     }
     
     // MARK: - foreground color
