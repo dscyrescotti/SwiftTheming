@@ -17,7 +17,7 @@ let package = Package(
             targets: ["SwiftTheming"]),
     ],
     dependencies: [
-        .package(name: "ViewInspector", url: "https://github.com/nalexn/ViewInspector.git", from: "0.0.1")
+        .package(name: "ViewInspector", url: "https://github.com/nalexn/ViewInspector.git", revision: "0.9.0"),
     ],
     targets: [
         .target(
