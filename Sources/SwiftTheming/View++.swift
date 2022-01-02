@@ -18,7 +18,7 @@ extension View {
     @ViewBuilder
     public func background<Theme: Themeable>(on themeProvider: ThemeProvider<Theme>, for asset: Theme.ThemeAsset.ColorAsset) -> some View {
         if #available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *) {
-            self.background(content: { Color(on: themeProvider, for: asset) })
+            self.background { Color(on: themeProvider, for: asset) }
         } else {
             self.background(Color(on: themeProvider, for: asset))
         }
@@ -28,7 +28,7 @@ extension View {
     @ViewBuilder
     public func background<Theme: Themeable>(on themeProvider: ThemeProvider<Theme>, for asset: Theme.ThemeAsset.ColorAsset, preferredAppearance: PreferredAppearance?) -> some View {
         if #available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *) {
-            self.background(content: { Color(on: themeProvider, for: asset, preferredAppearance: preferredAppearance) })
+            self.background { Color(on: themeProvider, for: asset, preferredAppearance: preferredAppearance) }
         } else {
             self.background(Color(on: themeProvider, for: asset, preferredAppearance: preferredAppearance))
         }
@@ -38,7 +38,7 @@ extension View {
     @ViewBuilder
     public func background<Theme: Themeable>(on themeProvider: ThemeProvider<Theme>, for asset: Theme.ThemeAsset.ColorAsset, theme: Theme?) -> some View {
         if #available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *) {
-            self.background(content: { Color(on: themeProvider, for: asset, theme: theme) })
+            self.background { Color(on: themeProvider, for: asset, theme: theme) }
         } else {
             self.background(Color(on: themeProvider, for: asset, theme: theme))
         }
@@ -48,7 +48,7 @@ extension View {
     @ViewBuilder
     public func background<Theme: Themeable>(on themeProvider: ThemeProvider<Theme>, for asset: Theme.ThemeAsset.ColorAsset, preferredAppearance: PreferredAppearance?, theme: Theme?) -> some View {
         if #available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *) {
-            self.background(content: { Color(on: themeProvider, for: asset, preferredAppearance: preferredAppearance, theme: theme) })
+            self.background { Color(on: themeProvider, for: asset, preferredAppearance: preferredAppearance, theme: theme) }
         } else {
             self.background(Color(on: themeProvider, for: asset, preferredAppearance: preferredAppearance, theme: theme))
         }
