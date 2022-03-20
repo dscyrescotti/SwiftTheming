@@ -17,7 +17,7 @@
 		E68CB3DC2731139400440CE1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68CB3B32731139000440CE1 /* ContentView.swift */; };
 		E68CB3DE2731139400440CE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E68CB3B42731139400440CE1 /* Assets.xcassets */; };
 		E6B9384C273D3FE4003ADA98 /* ThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B9384B273D3FE4003ADA98 /* ThemeView.swift */; };
-		EC78826B27E7583C00F61ACA /* SwiftTheming in Frameworks */ = {isa = PBXBuildFile; productRef = EC78826A27E7583C00F61ACA /* SwiftTheming */; };
+		EC78826E27E75D8B00F61ACA /* SwiftTheming in Frameworks */ = {isa = PBXBuildFile; productRef = EC78826D27E75D8B00F61ACA /* SwiftTheming */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC78826B27E7583C00F61ACA /* SwiftTheming in Frameworks */,
+				EC78826E27E75D8B00F61ACA /* SwiftTheming in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,7 +131,7 @@
 			);
 			name = "Example (iOS)";
 			packageProductDependencies = (
-				EC78826A27E7583C00F61ACA /* SwiftTheming */,
+				EC78826D27E75D8B00F61ACA /* SwiftTheming */,
 			);
 			productName = "Example (iOS)";
 			productReference = E68CB3B92731139400440CE1 /* Example.app */;
@@ -184,7 +184,7 @@
 			);
 			mainGroup = E68CB3AC2731139000440CE1;
 			packageReferences = (
-				EC78826927E7583B00F61ACA /* XCRemoteSwiftPackageReference "SwiftTheming" */,
+				EC78826C27E75D8A00F61ACA /* XCRemoteSwiftPackageReference "SwiftTheming" */,
 			);
 			productRefGroup = E68CB3BA2731139400440CE1 /* Products */;
 			projectDirPath = "";
@@ -511,20 +511,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		EC78826927E7583B00F61ACA /* XCRemoteSwiftPackageReference "SwiftTheming" */ = {
+		EC78826C27E75D8A00F61ACA /* XCRemoteSwiftPackageReference "SwiftTheming" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = /Users/dscyrescotti/Documents/Projects/SwiftTheming;
 			requirement = {
-				branch = phase2;
+				branch = develop;
 				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		EC78826A27E7583C00F61ACA /* SwiftTheming */ = {
+		EC78826D27E75D8B00F61ACA /* SwiftTheming */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = EC78826927E7583B00F61ACA /* XCRemoteSwiftPackageReference "SwiftTheming" */;
+			package = EC78826C27E75D8A00F61ACA /* XCRemoteSwiftPackageReference "SwiftTheming" */;
 			productName = SwiftTheming;
 		};
 /* End XCSwiftPackageProductDependency section */
