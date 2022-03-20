@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftTheming
 
 struct ContentView: View {
-    @EnvironmentObject var themeProvider: ThemeProvider<Theme>
+    @ThemeProviding<Theme> var themeProvider
     @State private var isShowing: Bool = false
     @State private var theme: Theme? = nil
     @State private var selectedTheme: Theme? = nil

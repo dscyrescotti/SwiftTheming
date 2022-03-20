@@ -96,10 +96,10 @@ WindowGroup {
         .themeProviding(defaultTheme: Theme.sampleTheme, defaultAppearance: .system)
 }
 ```
-Now, you can access `ThemeProvider` via `@EnvironmentObject` inside any view and then you can apply it in your views.
+Now, you can access `ThemeProvider` via `@ThemeProviding` property wrapper inside any view so that you can easily use assets prepopulated by passing it.
 ```swift
 struct ContentView: View {
-    @EnvironmentObject var themeProvider: ThemeProvider<Theme>
+    @ThemeProviding<Theme> var themeProvider
     
     var body: some View {
         Color(on: themeProvider, for: .backgroundColor)
