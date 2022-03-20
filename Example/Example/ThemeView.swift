@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftTheming
 
 struct ThemeView: View {
-    @EnvironmentObject var themeProvider: ThemeProvider<Theme>
+    @ThemeProviding<Theme> var themeProvider
     let theme: Theme
     @Binding var selectedTheme: Theme?
     var body: some View {
