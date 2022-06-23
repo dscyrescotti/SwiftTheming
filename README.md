@@ -39,13 +39,13 @@ Imagine that you want to achieve injecting multiple themes and managing them dep
 Add it as a dependency within your `Package.swift`.
 ```swift
 dependencies: [
-.package(url: "https://github.com/dscyrescotti/SwiftTheming.git", from: "1.1.2")
+.package(url: "https://github.com/dscyrescotti/SwiftTheming.git", from: "1.1.1")
 ]
 ```
 ### Using Cocoapods 📦
 Add it inside your `Podfile`.
 ```
-pod 'SwiftTheming', '~> 1.1.2'
+pod 'SwiftTheming', '~> 1.1.1'
 ```
 *Currently, SwiftTheming can be installed only via Swift Package Manager and Cocoapods.*
 
