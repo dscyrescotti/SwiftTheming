@@ -24,4 +24,3 @@ jobs:
           args:
             -Dsonar.projectKey=dscyrescotti_SwiftTheming
             -Dsonar.organization=dscyrescotti
-            -Dsonar.sources=./Sources/SwiftTheming/*
