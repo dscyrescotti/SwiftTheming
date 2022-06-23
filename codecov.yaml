@@ -9,7 +9,8 @@ coverage:
     - Example/*
     - Tests/*
     - Tests/SwiftThemingTests/*
-    - Sources/SwiftTheming/Themed.swift
+    - Sources/SwiftTheming/Theme/Themed.swift
+    - Sources/SwiftTheming/Extensions/View++.swift
 
 parsers:
   gcov:
