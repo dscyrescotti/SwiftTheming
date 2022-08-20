@@ -9,6 +9,14 @@ extension View {
     public func themeProviding(defaultTheme: Theme, defaultAppearance: PreferredAppearance = .system) -> some View {
         self.modifier(ThemeProvidingViewModifier(defaultTheme: defaultTheme, defaultAppearance: defaultAppearance))
     }
+    
+    public func preferredAppearance(_ appearance: PreferredAppearance?) -> some View {
+        self.environment(\.preferredAppearance, appearance)
+    }
+    
+    public func preferredTheme(_ theme: Theme?) -> some View {
+        self.environment(\.preferredTheme, theme)
+    }
 }
 
 
