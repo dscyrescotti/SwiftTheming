@@ -3,22 +3,23 @@ import XCTest
 
 final class SwiftThemingAssetableTests: XCTestCase {
     func testEmptyAsset() {
-        XCTAssertTrue(EmptyAsset.ColorAsset.self == EmptyColorAsset.self)
-        XCTAssertTrue(EmptyAsset.FontAsset.self == EmptyFontAsset.self)
-        XCTAssertTrue(EmptyAsset.GradientAsset.self == EmptyGradientAsset.self)
-        XCTAssertTrue(EmptyAsset.ImageAsset.self == EmptyImageAsset.self)
-        XCTAssertNotNil(EmptyColorAsset.empty)
-        XCTAssertNotNil(EmptyImageAsset.empty)
-        XCTAssertNotNil(EmptyFontAsset.empty)
-        XCTAssertNotNil(EmptyGradientAsset.empty)
+        XCTAssertTrue(EmptyTheme._ColorAsset.self == EmptyColorAsset.self)
+        XCTAssertTrue(EmptyTheme._FontAsset.self == EmptyFontAsset.self)
+        XCTAssertTrue(EmptyTheme._GradientAsset.self == EmptyGradientAsset.self)
+        XCTAssertTrue(EmptyTheme._ImageAsset.self == EmptyImageAsset.self)
     }
-    
+
     func testAsset() {
-        XCTAssertFalse(Asset.ColorAsset.self == EmptyColorAsset.self)
-        XCTAssertFalse(Asset.FontAsset.self == EmptyFontAsset.self)
-        XCTAssertFalse(Asset.GradientAsset.self == EmptyGradientAsset.self)
-        XCTAssertFalse(Asset.ImageAsset.self == EmptyImageAsset.self)
+        XCTAssertFalse(JadoTheme._ColorAsset.self == EmptyColorAsset.self)
+        XCTAssertFalse(JadoTheme._FontAsset.self == EmptyFontAsset.self)
+        XCTAssertFalse(JadoTheme._GradientAsset.self == EmptyGradientAsset.self)
+        XCTAssertFalse(JadoTheme._ImageAsset.self == EmptyImageAsset.self)
     }
 }
 
-struct EmptyAsset: Assetable { }
+class EmptyTheme: Themed, Assetable {
+    typealias _ColorAsset = EmptyColorAsset
+    typealias _ImageAsset = EmptyImageAsset
+    typealias _FontAsset = EmptyFontAsset
+    typealias _GradientAsset = EmptyGradientAsset
+}

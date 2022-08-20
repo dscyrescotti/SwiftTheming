@@ -6,20 +6,20 @@ import ViewInspector
 final class SwiftThemingColorTests: XCTestCase {
     
     func testColor() throws {
-        let themeProvider = ThemeProvider<Theme>(defaultTheme: .bluoTheme, preferredAppearance: .light)
+        let themeProvider = ThemeProvider(defaultTheme: .bluoTheme, preferredAppearance: .light)
         themeProvider.setTheme(with: .bluoTheme)
         themeProvider.setPreferredAppearance(with: .light)
         let view1 = SpyView(themeProvider: themeProvider) { themeProvider in
-            Color(on: themeProvider, for: .backgroundColor)
+            Color(on: themeProvider, for: ColorAsset.backgroundColor)
         }
         let view2 = SpyView(themeProvider: themeProvider) { themeProvider in
-            Color(on: themeProvider, for: .backgroundColor, theme: .bluoTheme)
+            Color(on: themeProvider, for: ColorAsset.backgroundColor, theme: .bluoTheme)
         }
         let view3 = SpyView(themeProvider: themeProvider) { themeProvider in
-            Color(on: themeProvider, for: .backgroundColor, preferredAppearance: .dark)
+            Color(on: themeProvider, for: ColorAsset.backgroundColor, preferredAppearance: .dark)
         }
         let view4 = SpyView(themeProvider: themeProvider) { themeProvider in
-            Color(on: themeProvider, for: .backgroundColor, preferredAppearance: .light, theme: .jadoTheme)
+            Color(on: themeProvider, for: ColorAsset.backgroundColor, preferredAppearance: .light, theme: .jadoTheme)
         }
         XCTAssertEqual(try view1.inspect().find(SpyView<Color>.self).actualView().inspect().color().value(), Color(hex: 0xD6E0FF))
         XCTAssertEqual(try view2.inspect().find(SpyView<Color>.self).actualView().inspect().color().value(), Color(hex: 0xD6E0FF))

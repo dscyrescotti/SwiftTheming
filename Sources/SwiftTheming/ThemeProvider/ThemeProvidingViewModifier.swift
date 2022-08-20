@@ -1,8 +1,8 @@
 import SwiftUI
 
-struct ThemeProvidingViewModifier<Theme: Themeable>: ViewModifier {
+struct ThemeProvidingViewModifier: ViewModifier {
     @Environment(\.colorScheme) var colorScheme
-    @ObservedObject var themeProvider: ThemeProvider<Theme>
+    @ObservedObject var themeProvider: ThemeProvider
     @State private var preferredColorScheme: ColorScheme?
     
     func body(content: Content) -> some View {
@@ -29,6 +29,6 @@ struct ThemeProvidingViewModifier<Theme: Themeable>: ViewModifier {
     ///   - defaultTheme: default theme for first time running
     ///   - defaultAppearance: preferred appearance for first time running
     init(defaultTheme: Theme, defaultAppearance: PreferredAppearance) {
-        self._themeProvider = ObservedObject<ThemeProvider<Theme>>(wrappedValue: .init(defaultTheme: defaultTheme, preferredAppearance: defaultAppearance))
+        self._themeProvider = ObservedObject<ThemeProvider>(wrappedValue: .init(defaultTheme: defaultTheme, preferredAppearance: defaultAppearance))
     }
 }

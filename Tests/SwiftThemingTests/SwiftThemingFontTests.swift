@@ -6,32 +6,32 @@ import ViewInspector
 final class SwiftThemingFontTests: XCTestCase {
     
     func testFont() throws {
-        let themeProvider = ThemeProvider<Theme>(defaultTheme: .bluoTheme, preferredAppearance: .light)
+        let themeProvider = ThemeProvider(defaultTheme: .bluoTheme, preferredAppearance: .light)
         themeProvider.setTheme(with: .bluoTheme)
         themeProvider.setPreferredAppearance(with: .light)
         let view1 = SpyView(themeProvider: themeProvider) { themeProvider in
-            Text("Hello World!").font(Font(on: themeProvider, for: .titleFont))
+            Text("Hello World!").font(Font(on: themeProvider, for: FontAsset.titleFont))
         }
         let view2 = SpyView(themeProvider: themeProvider) { themeProvider in
-            Text("Hello World!").font(Font(on: themeProvider, for: .titleFont, theme: .bluoTheme))
+            Text("Hello World!").font(Font(on: themeProvider, for: FontAsset.titleFont, theme: .bluoTheme))
         }
         let view3 = SpyView(themeProvider: themeProvider) { themeProvider in
-            Text("Hello World!").font(Font(on: themeProvider, for: .titleFont, preferredAppearance: .dark))
+            Text("Hello World!").font(Font(on: themeProvider, for: FontAsset.titleFont, preferredAppearance: .dark))
         }
         let view4 = SpyView(themeProvider: themeProvider) { themeProvider in
-            Text("Hello World!").font(Font(on: themeProvider, for: .titleFont, preferredAppearance: .light, theme: .jadoTheme))
+            Text("Hello World!").font(Font(on: themeProvider, for: FontAsset.titleFont, preferredAppearance: .light, theme: .jadoTheme))
         }
         XCTAssertEqual(try view1.inspect().find(SpyView<Text>.self).actualView().inspect().text().attributes().font(), .headline)
         XCTAssertEqual(try view2.inspect().find(SpyView<Text>.self).actualView().inspect().text().attributes().font(), .headline)
         XCTAssertEqual(try view3.inspect().find(SpyView<Text>.self).actualView().inspect().text().attributes().font(), .title3)
         XCTAssertEqual(try view4.inspect().find(SpyView<Text>.self).actualView().inspect().text().attributes().font(), .title)
-        
+
         themeProvider.setPreferredAppearance(with: .dark)
         XCTAssertEqual(try view1.inspect().find(SpyView<Text>.self).actualView().inspect().text().attributes().font(), .title3)
         XCTAssertEqual(try view2.inspect().find(SpyView<Text>.self).actualView().inspect().text().attributes().font(), .title3)
         XCTAssertEqual(try view3.inspect().find(SpyView<Text>.self).actualView().inspect().text().attributes().font(), .title3)
         XCTAssertEqual(try view4.inspect().find(SpyView<Text>.self).actualView().inspect().text().attributes().font(), .title)
-        
+
         themeProvider.setTheme(with: .jadoTheme)
         themeProvider.setPreferredAppearance(with: .light)
         XCTAssertEqual(try view1.inspect().find(SpyView<Text>.self).actualView().inspect().text().attributes().font(), .title)
