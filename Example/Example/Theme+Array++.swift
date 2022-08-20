@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftTheming
 
 extension Array where Element == Theme {
     static var themes: [Element] = [.bluoTheme, .jadoTheme]
