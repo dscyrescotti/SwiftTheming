@@ -28,7 +28,7 @@ struct ThemeProvidingViewModifier: ViewModifier {
     /// - Parameters:
     ///   - defaultTheme: default theme for first time running
     ///   - defaultAppearance: preferred appearance for first time running
-    init(defaultTheme: Theme, defaultAppearance: PreferredAppearance) {
-        self._themeProvider = ObservedObject<ThemeProvider>(wrappedValue: .init(defaultTheme: defaultTheme, preferredAppearance: defaultAppearance))
+    init() {
+        self._themeProvider = ObservedObject<ThemeProvider>(wrappedValue: .shared)
     }
 }

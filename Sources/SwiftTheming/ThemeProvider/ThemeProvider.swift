@@ -3,6 +3,8 @@ import Combine
 
 /// An observable object that manages predefined themes and appearances of an app.
 public class ThemeProvider: ObservableObject {
+    static let shared: ThemeProvider = ThemeProvider()
+    
     /// A current theme of an app.
     @Published public private(set) var theme: Theme
     /// A current color scheme of an app.
@@ -10,14 +12,15 @@ public class ThemeProvider: ObservableObject {
     /// A current preferred appearance of an app.
     @Published public private(set) var preferredAppearance: PreferredAppearance
     private var cancellables: Set<AnyCancellable> = []
+    private let defaultTheming = DefaultTheming()
     
     /// An initializer that takes default theme and preferred appearance for first time running.
     /// - Parameters:
     ///   - defaultTheme: default theme for first time running
     ///   - preferredAppearance: preferred appearance for first time running
-    public init(defaultTheme: Theme, preferredAppearance: PreferredAppearance) {
-        self.theme = UserDefaults.get(Theme.self, key: .theme) ?? defaultTheme
-        self.preferredAppearance = UserDefaults.get(PreferredAppearance.self, key: .preferredAppearance) ?? preferredAppearance
+    private init() {
+        self.theme = UserDefaults.get(Theme.self, key: .theme) ?? defaultTheming.defaultable.defaultTheme()
+        self.preferredAppearance = UserDefaults.get(PreferredAppearance.self, key: .preferredAppearance) ?? defaultTheming.defaultable.defaultAppearance()
     }
 
     // MARK: - color

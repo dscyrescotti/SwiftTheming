@@ -33,6 +33,16 @@ extension Theme: Themeable, Hashable {
     }
 }
 
+extension DefaultTheming: Defaultable {
+    public func defaultTheme() -> Theme {
+        .bluoTheme
+    }
+    
+    public func defaultAppearance() -> PreferredAppearance {
+        .light
+    }
+}
+
 enum ColorAsset: ColorAssetable {
     case backgroundColor
     case accentColor
@@ -47,11 +57,19 @@ enum ImageAsset: ImageAssetable {
     case planetIcon
 }
 
+enum FontAsset: FontAssetable {
+    case titleFont
+}
+
+enum GradeintAsset: GradientAssetable {
+    case backgroundGradient
+}
+
 extension Assetable {
     typealias _ColorAsset = ColorAsset
     typealias _ImageAsset = ImageAsset
-    typealias _GradientAsset = EmptyAsset
-    typealias _FontAsset = EmptyAsset
+    typealias _GradientAsset = GradeintAsset
+    typealias _FontAsset = FontAsset
 }
 
 class BluoTheme: Themed, Assetable {
@@ -60,7 +78,7 @@ class BluoTheme: Themed, Assetable {
         case .backgroundColor:
             return ColorSet(light: Color(hex: 0xD6E0FF), dark: Color(hex: 0x162350))
         case .accentColor:
-            return ColorSet(light: Color(hex: 0x667DFF), dark: Color(hex: 0x5C74FF))
+            return ColorSet(light: Color(hex: 0x4763FF), dark: Color(hex: 0x5C74FF))
         case .borderColor:
             return ColorSet(default: Color(hex: 0x6F7FC3))
         case .contentColor:
@@ -80,6 +98,32 @@ class BluoTheme: Themed, Assetable {
             return ImageSet(light: Image(systemName: "sun.max.fill"), dark: Image(systemName: "moon.fill"))
         }
     }
+    
+    func fontSet(for asset: FontAsset) -> FontSet {
+        switch asset {
+        case .titleFont:
+            return .init(
+                light: Font.custom("Gill Sans", size: 30).bold(),
+                dark: Font.custom("Marker Felt Thin", size: 30).bold()
+            )
+        }
+    }
+    
+    func gradientSet(for asset: GradeintAsset) -> GradientSet {
+        switch asset {
+        case .backgroundGradient:
+            return .init(
+                light: Gradient(colors: [
+                    Color(hex: 0xD6E0FF),
+                    Color(hex: 0x4775FF)
+                ]),
+                dark: Gradient(colors: [
+                    Color(hex: 0x274090),
+                    Color(hex: 0x0D1530)
+                ])
+            )
+        }
+    }
 }
 
 class JadoTheme: Themed, Assetable {
@@ -88,7 +132,7 @@ class JadoTheme: Themed, Assetable {
         case .backgroundColor:
             return ColorSet(light: Color(hex: 0xDEF8EA), dark: Color(hex: 0x22442E))
         case .accentColor:
-            return ColorSet(light: Color(hex: 0x4DCC82), dark: Color(hex: 0x37BE6F))
+            return ColorSet(light: Color(hex: 0x37BE6F), dark: Color(hex: 0x37BE6F))
         case .borderColor:
             return ColorSet(default: Color(hex: 0x83AF94))
         case .contentColor:
@@ -106,6 +150,32 @@ class JadoTheme: Themed, Assetable {
             return ImageSet(name: "cloud")
         case .planetIcon:
             return ImageSet(light: Image(systemName: "sun.max.fill"), dark: Image(systemName: "moon.fill"))
+        }
+    }
+    
+    func fontSet(for asset: FontAsset) -> FontSet {
+        switch asset {
+        case .titleFont:
+            return .init(
+                light: Font.custom("Gill Sans", size: 30).bold(),
+                dark: Font.custom("Marker Felt Thin", size: 30).bold()
+            )
+        }
+    }
+    
+    func gradientSet(for asset: GradeintAsset) -> GradientSet {
+        switch asset {
+        case .backgroundGradient:
+            return .init(
+                light: Gradient(colors: [
+                    Color(hex: 0xDEF8EA),
+                    Color(hex: 0x68DF9F)
+                ]),
+                dark: Gradient(colors: [
+                    Color(hex: 0x3E7953),
+                    Color(hex: 0x15291C)
+                ])
+            )
         }
     }
 }
