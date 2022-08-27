@@ -3,7 +3,7 @@ import SwiftUI
 import ViewInspector
 @testable import SwiftTheming
 
-class SwiftThemingThemeProvidingTests: XCTestCase {
+class ThemeProvidingTests: XCTestCase {
     
     func testThemeProviding() {
         var sut = TestView()

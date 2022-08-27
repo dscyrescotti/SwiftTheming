@@ -3,7 +3,7 @@ import SwiftUI
 import ViewInspector
 @testable import SwiftTheming
 
-final class SwiftThemingGradientTests: XCTestCase {
+final class GradientTests: XCTestCase {
     func testGradient() throws {
         let themeProvider = ThemeProvider.shared
         themeProvider.changeColorScheme(with: nil)

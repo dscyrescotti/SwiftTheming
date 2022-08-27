@@ -3,7 +3,7 @@ import SwiftUI
 import ViewInspector
 @testable import SwiftTheming
 
-final class SwiftThemingImageTests: XCTestCase {
+final class ImageTests: XCTestCase {
     
     func testImageBasedOnAppearance() throws {
         let themeProvider = ThemeProvider.shared

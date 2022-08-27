@@ -4,7 +4,7 @@ import SwiftUI
 import ViewInspector
 @testable import SwiftTheming
 
-final class SwiftThemingTests: XCTestCase {
+final class ThemeProviderTests: XCTestCase {
     
     func testThemeProviderWithSpy() {
         let themeProvider = ThemeProvider.shared
