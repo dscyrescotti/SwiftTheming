@@ -2,8 +2,11 @@ import Foundation
 
 /// A struct that can be used as a theme.
 public struct Theme: Codable, Equatable {
+    /// A key that stores the unique identifier.
     public let key: String
     
+    /// An initializer that create a theme containing a unique identifier.
+    /// - Parameter key: unique identifier
     public init(key: String) {
         self.key = key
     }

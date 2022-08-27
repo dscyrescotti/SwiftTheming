@@ -1,3 +1,4 @@
+/// An empty asset for themes.
 public struct EmptyAsset: ColorAssetable, FontAssetable, GradientAssetable, ImageAssetable { }
 
 public extension Assetable where _ColorAsset == EmptyAsset {

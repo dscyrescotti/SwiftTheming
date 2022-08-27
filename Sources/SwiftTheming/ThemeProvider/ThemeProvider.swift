@@ -14,10 +14,6 @@ public class ThemeProvider: ObservableObject {
     private var cancellables: Set<AnyCancellable> = []
     private let defaultTheming = DefaultTheming()
     
-    /// An initializer that takes default theme and preferred appearance for first time running.
-    /// - Parameters:
-    ///   - defaultTheme: default theme for first time running
-    ///   - preferredAppearance: preferred appearance for first time running
     private init() {
         self.theme = UserDefaults.get(Theme.self, key: .theme) ?? defaultTheming.defaultable.defaultTheme()
         self.preferredAppearance = UserDefaults.get(PreferredAppearance.self, key: .preferredAppearance) ?? defaultTheming.defaultable.defaultAppearance()
@@ -147,6 +143,8 @@ public class ThemeProvider: ObservableObject {
         UserDefaults.set(appearance, key: .preferredAppearance)
     }
     
+    /// A method to change the color scheme when the system changes color scheme
+    /// - Parameter colorScheme: current color scheme of the system
     internal func changeColorScheme(with colorScheme: ColorScheme) {
         guard self.colorScheme != colorScheme else { return }
         self.colorScheme = colorScheme

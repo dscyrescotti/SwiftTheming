@@ -1,10 +1,7 @@
 import SwiftUI
 
 extension View {
-    /// A modifier that registers defined themes for further use and takes default theme and preferred appearance for first time running.
-    /// - Parameters:
-    ///   - defaultTheme: default theme for first time running
-    ///   - preferredAppearance: preferred appearance for first time running
+    /// A modifier that initiates theme provider and inject view as an environment object. This modifier should be called only once at the top of view hierarchy.
     /// - Returns: view
     public func themeProviding() -> some View {
         self.modifier(ThemeProvidingViewModifier())
@@ -12,6 +9,12 @@ extension View {
 }
 
 extension View {
+    /// A modifier to set foreground color to view by directly passing color asset.
+    /// - Parameters:
+    ///   - asset: asset for color
+    ///   - appearance: preferred appearance to override current appearance.
+    ///   - theme: preferred theme to override current theme
+    /// - Returns: view
     public func foregroundColor(
         _ asset: ColorAssetable,
         appearance: PreferredAppearance? = nil,
@@ -20,6 +23,12 @@ extension View {
         foregroundColor(Color(asset, appearance: appearance, theme: theme))
     }
     
+    /// A modifier to set background color to view by directly passing color asset.
+    /// - Parameters:
+    ///   - asset: asset for color
+    ///   - appearance: preferred appearance to override current appearance.
+    ///   - theme: preferred theme to override current theme.
+    /// - Returns: view
     public func background(
         _ asset: ColorAssetable,
         appearance: PreferredAppearance? = nil,
@@ -28,6 +37,12 @@ extension View {
         background(Color(asset, appearance: appearance, theme: theme))
     }
     
+    /// A modifier to set font to view by directly passing font asset.
+    /// - Parameters:
+    ///   - asset: asset for font
+    ///   - appearance: preferred appearance to override current appearance
+    ///   - theme: preferred theme to override current theme
+    /// - Returns: view
     public func font(
         _ asset: FontAssetable,
         appearance: PreferredAppearance? = nil,
@@ -38,6 +53,12 @@ extension View {
 }
 
 extension View where Self == Text {
+    /// A modifier to set font to view by directly passing font asset.
+    /// - Parameters:
+    ///   - asset: asset for font
+    ///   - appearance: preferred appearance to override current appearance
+    ///   - theme: preferred theme to override current theme
+    /// - Returns: text
     public func font(
         _ asset: FontAssetable,
         appearance: PreferredAppearance? = nil,

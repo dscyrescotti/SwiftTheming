@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// A view modifier that sets up theme provider to be able to used across view hierarchy.
 struct ThemeProvidingViewModifier: ViewModifier {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var themeProvider: ThemeProvider

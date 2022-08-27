@@ -16,7 +16,6 @@ public struct ImageSet {
         self.appearance = .static(Image(name))
     }
     
-    @available(macOS 11.0, *)
     /// An initializer that defines a certain system icon for both light and dark appearances.
     /// - Parameter systemName: system icon name for both light and dark appearances
     public init(systemName: String) {
@@ -31,7 +30,6 @@ public struct ImageSet {
         self.appearance = .dynamic(light: light, dark: dark)
     }
     
-    @available(macOS 11.0, *)
     /// An initializer that defines system icons for light and dark appearances separately.
     /// - Parameters:
     ///   - systemNameLight: system icon name for light appearance
