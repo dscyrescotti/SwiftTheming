@@ -7,20 +7,6 @@ final class AssetableTests: XCTestCase {
         XCTAssertTrue(EmptyTheme._FontAsset.self == EmptyAsset.self)
         XCTAssertTrue(EmptyTheme._GradientAsset.self == EmptyAsset.self)
         XCTAssertTrue(EmptyTheme._ImageAsset.self == EmptyAsset.self)
-        
-        let theme = EmptyTheme()
-        expectFatalError(expectedMessage: "You are accessing an empty gradient asset.") {
-            theme.gradientSet(for: .init())
-        }
-        expectFatalError(expectedMessage: "You are accessing an empty color asset.") {
-            theme.colorSet(for: .init())
-        }
-        expectFatalError(expectedMessage: "You are accessing an empty image asset.") {
-            theme.imageSet(for: .init())
-        }
-        expectFatalError(expectedMessage: "You are accessing an empty font asset.") {
-            theme.fontSet(for: .init())
-        }
     }
 
     func testAsset() {
