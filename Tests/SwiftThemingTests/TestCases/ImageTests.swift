@@ -3,29 +3,30 @@ import SwiftUI
 import ViewInspector
 @testable import SwiftTheming
 
-final class SwiftThemingImageTests: XCTestCase {
+final class ImageTests: XCTestCase {
     
     func testImageBasedOnAppearance() throws {
-        let themeProvider = ThemeProvider<Theme>(defaultTheme: .bluoTheme, preferredAppearance: .light)
+        let themeProvider = ThemeProvider.shared
+        themeProvider.changeColorScheme(with: nil)
         themeProvider.setTheme(with: .bluoTheme)
         themeProvider.setPreferredAppearance(with: .light)
         let view1 = SpyView(themeProvider: themeProvider) { themeProvider in
-            Image(on: themeProvider, for: .planetImage)
+            Image(ImageAsset.planetImage)
         }
         let view2 = SpyView(themeProvider: themeProvider) { themeProvider in
-            Image(on: themeProvider, for: .planetImage, theme: .bluoTheme)
+            Image(ImageAsset.planetImage, theme: .bluoTheme)
         }
         let view3 = SpyView(themeProvider: themeProvider) { themeProvider in
-            Image(on: themeProvider, for: .planetImage, preferredAppearance: .dark)
+            Image(ImageAsset.planetImage, appearance: .dark)
         }
         let view4 = SpyView(themeProvider: themeProvider) { themeProvider in
-            Image(on: themeProvider, for: .planetImage, preferredAppearance: .dark, theme: .jadoTheme)
+            Image(ImageAsset.planetImage, appearance: .dark, theme: .jadoTheme)
         }
         XCTAssertEqual(try view1.inspect().find(SpyView<Image>.self).actualView().inspect().image().actualImage(), Image("sun"))
         XCTAssertEqual(try view2.inspect().find(SpyView<Image>.self).actualView().inspect().image().actualImage(), Image("sun"))
         XCTAssertEqual(try view3.inspect().find(SpyView<Image>.self).actualView().inspect().image().actualImage(), Image("moon"))
         XCTAssertEqual(try view4.inspect().find(SpyView<Image>.self).actualView().inspect().image().actualImage(), Image("moon"))
-        
+
         themeProvider.setPreferredAppearance(with: .dark)
         XCTAssertEqual(try view1.inspect().find(SpyView<Image>.self).actualView().inspect().image().actualImage(), Image("moon"))
         XCTAssertEqual(try view2.inspect().find(SpyView<Image>.self).actualView().inspect().image().actualImage(), Image("moon"))
@@ -34,26 +35,27 @@ final class SwiftThemingImageTests: XCTestCase {
     }
     
     func testImageBasedOnTheme() throws {
-        let themeProvider = ThemeProvider<Theme>(defaultTheme: .bluoTheme, preferredAppearance: .light)
+        let themeProvider = ThemeProvider.shared
+        themeProvider.changeColorScheme(with: nil)
         themeProvider.setTheme(with: .bluoTheme)
         themeProvider.setPreferredAppearance(with: .light)
         let view1 = SpyView(themeProvider: themeProvider) { themeProvider in
-            Image(on: themeProvider, for: .smokeImage)
+            Image(ImageAsset.smokeImage)
         }
         let view2 = SpyView(themeProvider: themeProvider) { themeProvider in
-            Image(on: themeProvider, for: .smokeImage, theme: .jadoTheme)
+            Image(ImageAsset.smokeImage, theme: .jadoTheme)
         }
         let view3 = SpyView(themeProvider: themeProvider) { themeProvider in
-            Image(on: themeProvider, for: .smokeImage, preferredAppearance: .dark)
+            Image(ImageAsset.smokeImage, appearance: .dark)
         }
         let view4 = SpyView(themeProvider: themeProvider) { themeProvider in
-            Image(on: themeProvider, for: .smokeImage, preferredAppearance: .dark, theme: .bluoTheme)
+            Image(ImageAsset.smokeImage, appearance: .dark, theme: .bluoTheme)
         }
         XCTAssertEqual(try view1.inspect().find(SpyView<Image>.self).actualView().inspect().image().actualImage(), Image("blue"))
         XCTAssertEqual(try view2.inspect().find(SpyView<Image>.self).actualView().inspect().image().actualImage(), Image("green"))
         XCTAssertEqual(try view3.inspect().find(SpyView<Image>.self).actualView().inspect().image().actualImage(), Image("blue"))
         XCTAssertEqual(try view4.inspect().find(SpyView<Image>.self).actualView().inspect().image().actualImage(), Image("blue"))
-        
+
         themeProvider.setTheme(with: .jadoTheme)
         XCTAssertEqual(try view1.inspect().find(SpyView<Image>.self).actualView().inspect().image().actualImage(), Image("green"))
         XCTAssertEqual(try view2.inspect().find(SpyView<Image>.self).actualView().inspect().image().actualImage(), Image("green"))

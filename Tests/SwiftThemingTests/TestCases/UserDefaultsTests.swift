@@ -2,7 +2,7 @@ import XCTest
 import SwiftUI
 @testable import SwiftTheming
 
-final class SwiftThemingUserDefaultsTests: XCTestCase {
+final class UserDefaultsTests: XCTestCase {
     func testUserDefaults() {
         let themeKey = UserDefaults.Key.theme
         let appearanceKey = UserDefaults.Key.preferredAppearance

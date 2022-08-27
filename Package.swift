@@ -7,7 +7,7 @@ let package = Package(
     name: "SwiftTheming",
     platforms: [
         .iOS(.v14),
-        .macOS(.v12),
+        .macOS(.v11),
         .tvOS(.v14),
         .watchOS(.v7)
     ],
@@ -27,5 +27,6 @@ let package = Package(
             name: "SwiftThemingTests",
             dependencies: ["SwiftTheming", "ViewInspector"],
             exclude: ["Assets.xcassets"]),
-    ]
+    ],
+    swiftLanguageVersions: [.v5]
 )

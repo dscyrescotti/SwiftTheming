@@ -3,11 +3,11 @@ import SwiftTheming
 import ViewInspector
 
 struct TestView: View, Inspectable {
-    @ThemeProviding<Theme> var themeProvider
+    @ThemeProviding var themeProvider
     var didAppear: ((Self) -> Void)? = { _ in }
     
     var body: some View {
-        Color(on: themeProvider, for: .accentColor)
+        Color(ColorAsset.accentColor)
             .onAppear {
                 themeProvider.setTheme(with: .jadoTheme)
                 themeProvider.setPreferredAppearance(with: .dark)

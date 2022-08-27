@@ -13,7 +13,7 @@ struct MainApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .themeProviding(defaultTheme: Theme.bluoTheme, defaultAppearance: .light)
+                .themeProviding()
                 #if os(macOS)
                 .frame(width: 400, height: 300)
                 #endif

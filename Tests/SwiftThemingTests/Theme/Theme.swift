@@ -1,54 +1,64 @@
 import SwiftUI
 import SwiftTheming
 
-enum Theme: Themeable {
-    case bluoTheme
-    case jadoTheme
+extension Theme: Themeable {
+    static let bluoTheme = Theme(key: "bluoTheme")
+    static let jadoTheme = Theme(key: "jadoTheme")
     
-    func theme() -> Themed<Asset> {
+    public func themed() -> Themed {
         switch self {
         case .bluoTheme: return BluoTheme()
         case .jadoTheme: return JadoTheme()
+        default: fatalError("You are accessing undefined theme.")
         }
     }
     
-    func named() -> String {
+    public func named() -> String {
         switch self {
         case .bluoTheme: return "Bluo Theme"
         case .jadoTheme: return "Jado Theme"
+        default: fatalError("You are accessing undefined theme.")
         }
     }
 }
 
-struct Asset: Assetable {
-    enum ColorAsset {
-        case backgroundColor
-        case accentColor
-        case borderColor
-        case contentColor
-        case fontColor
+extension DefaultTheming: Defaultable {
+    public func defaultTheme() -> Theme {
+        .bluoTheme
     }
     
-    enum ImageAsset {
-        case planetImage
-        case cloudImage
-        case planetIcon
-        case smokeImage
-    }
-    
-    enum FontAsset {
-        case titleFont
-        case staticFont
-    }
-    
-    enum GradientAsset {
-        case backgroundGradient
-        case staticGradient
+    public func defaultAppearance() -> PreferredAppearance {
+        .system
     }
 }
 
-class BluoTheme: Themed<Asset> {
-    override func colorSet(for asset: Asset.ColorAsset) -> ColorSet {
+enum ColorAsset: ColorAssetable {
+    case backgroundColor
+    case accentColor
+    case borderColor
+    case contentColor
+    case fontColor
+}
+
+enum FontAsset: FontAssetable {
+    case titleFont
+    case staticFont
+}
+
+enum GradientAsset: GradientAssetable {
+    case backgroundGradient
+    case staticGradient
+}
+
+enum ImageAsset: ImageAssetable {
+    case planetImage
+    case cloudImage
+    case planetIcon
+    case smokeImage
+}
+
+class BluoTheme: Themed, Assetable {
+    func colorSet(for asset: ColorAsset) -> ColorSet {
         switch asset {
         case .backgroundColor:
             return ColorSet(light: Color(hex: 0xD6E0FF), dark: Color(hex: 0x162350))
@@ -63,7 +73,7 @@ class BluoTheme: Themed<Asset> {
         }
     }
     
-    override func imageSet(for asset: Asset.ImageAsset) -> ImageSet {
+    func imageSet(for asset: ImageAsset) -> ImageSet {
         switch asset {
         case .planetImage:
             return ImageSet(light: Image("sun"), dark: Image("moon"))
@@ -75,8 +85,8 @@ class BluoTheme: Themed<Asset> {
             return ImageSet(name: "blue")
         }
     }
-    
-    override func fontSet(for asset: Asset.FontAsset) -> FontSet {
+
+    func fontSet(for asset: FontAsset) -> FontSet {
         switch asset {
         case .titleFont:
             return FontSet(light: .headline, dark: .title3)
@@ -84,8 +94,8 @@ class BluoTheme: Themed<Asset> {
             return FontSet(default: .title2)
         }
     }
-    
-    override func gradientSet(for asset: Asset.GradientAsset) -> GradientSet {
+
+    func gradientSet(for asset: GradientAsset) -> GradientSet {
         switch asset {
         case .backgroundGradient:
             return GradientSet(light: Gradient(colors: [.blue, .white]), dark: Gradient(colors: [.blue, .black]))
@@ -95,8 +105,8 @@ class BluoTheme: Themed<Asset> {
     }
 }
 
-class JadoTheme: Themed<Asset> {
-    override func colorSet(for asset: Asset.ColorAsset) -> ColorSet {
+class JadoTheme: Themed, Assetable {
+    func colorSet(for asset: ColorAsset) -> ColorSet {
         switch asset {
         case .backgroundColor:
             return ColorSet(light: Color(hex: 0xDEF8EA), dark: Color(hex: 0x22442E))
@@ -111,7 +121,7 @@ class JadoTheme: Themed<Asset> {
         }
     }
     
-    override func imageSet(for asset: Asset.ImageAsset) -> ImageSet {
+    func imageSet(for asset: ImageAsset) -> ImageSet {
         switch asset {
         case .planetImage:
             return ImageSet(light: Image("sun"), dark: Image("moon"))
@@ -124,8 +134,7 @@ class JadoTheme: Themed<Asset> {
         }
     }
     
-    
-    override func fontSet(for asset: Asset.FontAsset) -> FontSet {
+    func fontSet(for asset: FontAsset) -> FontSet {
         switch asset {
         case .titleFont:
             return FontSet(light: .title, dark: .title2)
@@ -134,7 +143,7 @@ class JadoTheme: Themed<Asset> {
         }
     }
     
-    override func gradientSet(for asset: Asset.GradientAsset) -> GradientSet {
+    func gradientSet(for asset: GradientAsset) -> GradientSet {
         switch asset {
         case .backgroundGradient:
             return GradientSet(light: Gradient(colors: [.green, .white]), dark: Gradient(colors: [.green, .black]))
@@ -142,6 +151,13 @@ class JadoTheme: Themed<Asset> {
             return GradientSet(default: Gradient(colors: [.red, .yellow]))
         }
     }
+}
+
+extension Assetable {
+    typealias _ColorAsset = ColorAsset
+    typealias _FontAsset = FontAsset
+    typealias _GradientAsset = GradientAsset
+    typealias _ImageAsset = ImageAsset
 }
 
 #if os(macOS)

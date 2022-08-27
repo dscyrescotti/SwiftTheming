@@ -17,7 +17,7 @@
 		E68CB3DC2731139400440CE1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68CB3B32731139000440CE1 /* ContentView.swift */; };
 		E68CB3DE2731139400440CE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E68CB3B42731139400440CE1 /* Assets.xcassets */; };
 		E6B9384C273D3FE4003ADA98 /* ThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B9384B273D3FE4003ADA98 /* ThemeView.swift */; };
-		EC78826E27E75D8B00F61ACA /* SwiftTheming in Frameworks */ = {isa = PBXBuildFile; productRef = EC78826D27E75D8B00F61ACA /* SwiftTheming */; };
+		EC0AB24928B0914100B33797 /* SwiftTheming in Frameworks */ = {isa = PBXBuildFile; productRef = EC0AB24828B0914100B33797 /* SwiftTheming */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +43,7 @@
 		E68CB3CA2731139400440CE1 /* Tests_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOS.swift; sourceTree = "<group>"; };
 		E68CB3CC2731139400440CE1 /* Tests_iOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOSLaunchTests.swift; sourceTree = "<group>"; };
 		E6B9384B273D3FE4003ADA98 /* ThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeView.swift; sourceTree = "<group>"; };
+		EC0AB24728B0906F00B33797 /* SwiftTheming */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftTheming; path = ..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC78826E27E75D8B00F61ACA /* SwiftTheming in Frameworks */,
+				EC0AB24928B0914100B33797 /* SwiftTheming in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +68,7 @@
 		E68CB3AC2731139000440CE1 = {
 			isa = PBXGroup;
 			children = (
+				EC0AB24628B0906F00B33797 /* Packages */,
 				E68CB3B12731139000440CE1 /* Example */,
 				E68CB3C92731139400440CE1 /* Tests iOS */,
 				E68CB3BA2731139400440CE1 /* Products */,
@@ -114,6 +116,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EC0AB24628B0906F00B33797 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				EC0AB24728B0906F00B33797 /* SwiftTheming */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -131,7 +141,7 @@
 			);
 			name = "Example (iOS)";
 			packageProductDependencies = (
-				EC78826D27E75D8B00F61ACA /* SwiftTheming */,
+				EC0AB24828B0914100B33797 /* SwiftTheming */,
 			);
 			productName = "Example (iOS)";
 			productReference = E68CB3B92731139400440CE1 /* Example.app */;
@@ -184,7 +194,6 @@
 			);
 			mainGroup = E68CB3AC2731139000440CE1;
 			packageReferences = (
-				EC78826C27E75D8A00F61ACA /* XCRemoteSwiftPackageReference "SwiftTheming" */,
 			);
 			productRefGroup = E68CB3BA2731139400440CE1 /* Products */;
 			projectDirPath = "";
@@ -510,21 +519,9 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		EC78826C27E75D8A00F61ACA /* XCRemoteSwiftPackageReference "SwiftTheming" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = /Users/dscyrescotti/Documents/Projects/SwiftTheming;
-			requirement = {
-				branch = develop;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		EC78826D27E75D8B00F61ACA /* SwiftTheming */ = {
+		EC0AB24828B0914100B33797 /* SwiftTheming */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = EC78826C27E75D8A00F61ACA /* XCRemoteSwiftPackageReference "SwiftTheming" */;
 			productName = SwiftTheming;
 		};
 /* End XCSwiftPackageProductDependency section */
