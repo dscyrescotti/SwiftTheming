@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,10 +21,10 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SwiftTheming.png" translatesAutoresizingMaskIntoConstraints="NO" id="kJu-Z6-RMC">
-                                <rect key="frame" x="0.0" y="393" width="414" height="120"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SwiftTheming" translatesAutoresizingMaskIntoConstraints="NO" id="kJu-Z6-RMC">
+                                <rect key="frame" x="0.0" y="363" width="414" height="180"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="mfv-Xn-vIa"/>
+                                    <constraint firstAttribute="height" constant="180" id="mfv-Xn-vIa"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -46,6 +46,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="SwiftTheming.png" width="1679" height="454"/>
+        <image name="SwiftTheming" width="842" height="725"/>
     </resources>
 </document>
