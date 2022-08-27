@@ -2,7 +2,9 @@ import SwiftUI
 import Combine
 
 /// An observable object that manages predefined themes and appearances of an app.
-public class ThemeProvider<Theme: Themeable>: ObservableObject {
+public class ThemeProvider: ObservableObject {
+    static let shared: ThemeProvider = ThemeProvider()
+    
     /// A current theme of an app.
     @Published public private(set) var theme: Theme
     /// A current color scheme of an app.
@@ -10,14 +12,11 @@ public class ThemeProvider<Theme: Themeable>: ObservableObject {
     /// A current preferred appearance of an app.
     @Published public private(set) var preferredAppearance: PreferredAppearance
     private var cancellables: Set<AnyCancellable> = []
+    private let defaultTheming = DefaultTheming()
     
-    /// An initializer that takes default theme and preferred appearance for first time running.
-    /// - Parameters:
-    ///   - defaultTheme: default theme for first time running
-    ///   - preferredAppearance: preferred appearance for first time running
-    public init(defaultTheme: Theme, preferredAppearance: PreferredAppearance) {
-        self.theme = UserDefaults.get(Theme.self, key: .theme) ?? defaultTheme
-        self.preferredAppearance = UserDefaults.get(PreferredAppearance.self, key: .preferredAppearance) ?? preferredAppearance
+    private init() {
+        self.theme = UserDefaults.get(Theme.self, key: .theme) ?? defaultTheming.defaultable.defaultTheme()
+        self.preferredAppearance = UserDefaults.get(PreferredAppearance.self, key: .preferredAppearance) ?? defaultTheming.defaultable.defaultAppearance()
     }
 
     // MARK: - color
@@ -27,7 +26,7 @@ public class ThemeProvider<Theme: Themeable>: ObservableObject {
     ///   - preferredAppearance: preferred appearance to override
     ///   - theme: theme to override
     /// - Returns: color
-    func color(for asset: Theme.ThemeAsset.ColorAsset, preferredAppearance: PreferredAppearance?, on theme: Theme?) -> Color {
+    func color(for asset: ColorAssetable, preferredAppearance: PreferredAppearance?, on theme: Theme?) -> Color {
         switch (theme ?? self.theme).colorSet(for: asset).appearance {
         case .static(let color): return color
         case .dynamic(let light, let dark):
@@ -47,14 +46,14 @@ public class ThemeProvider<Theme: Themeable>: ObservableObject {
         }
     }
     
-    // MARK: - image    
+    // MARK: - image
     /// A method that returns image of a given asset and allows to override the preferred appearance and the current theme optionally.
     /// - Parameters:
     ///   - asset: asset for image
     ///   - preferredAppearance: preferred appearance to override
     ///   - theme: theme to override
     /// - Returns: image
-    func image(for asset: Theme.ThemeAsset.ImageAsset, preferredAppearance: PreferredAppearance?, on theme: Theme?) -> Image {
+    func image(for asset: ImageAssetable, preferredAppearance: PreferredAppearance?, on theme: Theme?) -> Image {
         switch (theme ?? self.theme).imageSet(for: asset).appearance {
         case .static(let image): return image
         case .dynamic(let light, let dark):
@@ -81,7 +80,7 @@ public class ThemeProvider<Theme: Themeable>: ObservableObject {
     ///   - preferredAppearance: preferred appearance to override
     ///   - theme: theme to override
     /// - Returns: font
-    func font(for asset: Theme.ThemeAsset.FontAsset, preferredAppearance: PreferredAppearance?, on theme: Theme?) -> Font {
+    func font(for asset: FontAssetable, preferredAppearance: PreferredAppearance?, on theme: Theme?) -> Font {
         switch (theme ?? self.theme).fontSet(for: asset).appearance {
         case .static(let font): return font
         case .dynamic(let light, let dark):
@@ -108,7 +107,7 @@ public class ThemeProvider<Theme: Themeable>: ObservableObject {
     ///   - preferredAppearance: preferred appearance to override
     ///   - theme: theme to override
     /// - Returns: gradient
-    func gradient(for asset: Theme.ThemeAsset.GradientAsset, preferredAppearance: PreferredAppearance?, on theme: Theme?) -> Gradient {
+    func gradient(for asset: GradientAssetable, preferredAppearance: PreferredAppearance?, on theme: Theme?) -> Gradient {
         switch (theme ?? self.theme).gradientSet(for: asset).appearance {
         case .static(let gradient): return gradient
         case .dynamic(let light, let dark):
@@ -144,7 +143,9 @@ public class ThemeProvider<Theme: Themeable>: ObservableObject {
         UserDefaults.set(appearance, key: .preferredAppearance)
     }
     
-    internal func changeColorScheme(with colorScheme: ColorScheme) {
+    /// A method to change the color scheme when the system changes color scheme
+    /// - Parameter colorScheme: current color scheme of the system
+    internal func changeColorScheme(with colorScheme: ColorScheme?) {
         guard self.colorScheme != colorScheme else { return }
         self.colorScheme = colorScheme
     }

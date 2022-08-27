@@ -19,7 +19,9 @@ extension UserDefaults {
     }
     
     enum Key: String {
+        /// A key for theme to store and fetch in user defaults.
         case theme = "theming.theme.key"
+        /// A key for preferred appearance to store and fetch in user defaults.
         case preferredAppearance = "theming.preferredAppearance.key"
     }
 }

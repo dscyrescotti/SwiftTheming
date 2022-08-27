@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftTheming
 
 struct ContentView: View {
-    @ThemeProviding<Theme> var themeProvider
+    @ThemeProviding var themeProvider
     @State private var isShowing: Bool = false
     @State private var theme: Theme? = nil
     @State private var selectedTheme: Theme? = nil
@@ -33,14 +33,30 @@ struct ContentView: View {
                             Color.clear
                                 .frame(width: size, height: size)
                                 .padding(10)
-                                .background(Color(on: themeProvider, for: .backgroundColor, preferredAppearance: appearance, theme: theme))
+                                .background(
+                                    LinearGradient(
+                                        gradient: Gradient(
+                                            GradeintAsset.backgroundGradient,
+                                            appearance: appearance,
+                                            theme: theme
+                                        ),
+                                        startPoint: .top,
+                                        endPoint: .bottom
+                                    )
+                                )
                                 .clipShape(Circle())
                                 .ignoresSafeArea()
                                 .position(x: proxy.frame(in: .local).midX, y: y)
                         })
                         .background {
-                            Color(on: themeProvider, for: .backgroundColor)
-                                .ignoresSafeArea()
+                            LinearGradient(
+                                gradient: Gradient(
+                                    GradeintAsset.backgroundGradient
+                                ),
+                                startPoint: .top,
+                                endPoint: .bottom
+                            )
+                            .ignoresSafeArea()
                         }
                         .onAppear {
                             DispatchQueue.main.async {
@@ -98,7 +114,7 @@ struct ContentView: View {
                 isShowing.toggle()
             }
         }) {
-            Color(on: themeProvider, for: .contentColor)
+            Color(ColorAsset.contentColor)
                 .frame(width: 50, height: 50)
                 .mask(
                     Image(systemName: "paintpalette.fill")
@@ -106,7 +122,7 @@ struct ContentView: View {
                         .padding(5)
                 )
                 .padding(10)
-                .background(Color(on: themeProvider, for: .accentColor, theme: theme))
+                .background(ColorAsset.accentColor, theme: theme)
                 .clipShape(Circle())
         }
         .padding(10)
@@ -139,10 +155,10 @@ struct ContentView: View {
                 }) {
                     Text("Done")
                         .font(.headline.bold())
-                        .foregroundColor(Color(on: themeProvider, for: .contentColor))
+                        .foregroundColor(ColorAsset.contentColor)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 10)
-                        .background(Color(on: themeProvider, for: .accentColor))
+                        .background(ColorAsset.accentColor)
                         .clipShape(Capsule())
                 }
             }
@@ -157,22 +173,30 @@ struct ContentView: View {
     
     func mainView(proxy: GeometryProxy) -> some View {
         ZStack {
-            Image(on: themeProvider, for: .planetImage)
+            Image(ImageAsset.planetImage)
                     .resizable()
                     .frame(width: 100, height: 100)
                     .rotationEffect(.degrees(-angle))
                     .offset(y: -proxy.frame(in: .local).midX + (1 - abs(angle / 90)) * 200 - 50 + CGFloat((angle < 0) ? 0 : -(angle / 90) * 50))
                     .rotationEffect(.degrees(angle))
                     .zIndex(0)
-            Image(on: themeProvider, for: .cloudImage)
+            Image(ImageAsset.cloudImage)
                     .resizable()
                     .frame(width: 140, height: 70)
                     .offset(x: -proxy.frame(in: .local).midX - 70 + xPosition, y: (-proxy.frame(in: .local).midX) + (1 - CGFloat(1 / 3)) * 200 - 70)
                     .zIndex(1)
             Text(textAppearance == .light ? "Buenos Días" : "Buenas Noches")
-                .font(.title.bold())
+                .font(
+                    FontAsset.titleFont,
+                    appearance: textAppearance,
+                    theme: theme
+                )
                 .multilineTextAlignment(.center)
-                .foregroundColor(Color(on: themeProvider, for: .fontColor, preferredAppearance: textAppearance, theme: theme))
+                .foregroundColor(
+                    ColorAsset.fontColor,
+                    appearance: textAppearance,
+                    theme: theme
+                )
                 .offset(y: 50)
                 .zIndex(2)
         }
@@ -211,11 +235,15 @@ struct ContentView: View {
                 
             }
         }) {
-            Image(on: themeProvider, for: .planetIcon, preferredAppearance: appearance, theme: theme)
-                .foregroundColor(Color(on: themeProvider, for: .contentColor))
-                .padding(5)
-                .background(Color(on: themeProvider, for: .accentColor))
-                .clipShape(Circle())
+            Image(
+                ImageAsset.planetIcon,
+                appearance: appearance,
+                theme: theme
+            )
+            .foregroundColor(ColorAsset.contentColor)
+            .padding(5)
+            .background(ColorAsset.accentColor)
+            .clipShape(Circle())
         }
     }
 }
