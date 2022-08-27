@@ -22,6 +22,16 @@ extension Theme: Themeable {
     }
 }
 
+extension DefaultTheming: Defaultable {
+    public func defaultTheme() -> Theme {
+        .bluoTheme
+    }
+    
+    public func defaultAppearance() -> PreferredAppearance {
+        .system
+    }
+}
+
 enum ColorAsset: ColorAssetable {
     case backgroundColor
     case accentColor

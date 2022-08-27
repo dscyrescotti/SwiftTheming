@@ -6,20 +6,21 @@ import ViewInspector
 final class SwiftThemingFontTests: XCTestCase {
     
     func testFont() throws {
-        let themeProvider = ThemeProvider(defaultTheme: .bluoTheme, preferredAppearance: .light)
+        let themeProvider = ThemeProvider.shared
+        themeProvider.changeColorScheme(with: nil)
         themeProvider.setTheme(with: .bluoTheme)
         themeProvider.setPreferredAppearance(with: .light)
         let view1 = SpyView(themeProvider: themeProvider) { themeProvider in
-            Text("Hello World!").font(Font(on: themeProvider, for: FontAsset.titleFont))
+            Text("Hello World!").font(Font(FontAsset.titleFont))
         }
         let view2 = SpyView(themeProvider: themeProvider) { themeProvider in
-            Text("Hello World!").font(Font(on: themeProvider, for: FontAsset.titleFont, theme: .bluoTheme))
+            Text("Hello World!").font(Font(FontAsset.titleFont, theme: .bluoTheme))
         }
         let view3 = SpyView(themeProvider: themeProvider) { themeProvider in
-            Text("Hello World!").font(Font(on: themeProvider, for: FontAsset.titleFont, preferredAppearance: .dark))
+            Text("Hello World!").font(Font(FontAsset.titleFont, appearance: .dark))
         }
         let view4 = SpyView(themeProvider: themeProvider) { themeProvider in
-            Text("Hello World!").font(Font(on: themeProvider, for: FontAsset.titleFont, preferredAppearance: .light, theme: .jadoTheme))
+            Text("Hello World!").font(Font(FontAsset.titleFont, appearance: .light, theme: .jadoTheme))
         }
         XCTAssertEqual(try view1.inspect().find(SpyView<Text>.self).actualView().inspect().text().attributes().font(), .headline)
         XCTAssertEqual(try view2.inspect().find(SpyView<Text>.self).actualView().inspect().text().attributes().font(), .headline)

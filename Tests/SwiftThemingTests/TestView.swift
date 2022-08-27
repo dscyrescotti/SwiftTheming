@@ -7,7 +7,7 @@ struct TestView: View, Inspectable {
     var didAppear: ((Self) -> Void)? = { _ in }
     
     var body: some View {
-        Color(on: themeProvider, for: ColorAsset.accentColor)
+        Color(ColorAsset.accentColor)
             .onAppear {
                 themeProvider.setTheme(with: .jadoTheme)
                 themeProvider.setPreferredAppearance(with: .dark)

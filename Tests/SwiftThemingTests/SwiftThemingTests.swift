@@ -7,7 +7,8 @@ import ViewInspector
 final class SwiftThemingTests: XCTestCase {
     
     func testThemeProviderWithSpy() {
-        let themeProvider = ThemeProvider(defaultTheme: .bluoTheme, preferredAppearance: .light)
+        let themeProvider = ThemeProvider.shared
+        themeProvider.changeColorScheme(with: nil)
         themeProvider.setTheme(with: .bluoTheme)
         themeProvider.setPreferredAppearance(with: .light)
         
@@ -41,13 +42,13 @@ final class SwiftThemingTests: XCTestCase {
     }
     
     func testModifier() {
-        let sub = EmptyView().themeProviding(defaultTheme: Theme.bluoTheme)
+        let sub = EmptyView().themeProviding()
         XCTAssertNoThrow(try sub.inspect().modifier(ThemeProvidingViewModifier.self, 0))
         XCTAssertNoThrow(try sub.inspect().modifier(ThemeProvidingViewModifier.self, 0).viewModifierContent())
     }
     
     func testColor() {
-        let themeProvider = ThemeProvider(defaultTheme: .bluoTheme, preferredAppearance: .light)
+        let themeProvider = ThemeProvider.shared
         themeProvider.setTheme(with: .bluoTheme)
         themeProvider.setPreferredAppearance(with: .system)
         XCTAssertEqual(themeProvider.color(for: ColorAsset.backgroundColor, preferredAppearance: nil, on: nil), Color(hex: 0xD6E0FF))
@@ -59,7 +60,8 @@ final class SwiftThemingTests: XCTestCase {
     }
     
     func testImage() {
-        let themeProvider = ThemeProvider(defaultTheme: .bluoTheme, preferredAppearance: .light)
+        let themeProvider = ThemeProvider.shared
+        themeProvider.changeColorScheme(with: nil)
         themeProvider.setTheme(with: .bluoTheme)
         themeProvider.setPreferredAppearance(with: .system)
         XCTAssertEqual(themeProvider.image(for: ImageAsset.planetImage, preferredAppearance: nil, on: nil), Image("sun"))
@@ -70,7 +72,8 @@ final class SwiftThemingTests: XCTestCase {
     }
     
     func testFont() {
-        let themeProvider = ThemeProvider(defaultTheme: .bluoTheme, preferredAppearance: .light)
+        let themeProvider = ThemeProvider.shared
+        themeProvider.changeColorScheme(with: nil)
         themeProvider.setTheme(with: .bluoTheme)
         themeProvider.setPreferredAppearance(with: .system)
         XCTAssertEqual(themeProvider.font(for: FontAsset.titleFont, preferredAppearance: nil, on: nil), .headline)
@@ -82,7 +85,8 @@ final class SwiftThemingTests: XCTestCase {
     }
     
     func testGradient() {
-        let themeProvider = ThemeProvider(defaultTheme: .bluoTheme, preferredAppearance: .light)
+        let themeProvider = ThemeProvider.shared
+        themeProvider.changeColorScheme(with: nil)
         themeProvider.setTheme(with: .bluoTheme)
         themeProvider.setPreferredAppearance(with: .system)
         XCTAssertEqual(themeProvider.gradient(for: GradientAsset.backgroundGradient, preferredAppearance: nil, on: nil), Gradient(colors: [.blue, .white]))

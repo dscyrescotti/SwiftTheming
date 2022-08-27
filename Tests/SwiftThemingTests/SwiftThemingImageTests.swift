@@ -6,20 +6,21 @@ import ViewInspector
 final class SwiftThemingImageTests: XCTestCase {
     
     func testImageBasedOnAppearance() throws {
-        let themeProvider = ThemeProvider(defaultTheme: .bluoTheme, preferredAppearance: .light)
+        let themeProvider = ThemeProvider.shared
+        themeProvider.changeColorScheme(with: nil)
         themeProvider.setTheme(with: .bluoTheme)
         themeProvider.setPreferredAppearance(with: .light)
         let view1 = SpyView(themeProvider: themeProvider) { themeProvider in
-            Image(on: themeProvider, for: ImageAsset.planetImage)
+            Image(ImageAsset.planetImage)
         }
         let view2 = SpyView(themeProvider: themeProvider) { themeProvider in
-            Image(on: themeProvider, for: ImageAsset.planetImage, theme: .bluoTheme)
+            Image(ImageAsset.planetImage, theme: .bluoTheme)
         }
         let view3 = SpyView(themeProvider: themeProvider) { themeProvider in
-            Image(on: themeProvider, for: ImageAsset.planetImage, preferredAppearance: .dark)
+            Image(ImageAsset.planetImage, appearance: .dark)
         }
         let view4 = SpyView(themeProvider: themeProvider) { themeProvider in
-            Image(on: themeProvider, for: ImageAsset.planetImage, preferredAppearance: .dark, theme: .jadoTheme)
+            Image(ImageAsset.planetImage, appearance: .dark, theme: .jadoTheme)
         }
         XCTAssertEqual(try view1.inspect().find(SpyView<Image>.self).actualView().inspect().image().actualImage(), Image("sun"))
         XCTAssertEqual(try view2.inspect().find(SpyView<Image>.self).actualView().inspect().image().actualImage(), Image("sun"))
@@ -34,20 +35,21 @@ final class SwiftThemingImageTests: XCTestCase {
     }
     
     func testImageBasedOnTheme() throws {
-        let themeProvider = ThemeProvider(defaultTheme: .bluoTheme, preferredAppearance: .light)
+        let themeProvider = ThemeProvider.shared
+        themeProvider.changeColorScheme(with: nil)
         themeProvider.setTheme(with: .bluoTheme)
         themeProvider.setPreferredAppearance(with: .light)
         let view1 = SpyView(themeProvider: themeProvider) { themeProvider in
-            Image(on: themeProvider, for: ImageAsset.smokeImage)
+            Image(ImageAsset.smokeImage)
         }
         let view2 = SpyView(themeProvider: themeProvider) { themeProvider in
-            Image(on: themeProvider, for: ImageAsset.smokeImage, theme: .jadoTheme)
+            Image(ImageAsset.smokeImage, theme: .jadoTheme)
         }
         let view3 = SpyView(themeProvider: themeProvider) { themeProvider in
-            Image(on: themeProvider, for: ImageAsset.smokeImage, preferredAppearance: .dark)
+            Image(ImageAsset.smokeImage, appearance: .dark)
         }
         let view4 = SpyView(themeProvider: themeProvider) { themeProvider in
-            Image(on: themeProvider, for: ImageAsset.smokeImage, preferredAppearance: .dark, theme: .bluoTheme)
+            Image(ImageAsset.smokeImage, appearance: .dark, theme: .bluoTheme)
         }
         XCTAssertEqual(try view1.inspect().find(SpyView<Image>.self).actualView().inspect().image().actualImage(), Image("blue"))
         XCTAssertEqual(try view2.inspect().find(SpyView<Image>.self).actualView().inspect().image().actualImage(), Image("green"))

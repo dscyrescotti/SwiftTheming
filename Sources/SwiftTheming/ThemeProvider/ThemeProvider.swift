@@ -145,7 +145,7 @@ public class ThemeProvider: ObservableObject {
     
     /// A method to change the color scheme when the system changes color scheme
     /// - Parameter colorScheme: current color scheme of the system
-    internal func changeColorScheme(with colorScheme: ColorScheme) {
+    internal func changeColorScheme(with colorScheme: ColorScheme?) {
         guard self.colorScheme != colorScheme else { return }
         self.colorScheme = colorScheme
     }
