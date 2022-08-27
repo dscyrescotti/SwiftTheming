@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name          = 'SwiftTheming'
-    spec.version       = '1.1.1'
+    spec.version       = '2.0.0'
     spec.license       = { :type => 'MIT', :file => 'LICENSE' }
     spec.homepage      = 'https://github.com/dscyrescotti/SwiftTheming'
     spec.authors       = { 'Scotti' => 'dscyrescotti@gmail.com' }
