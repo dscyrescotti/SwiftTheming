@@ -156,6 +156,9 @@ Moreover, there are some modifiers which work the same as `SwiftUI` modifiers ar
 | `background` | `background(_:appearance:theme:)`<br>- `asset`: asset for color<br>- `appearance`: preferred appearance to override current appearance (_optional_)<br>- `theme`: preferred theme to override current theme (_optional_) |
 | `font` | `font(_:appearance:theme:)`<br>- `asset`: asset for font<br>- `appearance`: preferred appearance to override current appearance (_optional_)<br>- `theme`: preferred theme to override current theme (_optional_) |
 
+## 🔎 Exploration
+To explore more about **SwiftTheming 🎨**, you can check out the [documentation](https://dscyrescotti.github.io/SwiftTheming/documentation/swifttheming/) or dig around the source code.
+
 ## ✍️ Author
 **Scotti** (**[@dscyrescotti](https://twitter.com/dscyrescotti)**)
 
