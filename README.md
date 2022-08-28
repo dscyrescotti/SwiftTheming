@@ -148,7 +148,7 @@ To exploit interface elements in your views, you can easily use the following in
 | `Gradient` |  `init(_:appearance:theme:)`<br>- `asset`: asset for gradient<br>- `appearance`: preferred appearance to override current appearance (_optional_)<br>- `theme`: preferred theme to override current theme (_optional_) |
 | `Image` |  `init(_:appearance:theme:)`<br>- `asset`: asset for image<br>- `appearance`: preferred appearance to override current appearance (_optional_)<br>- `theme`: preferred theme to override current theme (_optional_) |
 
-Moreover, the following modifiers which work the same as `SwiftUI` modifiers are provided in the purpose of ease.
+Moreover, there are some modifiers which work the same as `SwiftUI` modifiers are provided in the purpose of ease.
 #### Modifiers
 | Modifier | Description |
 | -------- | ----------- |
