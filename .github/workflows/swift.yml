@@ -20,18 +20,6 @@ jobs:
       run: swift build -v
     - name: Run tests
       run: swift test --enable-code-coverage
-    - name: Generate Documentation
-        uses: SwiftDocOrg/swift-doc@master
-        with:
-          inputs: "Sources"
-          module-name: SwiftTheming
-          output: "Documentation"
-    - name: Upload Documentation to Wiki
-        uses: SwiftDocOrg/github-wiki-publish-action@v1
-        with:
-          path: "Documentation"
-        env:
-          GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
     - name: Convert code coverage
       run: xcrun llvm-cov export -format="lcov" -instr-profile=$(find .build -name default.profdata) $(find .build -name SwiftThemingPackageTests) > info.lcov
     - name: Codecov
