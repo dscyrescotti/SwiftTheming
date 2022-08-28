@@ -4,7 +4,7 @@ A powerful lightweight theme 🎨 manager for SwiftUI
 
 ## Overview
 
-!["logo"](swift-theming-logo.png)
+!["logo"](swift-theming.png)
 **SwiftTheming 🎨** is a handy light-weight handy theme manager which handles multiple themes based on system-wide appearances - light and dark appearances and overrides the system appearance for the application.
 
 ## Topics
