@@ -1,5 +1,5 @@
 <p  align="center">
-<img  width="90%" src="https://github.com/dscyrescotti/SwiftTheming/blob/main/Assets/SwiftTheming.png?raw=true">
+<img  width="90%" src="https://github.com/dscyrescotti/SwiftTheming/blob/main/Assets/swift-theming-logo.png?raw=true">
 </p>
 
 <p align="center">
@@ -23,7 +23,7 @@
 **SwiftTheming 🎨** is a handy lightweight handy theme manager which handles multiple themes based on system-wide appearances - light and dark appearances and overrides the system appearance for the application.
 
 ## 📱Demo
-<img src="https://github.com/dscyrescotti/SwiftTheming/blob/main/Assets/Demo.gif?raw=true" alt="this slowpoke moves"  width="40%"/><br/>
+<img src="https://github.com/dscyrescotti/SwiftTheming/blob/main/Assets/demo-app.gif?raw=true" alt="this slowpoke moves"  width="40%"/><br/>
 > *You can see the demo project in **Example** folder.*
 
 ## 🎉 Motivation 
