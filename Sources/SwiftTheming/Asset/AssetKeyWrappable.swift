@@ -1,3 +1,4 @@
+/// An abstraction layer that helps to define any type of asset.
 public protocol AssetKeyWrappable {
     func _colorSet(for asset: ColorAssetable) -> ColorSet
     func _fontSet(for asset: FontAssetable) -> FontSet
