@@ -22,34 +22,34 @@
 
 **SwiftTheming 🎨** is a handy lightweight handy theme manager which handles multiple themes based on system-wide appearances - light and dark appearances and overrides the system appearance for the application.
 
-## Demo📱
+## 📱Demo
 <img src="https://github.com/dscyrescotti/SwiftTheming/blob/main/Assets/Demo.gif?raw=true" alt="this slowpoke moves"  width="40%"/><br/>
 > *You can see the demo project in **Example** folder.*
 
-## Motivation 🎉
+## 🎉 Motivation 
 Imagine that you want to achieve injecting multiple themes and managing them depending on the current system appearance or your preferred appearance. As SwiftUI does not come with the mechanism to manage different themes, you have to come up with it on your own. To me, I want to focus on other time-consuming stuff and don't want to spend on it. So, the idea to implement the handy mechanism for developers came to me and I eventually started crafting it. That was the becoming of **SwiftTheming**. 🎉🎉🎉 Using **SwiftTheming**, we can manage theme and system appearance as you desire without too much sweating. All you have to do is declare your themes with different colors, images, fonts and gradients. Pretty easy!
 
-## Requirements ⚠️
+## ⚠️ Requirements 
 - iOS 14+, macOS 11+, watchOS 7+, tvOS 14+
 
 ***SwiftTheming** is developed using Xcode 13.0. Make sure you are using Xcode 13 and above.*
 
-## Installation 🛠
-### Using Swift Package Manager 📦
+## 🛠 Installation 
+### 📦 Using Swift Package Manager
 Add it as a dependency within your `Package.swift`.
 ```swift
 dependencies: [
 .package(url: "https://github.com/dscyrescotti/SwiftTheming.git", from: "1.1.1")
 ]
 ```
-### Using Cocoapods 📦
+### 📦 Using Cocoapods
 Add it inside your `Podfile`.
 ```
 pod 'SwiftTheming', '~> 1.1.1'
 ```
 *Currently, SwiftTheming can be installed only via Swift Package Manager and Cocoapods.*
 
-## Usage 📋 
+## 📋 Usage
 ### Defining multiple themes
 To get started, you need to declare the abstraction layer of asset that may contain a group of colors, images, gradients and/or fonts. It will be injected into different themes that you create later.
 ```swift
@@ -117,10 +117,10 @@ You can change theme and appearance by calling`setTheme(with:)`and `setPreferred
 ## Author 🖋
 **Dscyre Scotti** (**[@dscyrescotti](https://twitter.com/dscyrescotti)**)
 
-## Contributions 👨‍💻🧑‍💻👩‍💻
+## 👨‍💻 Contributions
 
 **SwiftTheming 🎨**  welcomes all developers to contribute if you have any idea to enhance and open an issue if you encounter any bug.
 
-## License 📃
+## 📃 License
 
 **SwiftTheming 🎨** is available under the MIT license. See the  [LICENSE](https://github.com/dscyrescotti/SwiftTheming/blob/main/LICENSE)  file for more info.
