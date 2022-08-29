@@ -5,7 +5,7 @@ Pod::Spec.new do |spec|
     spec.homepage      = 'https://github.com/dscyrescotti/SwiftTheming'
     spec.authors       = { 'Scotti' => 'dscyrescotti@gmail.com' }
     spec.summary       = 'A powerful lightweight theme 🎨 manager for SwiftUI'
-    spec.source        = { :git => 'https://github.com/dscyrescotti/SwiftTheming.git', :tag => 'v1.1.1' }
+    spec.source        = { :git => 'https://github.com/dscyrescotti/SwiftTheming.git', :tag => 'v2.0.0' }
     spec.swift_versions = ['5.5']
   
     spec.ios.deployment_target  = '14.0'
