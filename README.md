@@ -12,7 +12,7 @@
     <a href="https://codecov.io/gh/dscyrescotti/SwiftTheming">
 	    <img  src="https://codecov.io/gh/dscyrescotti/SwiftTheming/branch/main/graph/badge.svg?token=D7DRKAD0VP"/> 
     </a>
-    <a href="https://github.com/dscyrescotti/CodableX/actions/workflows/swift.yml">
+    <a href="https://github.com/dscyrescotti/SwiftTheming/actions/workflows/swift.yml">
      	<img src="https://github.com/dscyrescotti/SwiftTheming/actions/workflows/swift.yml/badge.svg" alt="Action Status"/>
     </a>
     <a href="LICENSE">
