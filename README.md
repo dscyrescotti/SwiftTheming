@@ -49,6 +49,9 @@ pod 'SwiftTheming', '~> 2.0.0'
 ```
 > *Currently, SwiftTheming can be installed only via Swift Package Manager and Cocoapods.*
 
+## 👀 Migration guide for Version 2
+**SwiftTheming 🎨** has released Version 2 which inlcudes the major enhancement for code architecture and developer experience. Please check out the [migration guide](https://github.com/dscyrescotti/SwiftTheming/blob/main/MigrationGuide.md) to migrate from Version 1.
+
 ## 🎯 Usage
 ### Declaring multiple themes
 To get started, you need to define four different types of assets for color, font, gradient and image. Later, they will be used when creating different themes by injecting them as type alias.
@@ -136,25 +139,6 @@ struct ContentView: View {
 }
 ```
 You can switch theme and appearance by calling `setTheme(with:)` and `setPreferredAppearance(with:)`respectively.
-
-### Accessing interface elements in view layers
-To exploit interface elements in your views, you can easily use the following initializers with prepopulated assets.
-
-#### Initializers
-| Interface Element | Description |
-| ----------------- | ----------- |
-| `Color` |  `init(_:appearance:theme:)`<br>- `asset`: asset for color<br>- `appearance`: preferred appearance to override current appearance (_optional_)<br>- `theme`: preferred theme to override current theme (_optional_) |
-| `Font` |  `init(_:appearance:theme:)`<br>- `asset`: asset for font<br>- `appearance`: preferred appearance to override current appearance (_optional_)<br>- `theme`: preferred theme to override current theme (_optional_) |
-| `Gradient` |  `init(_:appearance:theme:)`<br>- `asset`: asset for gradient<br>- `appearance`: preferred appearance to override current appearance (_optional_)<br>- `theme`: preferred theme to override current theme (_optional_) |
-| `Image` |  `init(_:appearance:theme:)`<br>- `asset`: asset for image<br>- `appearance`: preferred appearance to override current appearance (_optional_)<br>- `theme`: preferred theme to override current theme (_optional_) |
-
-Moreover, there are some modifiers which work the same as `SwiftUI` modifiers are provided in the purpose of ease.
-#### Modifiers
-| Modifier | Description |
-| -------- | ----------- |
-| `foregroundColor` | `foregroundColor(_:appearance:theme:)`<br>- `asset`: asset for color<br>- `appearance`: preferred appearance to override current appearance (_optional_)<br>- `theme`: preferred theme to override current theme (_optional_) |
-| `background` | `background(_:appearance:theme:)`<br>- `asset`: asset for color<br>- `appearance`: preferred appearance to override current appearance (_optional_)<br>- `theme`: preferred theme to override current theme (_optional_) |
-| `font` | `font(_:appearance:theme:)`<br>- `asset`: asset for font<br>- `appearance`: preferred appearance to override current appearance (_optional_)<br>- `theme`: preferred theme to override current theme (_optional_) |
 
 ## 🔎 Exploration
 To explore more about **SwiftTheming 🎨**, you can check out the [documentation](https://dscyrescotti.github.io/SwiftTheming/documentation/swifttheming/) or dig around the source code.
