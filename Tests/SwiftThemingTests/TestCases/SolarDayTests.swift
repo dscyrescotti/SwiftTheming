@@ -10,10 +10,12 @@ class SolarDayTests: XCTestCase {
         let solarDay = SolarDay.current
         let components = Calendar.current.dateComponents([.year, .month, .day], from: Date())
         let date = "\(components.year!)-\(components.month!)-\(components.day!)"
-        let sunrise = "\(date)T06:00:00+0630"
-        let sunset = "\(date)T18:00:00+0630"
         let formatter = DateFormatter()
+        formatter.timeZone = .current
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let timeZone = String(formatter.string(from: Date()).dropFirst(20))
+        let sunrise = "\(date)T06:00:00+\(timeZone)"
+        let sunset = "\(date)T18:00:00+\(timeZone)"
         XCTAssertEqual(solarDay.sunset, formatter.date(from: sunset)!)
         XCTAssertEqual(solarDay.sunrise, formatter.date(from: sunrise)!)
     }
@@ -53,10 +55,12 @@ class SolarDayTests: XCTestCase {
         )
         let components = Calendar.current.dateComponents([.year, .month, .day], from: Date())
         let date = "\(components.year!)-\(components.month!)-\(components.day!)"
-        let sunrise = "\(date)T07:30:00+0630"
-        let sunset = "\(date)T19:30:05+0630"
         let formatter = DateFormatter()
+        formatter.timeZone = .current
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let timeZone = String(formatter.string(from: Date()).dropFirst(20))
+        let sunrise = "\(date)T07:30:00+\(timeZone)"
+        let sunset = "\(date)T19:30:05+\(timeZone)"
         XCTAssertEqual(solarDay.sunset, formatter.date(from: sunset)!)
         XCTAssertEqual(solarDay.sunrise, formatter.date(from: sunrise)!)
     }
