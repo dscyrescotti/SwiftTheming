@@ -11,12 +11,29 @@ public class ThemeProvider: ObservableObject {
     @Published public private(set) var colorScheme: ColorScheme? = nil
     /// A current preferred appearance of an app.
     @Published public private(set) var preferredAppearance: PreferredAppearance
+    
     private var cancellables: Set<AnyCancellable> = []
     private let defaultTheming = DefaultTheming()
+    
+    internal var timer: Timer?
     
     private init() {
         self.theme = UserDefaults.get(Theme.self, key: .theme) ?? defaultTheming.defaultable.defaultTheme()
         self.preferredAppearance = UserDefaults.get(PreferredAppearance.self, key: .preferredAppearance) ?? defaultTheming.defaultable.defaultAppearance()
+        initiateTimer()
+    }
+    
+    private func initiateTimer() {
+        switch preferredAppearance {
+        case .automatic:
+            timer = Timer(fire: SolarDay.current.nextSolarTime, interval: 0, repeats: false, block: { [weak self] _ in
+                self?.objectWillChange.send()
+                self?.initiateTimer()
+            })
+        default:
+            timer?.invalidate()
+            timer = nil
+        }
     }
 
     // MARK: - color
@@ -42,6 +59,11 @@ public class ThemeProvider: ObservableObject {
                 return light
             case .dark:
                 return dark
+            case .automatic:
+                switch SolarDay.current.solarPeriod {
+                case .day: return light
+                case .night: return dark
+                }
             }
         }
     }
@@ -69,6 +91,11 @@ public class ThemeProvider: ObservableObject {
                 return light
             case .dark:
                 return dark
+            case .automatic:
+                switch SolarDay.current.solarPeriod {
+                case .day: return light
+                case .night: return dark
+                }
             }
         }
     }
@@ -96,6 +123,11 @@ public class ThemeProvider: ObservableObject {
                 return light
             case .dark:
                 return dark
+            case .automatic:
+                switch SolarDay.current.solarPeriod {
+                case .day: return light
+                case .night: return dark
+                }
             }
         }
     }
@@ -123,6 +155,11 @@ public class ThemeProvider: ObservableObject {
                 return light
             case .dark:
                 return dark
+            case .automatic:
+                switch SolarDay.current.solarPeriod {
+                case .day: return light
+                case .night: return dark
+                }
             }
         }
     }
@@ -141,6 +178,7 @@ public class ThemeProvider: ObservableObject {
         guard self.preferredAppearance != appearance else { return }
         self.preferredAppearance = appearance
         UserDefaults.set(appearance, key: .preferredAppearance)
+        self.initiateTimer()
     }
     
     /// A method to change the color scheme when the system changes color scheme

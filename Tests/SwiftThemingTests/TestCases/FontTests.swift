@@ -10,16 +10,16 @@ final class FontTests: XCTestCase {
         themeProvider.changeColorScheme(with: nil)
         themeProvider.setTheme(with: .bluoTheme)
         themeProvider.setPreferredAppearance(with: .light)
-        let view1 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view1 = SpyView() {
             Text("Hello World!").font(FontAsset.titleFont)
         }
-        let view2 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view2 = SpyView() {
             Text("Hello World!").font(FontAsset.titleFont, theme: .bluoTheme)
         }
-        let view3 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view3 = SpyView() {
             Text("Hello World!").font(FontAsset.titleFont, appearance: .dark)
         }
-        let view4 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view4 = SpyView() { 
             Text("Hello World!").font(FontAsset.titleFont, appearance: .light, theme: .jadoTheme)
         }
         XCTAssertEqual(try view1.inspect().find(SpyView<Text>.self).actualView().inspect().text().attributes().font(), .headline)
@@ -46,22 +46,22 @@ final class FontTests: XCTestCase {
         themeProvider.changeColorScheme(with: nil)
         themeProvider.setTheme(with: .bluoTheme)
         themeProvider.setPreferredAppearance(with: .light)
-        let view1 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view1 = SpyView() {
             Text("Hello World!")
                 .foregroundColor(ColorAsset.accentColor)
                 .font(FontAsset.titleFont)
         }
-        let view2 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view2 = SpyView() {
             Text("Hello World!")
                 .foregroundColor(ColorAsset.accentColor)
                 .font(FontAsset.titleFont, theme: .bluoTheme)
         }
-        let view3 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view3 = SpyView() {
             Text("Hello World!")
                 .foregroundColor(ColorAsset.accentColor)
                 .font(FontAsset.titleFont, appearance: .dark)
         }
-        let view4 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view4 = SpyView() {
             Text("Hello World!")
                 .foregroundColor(ColorAsset.accentColor)
                 .font(FontAsset.titleFont, appearance: .light, theme: .jadoTheme)

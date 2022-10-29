@@ -8,4 +8,6 @@ public enum PreferredAppearance: Codable {
     case light
     /// An appearance that uses dark appearance.
     case dark
+    /// An appearance that switch automatically based on the scheduled timer.
+    case automatic
 }

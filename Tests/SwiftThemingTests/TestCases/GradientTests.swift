@@ -9,28 +9,28 @@ final class GradientTests: XCTestCase {
         themeProvider.changeColorScheme(with: nil)
         themeProvider.setTheme(with: .bluoTheme)
         themeProvider.setPreferredAppearance(with: .light)
-        let view1 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view1 = SpyView() {
             LinearGradient(
                 gradient: Gradient(GradientAsset.backgroundGradient),
                 startPoint: .leading,
                 endPoint: .trailing
             )
         }
-        let view2 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view2 = SpyView() {
             LinearGradient(
                 gradient: Gradient(GradientAsset.backgroundGradient, theme: .bluoTheme),
                 startPoint: .leading,
                 endPoint: .trailing
             )
         }
-        let view3 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view3 = SpyView() {
             LinearGradient(
                 gradient: Gradient(GradientAsset.backgroundGradient, appearance: .dark),
                 startPoint: .leading,
                 endPoint: .trailing
             )
         }
-        let view4 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view4 = SpyView() {
             LinearGradient(
                 gradient: Gradient(GradientAsset.backgroundGradient, appearance: .light, theme: .jadoTheme),
                 startPoint: .leading,

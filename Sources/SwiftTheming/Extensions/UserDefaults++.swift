@@ -26,5 +26,9 @@ public extension UserDefaults {
         case theme = "theming.theme.key"
         /// A key for preferred appearance to store and fetch in user defaults.
         case preferredAppearance = "theming.preferredAppearance.key"
+        /// A key for sunrise time to store and fetch in user defaults.
+        case sunrise = "theming.sunrise.key"
+        /// A key for sunset time to store and fetch in user defaults.
+        case sunset = "theming.sunset.key"
     }
 }
