@@ -51,7 +51,7 @@ final class ThemeProviderTests: XCTestCase {
         let themeProvider = ThemeProvider.shared
         themeProvider.setTheme(with: .bluoTheme)
         themeProvider.setPreferredAppearance(with: .system)
-        XCTAssertEqual(themeProvider.color(for: ColorAsset.backgroundColor, preferredAppearance: nil, on: nil), Color(hex: 0xD6E0FF))
+        XCTAssertEqual(themeProvider.color(for: ColorAsset.backgroundColor, preferredAppearance: nil, on: nil), themeProvider.colorScheme == .dark ? Color(hex: 0x162350) : Color(hex: 0xD6E0FF))
         themeProvider.changeColorScheme(with: .light)
         XCTAssertEqual(themeProvider.color(for: ColorAsset.backgroundColor, preferredAppearance: nil, on: nil), Color(hex: 0xD6E0FF))
         themeProvider.changeColorScheme(with: .dark)

@@ -20,6 +20,11 @@ struct ThemeProvidingViewModifier: ViewModifier {
                 case .system: preferredColorScheme = nil
                 case .light: preferredColorScheme = .light
                 case .dark: preferredColorScheme = .dark
+                case .automatic:
+                    switch SolarDay.current.solarPeriod {
+                    case .day: preferredColorScheme = .light
+                    case .night: preferredColorScheme = .dark
+                    }
                 }
             })
             .environmentObject(themeProvider)

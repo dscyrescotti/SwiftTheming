@@ -10,16 +10,16 @@ final class ColorTests: XCTestCase {
         themeProvider.changeColorScheme(with: nil)
         themeProvider.setTheme(with: .bluoTheme)
         themeProvider.setPreferredAppearance(with: .light)
-        let view1 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view1 = SpyView() {
             Color(ColorAsset.backgroundColor)
         }
-        let view2 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view2 = SpyView() {
             Color(ColorAsset.backgroundColor, theme: .bluoTheme)
         }
-        let view3 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view3 = SpyView() {
             Color(ColorAsset.backgroundColor, appearance: .dark)
         }
-        let view4 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view4 = SpyView() { 
             Color(ColorAsset.backgroundColor, appearance: .light, theme: .jadoTheme)
         }
         XCTAssertEqual(try view1.inspect().find(SpyView<Color>.self).actualView().inspect().color().value(), Color(hex: 0xD6E0FF))
@@ -55,16 +55,16 @@ final class ColorTests: XCTestCase {
         themeProvider.changeColorScheme(with: nil)
         themeProvider.setTheme(with: .bluoTheme)
         themeProvider.setPreferredAppearance(with: .light)
-        let view1 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view1 = SpyView() {
             Text("Spy View").foregroundColor(ColorAsset.backgroundColor)
         }
-        let view2 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view2 = SpyView() {
             Text("Spy View").foregroundColor(ColorAsset.backgroundColor, theme: .bluoTheme)
         }
-        let view3 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view3 = SpyView() {
             Text("Spy View").foregroundColor(ColorAsset.backgroundColor, appearance: .dark)
         }
-        let view4 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view4 = SpyView() {
             Text("Spy View").foregroundColor(ColorAsset.backgroundColor, appearance: .dark, theme: .jadoTheme)
         }
         
@@ -92,16 +92,16 @@ final class ColorTests: XCTestCase {
         themeProvider.changeColorScheme(with: nil)
         themeProvider.setTheme(with: .bluoTheme)
         themeProvider.setPreferredAppearance(with: .light)
-        let view1 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view1 = SpyView() {
             Text("Spy View").background(ColorAsset.backgroundColor)
         }
-        let view2 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view2 = SpyView() {
             Text("Spy View").background(ColorAsset.backgroundColor, theme: .bluoTheme)
         }
-        let view3 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view3 = SpyView() {
             Text("Spy View").background(ColorAsset.backgroundColor, appearance: .dark)
         }
-        let view4 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view4 = SpyView() { 
             Text("Spy View").background(ColorAsset.backgroundColor, appearance: .dark, theme: .jadoTheme)
         }
         

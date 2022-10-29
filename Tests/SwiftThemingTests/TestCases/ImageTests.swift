@@ -10,16 +10,16 @@ final class ImageTests: XCTestCase {
         themeProvider.changeColorScheme(with: nil)
         themeProvider.setTheme(with: .bluoTheme)
         themeProvider.setPreferredAppearance(with: .light)
-        let view1 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view1 = SpyView() {
             Image(ImageAsset.planetImage)
         }
-        let view2 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view2 = SpyView() {
             Image(ImageAsset.planetImage, theme: .bluoTheme)
         }
-        let view3 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view3 = SpyView() {
             Image(ImageAsset.planetImage, appearance: .dark)
         }
-        let view4 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view4 = SpyView() {
             Image(ImageAsset.planetImage, appearance: .dark, theme: .jadoTheme)
         }
         XCTAssertEqual(try view1.inspect().find(SpyView<Image>.self).actualView().inspect().image().actualImage(), Image("sun"))
@@ -39,16 +39,16 @@ final class ImageTests: XCTestCase {
         themeProvider.changeColorScheme(with: nil)
         themeProvider.setTheme(with: .bluoTheme)
         themeProvider.setPreferredAppearance(with: .light)
-        let view1 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view1 = SpyView() {
             Image(ImageAsset.smokeImage)
         }
-        let view2 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view2 = SpyView() {
             Image(ImageAsset.smokeImage, theme: .jadoTheme)
         }
-        let view3 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view3 = SpyView() {
             Image(ImageAsset.smokeImage, appearance: .dark)
         }
-        let view4 = SpyView(themeProvider: themeProvider) { themeProvider in
+        let view4 = SpyView() {
             Image(ImageAsset.smokeImage, appearance: .dark, theme: .bluoTheme)
         }
         XCTAssertEqual(try view1.inspect().find(SpyView<Image>.self).actualView().inspect().image().actualImage(), Image("blue"))
