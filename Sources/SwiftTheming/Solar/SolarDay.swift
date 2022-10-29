@@ -17,7 +17,9 @@ public struct SolarDay {
     public static let current: SolarDay = .init()
     
     private static func solarDay(time: SolarTime) -> Date {
-        Calendar.current.date(bySettingHour: time.hour, minute: time.minute, second: time.second, of: Date()) ?? Date()
+        var calendar = Calendar.current
+        calendar.timeZone = .current
+        return calendar.date(bySettingHour: time.hour, minute: time.minute, second: time.second, of: Date()) ?? Date()
     }
     
     /// A current solar period of the solar day.
