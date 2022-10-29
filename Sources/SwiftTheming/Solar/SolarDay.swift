@@ -1,20 +1,20 @@
 import Foundation
 
 /// A struct that encapsulates the time of sunrise and sunset to automatically switch theme of the app.
-public struct SolarDay {
+internal struct SolarDay {
     /// A sunrise time of the current day.
-    public var sunrise: Date {
+    internal var sunrise: Date {
         Self.solarDay(time: UserDefaults.get(SolarTime.self, key: .sunrise) ?? .sunrise)
     }
     /// A sunset time of the current day.
-    public var sunset: Date {
+    internal var sunset: Date {
         Self.solarDay(time: UserDefaults.get(SolarTime.self, key: .sunset) ?? .sunset)
     }
     
     private init() { }
     
     /// A current solar day.
-    public static let current: SolarDay = .init()
+    internal static let current: SolarDay = .init()
     
     private static func solarDay(time: SolarTime) -> Date {
         var calendar = Calendar.current
@@ -23,7 +23,7 @@ public struct SolarDay {
     }
     
     /// A current solar period of the solar day.
-    public var solarPeriod: SolarPeriod {
+    internal var solarPeriod: SolarPeriod {
         isDaytime ? .day : .night
     }
     
@@ -51,7 +51,7 @@ public struct SolarDay {
     /// - Parameters:
     ///   - sunrise: a solar time for sunrise of a day.
     ///   - sunset: a solar time for sunset of a day.
-    public func setSolarTime(from sunrise: SolarTime, to sunset: SolarTime) {
+    internal func setSolarTime(from sunrise: SolarTime, to sunset: SolarTime) {
         guard sunrise < sunset else { return }
         UserDefaults.set(sunrise, key: .sunrise)
         UserDefaults.set(sunset, key: .sunset)

@@ -60,7 +60,7 @@ public class ThemeProvider: ObservableObject {
             case .dark:
                 return dark
             case .automatic:
-                switch SolarDay.current.solarPeriod {
+                switch solarPeriod {
                 case .day: return light
                 case .night: return dark
                 }
@@ -92,7 +92,7 @@ public class ThemeProvider: ObservableObject {
             case .dark:
                 return dark
             case .automatic:
-                switch SolarDay.current.solarPeriod {
+                switch solarPeriod {
                 case .day: return light
                 case .night: return dark
                 }
@@ -124,7 +124,7 @@ public class ThemeProvider: ObservableObject {
             case .dark:
                 return dark
             case .automatic:
-                switch SolarDay.current.solarPeriod {
+                switch solarPeriod {
                 case .day: return light
                 case .night: return dark
                 }
@@ -156,7 +156,7 @@ public class ThemeProvider: ObservableObject {
             case .dark:
                 return dark
             case .automatic:
-                switch SolarDay.current.solarPeriod {
+                switch solarPeriod {
                 case .day: return light
                 case .night: return dark
                 }
@@ -186,5 +186,18 @@ public class ThemeProvider: ObservableObject {
     internal func changeColorScheme(with colorScheme: ColorScheme?) {
         guard self.colorScheme != colorScheme else { return }
         self.colorScheme = colorScheme
+    }
+    
+    /// A current solar period of the solar day.
+    public var solarPeriod: SolarPeriod {
+        SolarDay.current.solarPeriod
+    }
+    
+    /// A method that allows to set the period of solar time. It is important to note that the method will save solar period only if sunrise time is less than sunset time.
+    /// - Parameters:
+    ///   - sunrise: a solar time for sunrise of a day.
+    ///   - sunset: a solar time for sunset of a day.
+    public func setSolarTime(from sunrise: SolarTime, to sunset: SolarTime) {
+        SolarDay.current.setSolarTime(from: sunrise, to: sunset)
     }
 }

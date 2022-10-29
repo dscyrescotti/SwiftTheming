@@ -70,12 +70,12 @@ class SolarDayTests: XCTestCase {
         UserDefaults.standard.removeObject(forKey: UserDefaults.Key.sunrise.rawValue)
         let solarDay = SolarDay.current
         let components = Calendar.current.dateComponents([.hour, .minute, .second], from: Date())
-        solarDay.setSolarTime(
+        let themeProvider = ThemeProvider.shared
+        themeProvider.setSolarTime(
             from: SolarTime(hour: components.hour! - 1, minute: 0, second: 0),
             to: SolarTime(hour: components.hour!, minute: components.minute!, second: components.second! + 3)
         )
         XCTAssertEqual(solarDay.nextSolarTime, solarDay.sunset)
-        let themeProvider = ThemeProvider.shared
         themeProvider.setPreferredAppearance(with: .automatic)
         themeProvider.setTheme(with: .jadoTheme)
         let sut = SolarTestView()
