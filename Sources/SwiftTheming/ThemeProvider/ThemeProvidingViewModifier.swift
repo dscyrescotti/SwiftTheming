@@ -21,7 +21,15 @@ struct ThemeProvidingViewModifier: ViewModifier {
                 case .light: preferredColorScheme = .light
                 case .dark: preferredColorScheme = .dark
                 case .automatic:
-                    switch SolarDay.current.solarPeriod {
+                    switch themeProvider.solarPeriod {
+                    case .day: preferredColorScheme = .light
+                    case .night: preferredColorScheme = .dark
+                    }
+                }
+            })
+            .onReceive(themeProvider.$solarPeriod, perform: { period in
+                if themeProvider.preferredAppearance == .automatic {
+                    switch period {
                     case .day: preferredColorScheme = .light
                     case .night: preferredColorScheme = .dark
                     }

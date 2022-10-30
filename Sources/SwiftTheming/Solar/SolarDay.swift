@@ -1,20 +1,20 @@
 import Foundation
 
 /// A struct that encapsulates the time of sunrise and sunset to automatically switch theme of the app.
-internal struct SolarDay {
+public struct SolarDay {
     /// A sunrise time of the current day.
-    internal var sunrise: Date {
+    public var sunrise: Date {
         Self.solarDay(time: UserDefaults.get(SolarTime.self, key: .sunrise) ?? .sunrise)
     }
     /// A sunset time of the current day.
-    internal var sunset: Date {
+    public var sunset: Date {
         Self.solarDay(time: UserDefaults.get(SolarTime.self, key: .sunset) ?? .sunset)
     }
     
     private init() { }
     
     /// A current solar day.
-    internal static let current: SolarDay = .init()
+    public static let current: SolarDay = .init()
     
     private static func solarDay(time: SolarTime) -> Date {
         var calendar = Calendar.current
@@ -23,16 +23,16 @@ internal struct SolarDay {
     }
     
     /// A current solar period of the solar day.
-    internal var solarPeriod: SolarPeriod {
+    public var solarPeriod: SolarPeriod {
         isDaytime ? .day : .night
     }
     
-    internal var nextSolarTime: Date {
+    public var nextSolarTime: Date {
         switch solarPeriod {
         case .day:
             return sunset
         case .night:
-            return sunrise
+            return sunrise < Date() ? sunrise.addingTimeInterval(24 * 3_600) : sunrise
         }
     }
     
@@ -51,9 +51,10 @@ internal struct SolarDay {
     /// - Parameters:
     ///   - sunrise: a solar time for sunrise of a day.
     ///   - sunset: a solar time for sunset of a day.
-    internal func setSolarTime(from sunrise: SolarTime, to sunset: SolarTime) {
+    public static func setSolarTime(from sunrise: SolarTime, to sunset: SolarTime) {
         guard sunrise < sunset else { return }
         UserDefaults.set(sunrise, key: .sunrise)
         UserDefaults.set(sunset, key: .sunset)
+        ThemeProvider.shared.startSolarShiftTimer()
     }
 }

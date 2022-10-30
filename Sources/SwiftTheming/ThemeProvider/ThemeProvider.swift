@@ -11,6 +11,8 @@ public class ThemeProvider: ObservableObject {
     @Published public private(set) var colorScheme: ColorScheme? = nil
     /// A current preferred appearance of an app.
     @Published public private(set) var preferredAppearance: PreferredAppearance
+    /// A current solar period of a day.
+    @Published public private(set) var solarPeriod: SolarPeriod
     
     private var cancellables: Set<AnyCancellable> = []
     private let defaultTheming = DefaultTheming()
@@ -20,20 +22,30 @@ public class ThemeProvider: ObservableObject {
     private init() {
         self.theme = UserDefaults.get(Theme.self, key: .theme) ?? defaultTheming.defaultable.defaultTheme()
         self.preferredAppearance = UserDefaults.get(PreferredAppearance.self, key: .preferredAppearance) ?? defaultTheming.defaultable.defaultAppearance()
-        initiateTimer()
+        self.solarPeriod = SolarDay.current.solarPeriod
+        startSolarShiftTimer()
     }
     
-    private func initiateTimer() {
+    internal func startSolarShiftTimer() {
         switch preferredAppearance {
         case .automatic:
+            solarPeriod = SolarDay.current.solarPeriod
+            cancelSolarShiftTimer()
             timer = Timer(fire: SolarDay.current.nextSolarTime, interval: 0, repeats: false, block: { [weak self] _ in
-                self?.objectWillChange.send()
-                self?.initiateTimer()
+                self?.solarPeriod = SolarDay.current.solarPeriod
+                self?.startSolarShiftTimer()
             })
+            if let timer = timer {
+                RunLoop.main.add(timer, forMode: .common)
+            }
         default:
-            timer?.invalidate()
-            timer = nil
+            cancelSolarShiftTimer()
         }
+    }
+    
+    private func cancelSolarShiftTimer() {
+        timer?.invalidate()
+        timer = nil
     }
 
     // MARK: - color
@@ -178,7 +190,7 @@ public class ThemeProvider: ObservableObject {
         guard self.preferredAppearance != appearance else { return }
         self.preferredAppearance = appearance
         UserDefaults.set(appearance, key: .preferredAppearance)
-        self.initiateTimer()
+        self.startSolarShiftTimer()
     }
     
     /// A method to change the color scheme when the system changes color scheme
@@ -186,18 +198,5 @@ public class ThemeProvider: ObservableObject {
     internal func changeColorScheme(with colorScheme: ColorScheme?) {
         guard self.colorScheme != colorScheme else { return }
         self.colorScheme = colorScheme
-    }
-    
-    /// A current solar period of the solar day.
-    public var solarPeriod: SolarPeriod {
-        SolarDay.current.solarPeriod
-    }
-    
-    /// A method that allows to set the period of solar time. It is important to note that the method will save solar period only if sunrise time is less than sunset time.
-    /// - Parameters:
-    ///   - sunrise: a solar time for sunrise of a day.
-    ///   - sunset: a solar time for sunset of a day.
-    public func setSolarTime(from sunrise: SolarTime, to sunset: SolarTime) {
-        SolarDay.current.setSolarTime(from: sunrise, to: sunset)
     }
 }
