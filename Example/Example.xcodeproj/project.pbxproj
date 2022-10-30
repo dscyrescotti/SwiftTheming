@@ -12,11 +12,12 @@
 		E67268F72737C3590025608F /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67268F62737C3580025608F /* Theme.swift */; };
 		E68CB3CB2731139400440CE1 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68CB3CA2731139400440CE1 /* Tests_iOS.swift */; };
 		E68CB3CD2731139400440CE1 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68CB3CC2731139400440CE1 /* Tests_iOSLaunchTests.swift */; };
-		E68CB3DA2731139400440CE1 /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68CB3B22731139000440CE1 /* MainApp.swift */; };
+		E68CB3DA2731139400440CE1 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68CB3B22731139000440CE1 /* App.swift */; };
 		E68CB3DC2731139400440CE1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68CB3B32731139000440CE1 /* ContentView.swift */; };
 		E68CB3DE2731139400440CE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E68CB3B42731139400440CE1 /* Assets.xcassets */; };
 		E6B9384C273D3FE4003ADA98 /* ThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B9384B273D3FE4003ADA98 /* ThemeView.swift */; };
 		EC0AB24928B0914100B33797 /* SwiftTheming in Frameworks */ = {isa = PBXBuildFile; productRef = EC0AB24828B0914100B33797 /* SwiftTheming */; };
+		EC21C07D290E97D400E39B78 /* Solar in Frameworks */ = {isa = PBXBuildFile; productRef = EC21C07C290E97D400E39B78 /* Solar */; };
 		EC356A7628BB22D800E850E7 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC356A7528BB22D800E850E7 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +35,7 @@
 		E624D0952738CFE300287E21 /* Color++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color++.swift"; sourceTree = "<group>"; };
 		E624D0982738D03A00287E21 /* Theme+Array++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Theme+Array++.swift"; sourceTree = "<group>"; };
 		E67268F62737C3580025608F /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		E68CB3B22731139000440CE1 /* MainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApp.swift; sourceTree = "<group>"; };
+		E68CB3B22731139000440CE1 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		E68CB3B32731139000440CE1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E68CB3B42731139400440CE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E68CB3B92731139400440CE1 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC21C07D290E97D400E39B78 /* Solar in Frameworks */,
 				EC0AB24928B0914100B33797 /* SwiftTheming in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,14 +81,11 @@
 		E68CB3B12731139000440CE1 /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				E68CB3B22731139000440CE1 /* MainApp.swift */,
-				E68CB3B32731139000440CE1 /* ContentView.swift */,
-				E6B9384B273D3FE4003ADA98 /* ThemeView.swift */,
-				E68CB3B42731139400440CE1 /* Assets.xcassets */,
-				E67268F62737C3580025608F /* Theme.swift */,
-				E624D0952738CFE300287E21 /* Color++.swift */,
-				E624D0982738D03A00287E21 /* Theme+Array++.swift */,
-				EC356A7528BB22D800E850E7 /* Launch Screen.storyboard */,
+				EC21C085290E996800E39B78 /* App */,
+				EC21C081290E993100E39B78 /* Extensions */,
+				EC21C082290E994000E39B78 /* Resources */,
+				EC21C084290E995F00E39B78 /* Theme */,
+				EC21C080290E98F900E39B78 /* Views */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -124,6 +123,49 @@
 			name = Packages;
 			sourceTree = "<group>";
 		};
+		EC21C080290E98F900E39B78 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E68CB3B32731139000440CE1 /* ContentView.swift */,
+				E6B9384B273D3FE4003ADA98 /* ThemeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EC21C081290E993100E39B78 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E624D0952738CFE300287E21 /* Color++.swift */,
+				E624D0982738D03A00287E21 /* Theme+Array++.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EC21C082290E994000E39B78 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E68CB3B42731139400440CE1 /* Assets.xcassets */,
+				EC356A7528BB22D800E850E7 /* Launch Screen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		EC21C084290E995F00E39B78 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				E67268F62737C3580025608F /* Theme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		EC21C085290E996800E39B78 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				E68CB3B22731139000440CE1 /* App.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -142,6 +184,7 @@
 			name = "Example (iOS)";
 			packageProductDependencies = (
 				EC0AB24828B0914100B33797 /* SwiftTheming */,
+				EC21C07C290E97D400E39B78 /* Solar */,
 			);
 			productName = "Example (iOS)";
 			productReference = E68CB3B92731139400440CE1 /* Example.app */;
@@ -194,6 +237,7 @@
 			);
 			mainGroup = E68CB3AC2731139000440CE1;
 			packageReferences = (
+				EC21C07B290E97D400E39B78 /* XCRemoteSwiftPackageReference "Solar" */,
 			);
 			productRefGroup = E68CB3BA2731139400440CE1 /* Products */;
 			projectDirPath = "";
@@ -234,7 +278,7 @@
 				E624D0962738CFE300287E21 /* Color++.swift in Sources */,
 				E67268F72737C3590025608F /* Theme.swift in Sources */,
 				E6B9384C273D3FE4003ADA98 /* ThemeView.swift in Sources */,
-				E68CB3DA2731139400440CE1 /* MainApp.swift in Sources */,
+				E68CB3DA2731139400440CE1 /* App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,10 +567,26 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		EC21C07B290E97D400E39B78 /* XCRemoteSwiftPackageReference "Solar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ceeK/Solar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		EC0AB24828B0914100B33797 /* SwiftTheming */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftTheming;
+		};
+		EC21C07C290E97D400E39B78 /* Solar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC21C07B290E97D400E39B78 /* XCRemoteSwiftPackageReference "Solar" */;
+			productName = Solar;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

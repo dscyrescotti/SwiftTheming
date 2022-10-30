@@ -185,7 +185,7 @@ struct ContentView: View {
                     .frame(width: 140, height: 70)
                     .offset(x: -proxy.frame(in: .local).midX - 70 + xPosition, y: (-proxy.frame(in: .local).midX) + (1 - CGFloat(1 / 3)) * 200 - 70)
                     .zIndex(1)
-            Text(textAppearance == .light ? "Buenos Días" : "Buenas Noches")
+            Text(textAppearance == .light ? "The Rising Sun" : "A Moonlight Stroll")
                 .font(
                     FontAsset.titleFont,
                     appearance: textAppearance,

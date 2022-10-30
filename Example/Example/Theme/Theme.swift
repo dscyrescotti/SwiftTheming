@@ -39,7 +39,7 @@ extension DefaultTheming: Defaultable {
     }
     
     public func defaultAppearance() -> PreferredAppearance {
-        .light
+        .system
     }
 }
 
