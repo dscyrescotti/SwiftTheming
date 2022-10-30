@@ -29,7 +29,7 @@ struct ContentView: View {
                 NavigationView {
                     mainView(proxy: proxy)
                         .background(content: {
-                            let y = proxy.size.height - proxy.safeAreaInsets.top - proxy.safeAreaInsets.bottom - offset
+                            let y = proxy.size.height - proxy.safeAreaInsets.bottom - offset
                             Color.clear
                                 .frame(width: size, height: size)
                                 .padding(10)
@@ -185,7 +185,7 @@ struct ContentView: View {
                     .frame(width: 140, height: 70)
                     .offset(x: -proxy.frame(in: .local).midX - 70 + xPosition, y: (-proxy.frame(in: .local).midX) + (1 - CGFloat(1 / 3)) * 200 - 70)
                     .zIndex(1)
-            Text(textAppearance == .light ? "Buenos Días" : "Buenas Noches")
+            Text(textAppearance == .light ? "The Rising Sun" : "A Moonlight Stroll")
                 .font(
                     FontAsset.titleFont,
                     appearance: textAppearance,
