@@ -29,7 +29,7 @@ struct ContentView: View {
                 NavigationView {
                     mainView(proxy: proxy)
                         .background(content: {
-                            let y = proxy.size.height - proxy.safeAreaInsets.top - proxy.safeAreaInsets.bottom - offset
+                            let y = proxy.size.height - proxy.safeAreaInsets.bottom - offset
                             Color.clear
                                 .frame(width: size, height: size)
                                 .padding(10)
