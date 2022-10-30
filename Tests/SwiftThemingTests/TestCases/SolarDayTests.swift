@@ -49,7 +49,7 @@ class SolarDayTests: XCTestCase {
         UserDefaults.standard.removeObject(forKey: UserDefaults.Key.sunset.rawValue)
         UserDefaults.standard.removeObject(forKey: UserDefaults.Key.sunrise.rawValue)
         let solarDay = SolarDay.current
-        solarDay.setSolarTime(
+        SolarDay.setSolarTime(
             from: SolarTime(hour: 7, minute: 30, second: 0),
             to: SolarTime(hour: 19, minute: 30, second: 05)
         )
@@ -70,16 +70,16 @@ class SolarDayTests: XCTestCase {
         UserDefaults.standard.removeObject(forKey: UserDefaults.Key.sunrise.rawValue)
         let solarDay = SolarDay.current
         let components = Calendar.current.dateComponents([.hour, .minute, .second], from: Date())
-        solarDay.setSolarTime(
+        let themeProvider = ThemeProvider.shared
+        SolarDay.setSolarTime(
             from: SolarTime(hour: components.hour! - 1, minute: 0, second: 0),
             to: SolarTime(hour: components.hour!, minute: components.minute!, second: components.second! + 3)
         )
         XCTAssertEqual(solarDay.nextSolarTime, solarDay.sunset)
-        let themeProvider = ThemeProvider.shared
         themeProvider.setPreferredAppearance(with: .automatic)
         themeProvider.setTheme(with: .jadoTheme)
         let sut = SolarTestView()
-        let exp1 = sut.inspection.inspect(after: 0.5) { view in
+        let exp1 = sut.inspection.inspect(after: 1) { view in
             let inspected = try view.actualView().inspect()
             XCTAssertEqual(try inspected.vStack().color(0).value(), Color(hex: 0xDEF8EA))
             XCTAssertEqual(try inspected.vStack().text(1).attributes().font(), Font.title)
@@ -96,7 +96,7 @@ class SolarDayTests: XCTestCase {
             XCTAssertEqual(try inspected.vStack().image(2).actualImage(), Image("moon"))
             XCTAssertEqual(try inspected.vStack().linearGradient(3).gradient(), Gradient(colors: [.green, .black]))
             XCTAssertEqual(try inspected.vStack().color(4).value(), Color(hex: 0x1e1e1f))
-            XCTAssertEqual(solarDay.sunrise, solarDay.nextSolarTime)
+            XCTAssertEqual(solarDay.sunrise.addingTimeInterval(24 * 3_600), solarDay.nextSolarTime)
             XCTAssertNotNil(themeProvider.timer)
         }
         ViewHosting.host(view: sut.themeProviding())

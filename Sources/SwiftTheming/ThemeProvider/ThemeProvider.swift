@@ -11,6 +11,8 @@ public class ThemeProvider: ObservableObject {
     @Published public private(set) var colorScheme: ColorScheme? = nil
     /// A current preferred appearance of an app.
     @Published public private(set) var preferredAppearance: PreferredAppearance
+    /// A current solar period of a day.
+    @Published public private(set) var solarPeriod: SolarPeriod
     
     private var cancellables: Set<AnyCancellable> = []
     private let defaultTheming = DefaultTheming()
@@ -20,20 +22,30 @@ public class ThemeProvider: ObservableObject {
     private init() {
         self.theme = UserDefaults.get(Theme.self, key: .theme) ?? defaultTheming.defaultable.defaultTheme()
         self.preferredAppearance = UserDefaults.get(PreferredAppearance.self, key: .preferredAppearance) ?? defaultTheming.defaultable.defaultAppearance()
-        initiateTimer()
+        self.solarPeriod = SolarDay.current.solarPeriod
+        startSolarShiftTimer()
     }
     
-    private func initiateTimer() {
+    internal func startSolarShiftTimer() {
         switch preferredAppearance {
         case .automatic:
+            solarPeriod = SolarDay.current.solarPeriod
+            cancelSolarShiftTimer()
             timer = Timer(fire: SolarDay.current.nextSolarTime, interval: 0, repeats: false, block: { [weak self] _ in
-                self?.objectWillChange.send()
-                self?.initiateTimer()
+                self?.solarPeriod = SolarDay.current.solarPeriod
+                self?.startSolarShiftTimer()
             })
+            if let timer = timer {
+                RunLoop.main.add(timer, forMode: .common)
+            }
         default:
-            timer?.invalidate()
-            timer = nil
+            cancelSolarShiftTimer()
         }
+    }
+    
+    private func cancelSolarShiftTimer() {
+        timer?.invalidate()
+        timer = nil
     }
 
     // MARK: - color
@@ -60,7 +72,7 @@ public class ThemeProvider: ObservableObject {
             case .dark:
                 return dark
             case .automatic:
-                switch SolarDay.current.solarPeriod {
+                switch solarPeriod {
                 case .day: return light
                 case .night: return dark
                 }
@@ -92,7 +104,7 @@ public class ThemeProvider: ObservableObject {
             case .dark:
                 return dark
             case .automatic:
-                switch SolarDay.current.solarPeriod {
+                switch solarPeriod {
                 case .day: return light
                 case .night: return dark
                 }
@@ -124,7 +136,7 @@ public class ThemeProvider: ObservableObject {
             case .dark:
                 return dark
             case .automatic:
-                switch SolarDay.current.solarPeriod {
+                switch solarPeriod {
                 case .day: return light
                 case .night: return dark
                 }
@@ -156,7 +168,7 @@ public class ThemeProvider: ObservableObject {
             case .dark:
                 return dark
             case .automatic:
-                switch SolarDay.current.solarPeriod {
+                switch solarPeriod {
                 case .day: return light
                 case .night: return dark
                 }
@@ -178,7 +190,7 @@ public class ThemeProvider: ObservableObject {
         guard self.preferredAppearance != appearance else { return }
         self.preferredAppearance = appearance
         UserDefaults.set(appearance, key: .preferredAppearance)
-        self.initiateTimer()
+        self.startSolarShiftTimer()
     }
     
     /// A method to change the color scheme when the system changes color scheme

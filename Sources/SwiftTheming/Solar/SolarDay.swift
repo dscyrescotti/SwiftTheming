@@ -27,12 +27,12 @@ public struct SolarDay {
         isDaytime ? .day : .night
     }
     
-    internal var nextSolarTime: Date {
+    public var nextSolarTime: Date {
         switch solarPeriod {
         case .day:
             return sunset
         case .night:
-            return sunrise
+            return sunrise < Date() ? sunrise.addingTimeInterval(24 * 3_600) : sunrise
         }
     }
     
@@ -51,9 +51,10 @@ public struct SolarDay {
     /// - Parameters:
     ///   - sunrise: a solar time for sunrise of a day.
     ///   - sunset: a solar time for sunset of a day.
-    public func setSolarTime(from sunrise: SolarTime, to sunset: SolarTime) {
+    public static func setSolarTime(from sunrise: SolarTime, to sunset: SolarTime) {
         guard sunrise < sunset else { return }
         UserDefaults.set(sunrise, key: .sunrise)
         UserDefaults.set(sunset, key: .sunset)
+        ThemeProvider.shared.startSolarShiftTimer()
     }
 }
