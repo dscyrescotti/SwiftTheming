@@ -42,7 +42,6 @@
 		E68CB3CA2731139400440CE1 /* Tests_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOS.swift; sourceTree = "<group>"; };
 		E68CB3CC2731139400440CE1 /* Tests_iOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOSLaunchTests.swift; sourceTree = "<group>"; };
 		E6B9384B273D3FE4003ADA98 /* ThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeView.swift; sourceTree = "<group>"; };
-		EC0AB24728B0906F00B33797 /* SwiftTheming */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftTheming; path = ..; sourceTree = "<group>"; };
 		EC356A7528BB22D800E850E7 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,7 +67,6 @@
 		E68CB3AC2731139000440CE1 = {
 			isa = PBXGroup;
 			children = (
-				EC0AB24628B0906F00B33797 /* Packages */,
 				E68CB3B12731139000440CE1 /* Example */,
 				E68CB3C92731139400440CE1 /* Tests iOS */,
 				E68CB3BA2731139400440CE1 /* Products */,
@@ -114,14 +112,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		EC0AB24628B0906F00B33797 /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				EC0AB24728B0906F00B33797 /* SwiftTheming */,
-			);
-			name = Packages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +184,7 @@
 			);
 			mainGroup = E68CB3AC2731139000440CE1;
 			packageReferences = (
+				EC6E53872A3395CE003DF52E /* XCRemoteSwiftPackageReference "SwiftTheming" */,
 			);
 			productRefGroup = E68CB3BA2731139400440CE1 /* Products */;
 			projectDirPath = "";
@@ -522,6 +513,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EC6E53872A3395CE003DF52E /* XCRemoteSwiftPackageReference "SwiftTheming" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dscyrescotti/SwiftTheming.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		EC0AB24828B0914100B33797 /* SwiftTheming */ = {

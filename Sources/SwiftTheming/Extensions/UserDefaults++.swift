@@ -6,7 +6,7 @@ public extension UserDefaults {
         guard let data = UserDefaults.standard.data(forKey: key.rawValue), let value = try? JSONDecoder().decode(T.self, from: data) else { return nil }
         return value
     }
-    
+
     /// A method that store data based on requested data type and key.
     static func set<T: Codable>(_ value: T, key: Key) {
         do {
@@ -19,7 +19,7 @@ public extension UserDefaults {
             #endif
         }
     }
-    
+
     /// A list of keys to be used to store and fetch theme and appearance.
     enum Key: String {
         /// A key for theme to store and fetch in user defaults.

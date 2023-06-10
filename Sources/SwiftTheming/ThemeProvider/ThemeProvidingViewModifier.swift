@@ -5,7 +5,7 @@ struct ThemeProvidingViewModifier: ViewModifier {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var themeProvider: ThemeProvider
     @State private var preferredColorScheme: ColorScheme?
-    
+
     func body(content: Content) -> some View {
         content
             .preferredColorScheme(preferredColorScheme)
@@ -24,12 +24,12 @@ struct ThemeProvidingViewModifier: ViewModifier {
             })
             .environmentObject(themeProvider)
     }
-    
+
     /// An initializer that takes default theme and preferred appearance for first time running.
     /// - Parameters:
-    ///   - defaultTheme: default theme for first time running
-    ///   - defaultAppearance: preferred appearance for first time running
-    init() {
-        self._themeProvider = ObservedObject<ThemeProvider>(wrappedValue: .shared)
+    ///   - theme: default theme for first time running
+    ///   - preferredAppearance: preferred appearance for first time running
+    init<ThemeCategory: Themes>(_ theme: ThemeCategory, preferredAppearance: PreferredAppearance) {
+        self._themeProvider = ObservedObject(initialValue: ThemeProvider(theme, preferredAppearance))
     }
 }

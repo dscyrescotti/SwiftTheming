@@ -1,45 +1,34 @@
 import Foundation
 
-/// A struct that can be used as a theme.
-public struct Theme: Codable, Equatable {
-    /// A key that stores the unique identifier.
-    public let key: String
-    
-    /// An initializer that create a theme containing a unique identifier.
-    /// - Parameter key: unique identifier
-    public init(key: String) {
-        self.key = key
+public protocol Theme {
+    associatedtype ThemeCategory: Themes
+
+    func fontSet(_ asset: ThemeCategory.Asset.FontAsset) -> FontSet
+    func colorSet(_ asset: ThemeCategory.Asset.ColorAsset) -> ColorSet
+    func imageSet(_ asset: ThemeCategory.Asset.ImageAsset) -> ImageSet
+    func gradientSet(_ asset: ThemeCategory.Asset.GradientAsset) -> GradientSet
+}
+
+public extension Theme {
+    func fontSet(_ asset: ThemeCategory.Asset.FontAsset) -> FontSet {
+        fatalError("\(#function) is not implemented yet.")
     }
-    
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        self.key = try container.decode(String.self)
+
+    func colorSet(_ asset: ThemeCategory.Asset.ColorAsset) -> ColorSet {
+        fatalError("\(#function) is not implemented yet.")
     }
-    
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        try container.encode(self.key)
+
+    func imageSet(_ asset: ThemeCategory.Asset.ImageAsset) -> ImageSet {
+        fatalError("\(#function) is not implemented yet.")
+    }
+
+    func gradientSet(_ asset: ThemeCategory.Asset.GradientAsset) -> GradientSet {
+        fatalError("\(#function) is not implemented yet.")
     }
 }
 
-extension Theme {
-    internal func _themed() -> Themed {
-        (self as! Themeable).themed()
-    }
-    
-    internal func colorSet(for asset: ColorAssetable) -> ColorSet {
-        (_themed() as! AssetKeyWrappable)._colorSet(for: asset)
-    }
-    
-    internal func fontSet(for asset: FontAssetable) -> FontSet {
-        (_themed() as! AssetKeyWrappable)._fontSet(for: asset)
-    }
-    
-    internal func gradientSet(for asset: GradientAssetable) -> GradientSet {
-        (_themed() as! AssetKeyWrappable)._gradientSet(for: asset)
-    }
-    
-    internal func imageSet(for asset: ImageAssetable) -> ImageSet {
-        (_themed() as! AssetKeyWrappable)._imageSet(for: asset)
+public extension Theme {
+    func eraseToAnyTheme() -> AnyTheme {
+        AnyTheme(self)
     }
 }
