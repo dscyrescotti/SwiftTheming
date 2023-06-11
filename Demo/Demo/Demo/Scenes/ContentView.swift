@@ -18,7 +18,7 @@ struct ContentView: View {
             Text("Hello, world!")
         }
         .padding()
-        .background(Color(.primaryBackground, on: AppTheme.self))
+        .font(Font(.empty))
     }
 }
 
@@ -27,3 +27,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+

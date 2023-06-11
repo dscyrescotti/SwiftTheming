@@ -8,14 +8,15 @@
 import SwiftUI
 import SwiftTheming
 
-enum AppTheme: String, Themes {
+@Themeable
+public enum AppTheme: String {
     case minimalistic
 
-    var id: String {
+    public var id: String {
         self.rawValue
     }
 
-    func theme() -> AnyTheme {
+    public func theme() -> AnyTheme {
         switch self {
         case .minimalistic:
             return MinimalisticTheme().eraseToAnyTheme()
@@ -23,13 +24,11 @@ enum AppTheme: String, Themes {
     }
 }
 
-extension AppTheme {
-    struct Asset: Assets {
-        enum ColorAsset: ColorAssets {
-            case primaryBody
-            case secondaryBody
-            case primaryBackground
-        }
-        enum ImageAsset: ImageAssets { }
-    }
-}
+@AddTheme(AppTheme.self)
+extension Font { }
+@AddTheme(AppTheme.self)
+extension Color { }
+@AddTheme(AppTheme.self)
+extension Image { }
+@AddTheme(AppTheme.self)
+extension Gradient { }

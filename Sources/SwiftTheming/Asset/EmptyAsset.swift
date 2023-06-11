@@ -1,6 +1,8 @@
 import Foundation
 
-public struct EmptyAsset { }
+public struct EmptyAsset {
+    static public let empty: EmptyAsset = .init()
+}
 
 extension EmptyAsset: FontAssets { }
 extension EmptyAsset: ColorAssets { }

@@ -7,9 +7,3 @@ public protocol Themes: Codable {
     associatedtype Asset: Assets
     func theme() -> AnyTheme
 }
-
-public extension Themes {
-    static func color(_ asset: Asset.ColorAsset, appearance: PreferredAppearance? = nil, theme: Self? = nil) -> Color {
-        Color(asset, appearance: appearance, theme: theme, on: Self.self)
-    }
-}

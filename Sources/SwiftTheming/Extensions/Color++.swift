@@ -6,7 +6,7 @@ public extension Color {
     ///   - asset: asset for color
     ///   - appearance: preferred appearance to override current appearance
     ///   - theme: preferred theme to override current theme
-    init<ThemeCategory: Themes>(_ asset: ThemeCategory.Asset.ColorAsset, appearance: PreferredAppearance? = nil, theme: ThemeCategory? = nil, on _: ThemeCategory.Type) {
+    init<ThemeCategory: Themes>(asset: ThemeCategory.Asset.ColorAsset, appearance: PreferredAppearance?, theme: ThemeCategory?) {
         self = ThemeProvider.shared.color(for: asset, preferredAppearance: appearance, on: theme)
     }
 }
