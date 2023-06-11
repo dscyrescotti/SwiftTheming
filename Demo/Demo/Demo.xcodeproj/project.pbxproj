@@ -13,7 +13,7 @@
 		EC6E536C2A33614C003DF52E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC6E536B2A33614C003DF52E /* Assets.xcassets */; };
 		EC6E53702A33614C003DF52E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC6E536F2A33614C003DF52E /* Preview Assets.xcassets */; };
 		EC6E53802A336261003DF52E /* SwiftTheming in Frameworks */ = {isa = PBXBuildFile; productRef = EC6E537F2A336261003DF52E /* SwiftTheming */; };
-		EC6E53832A336493003DF52E /* MinimalisticTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E53822A336493003DF52E /* MinimalisticTheme.swift */; };
+		ECABAA602A3603A600ADE903 /* MinimalisticThemeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECABAA5F2A3603A600ADE903 /* MinimalisticThemeStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		EC6E536D2A33614C003DF52E /* Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Demo.entitlements; sourceTree = "<group>"; };
 		EC6E536F2A33614C003DF52E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EC6E537B2A336202003DF52E /* SwiftTheming */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftTheming; path = ../..; sourceTree = "<group>"; };
-		EC6E53822A336493003DF52E /* MinimalisticTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimalisticTheme.swift; sourceTree = "<group>"; };
+		ECABAA5F2A3603A600ADE903 /* MinimalisticThemeStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinimalisticThemeStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,12 +40,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		EC378E5D2A343090003DE1AD /* Themes */ = {
+		EC378E5D2A343090003DE1AD /* ThemeStyles */ = {
 			isa = PBXGroup;
 			children = (
-				EC6E53822A336493003DF52E /* MinimalisticTheme.swift */,
+				ECABAA5F2A3603A600ADE903 /* MinimalisticThemeStyle.swift */,
 			);
-			path = Themes;
+			path = ThemeStyles;
 			sourceTree = "<group>";
 		};
 		EC6E535B2A33614B003DF52E = {
@@ -114,7 +114,7 @@
 		EC6E53792A3361AF003DF52E /* Theme */ = {
 			isa = PBXGroup;
 			children = (
-				EC378E5D2A343090003DE1AD /* Themes */,
+				EC378E5D2A343090003DE1AD /* ThemeStyles */,
 				EC378E5B2A343088003DE1AD /* AppTheme.swift */,
 			);
 			path = Theme;
@@ -208,9 +208,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC6E53832A336493003DF52E /* MinimalisticTheme.swift in Sources */,
 				EC6E536A2A33614B003DF52E /* ContentView.swift in Sources */,
 				EC6E53682A33614B003DF52E /* DemoApp.swift in Sources */,
+				ECABAA602A3603A600ADE903 /* MinimalisticThemeStyle.swift in Sources */,
 				EC378E5C2A343088003DE1AD /* AppTheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

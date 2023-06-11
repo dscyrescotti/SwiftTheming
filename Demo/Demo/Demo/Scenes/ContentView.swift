@@ -18,7 +18,7 @@ struct ContentView: View {
             Text("Hello, world!")
         }
         .padding()
-        .font(Font(.empty))
+        .font(Font(asset: .empty))
     }
 }
 

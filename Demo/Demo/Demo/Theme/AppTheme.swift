@@ -16,10 +16,10 @@ public enum AppTheme: String {
         self.rawValue
     }
 
-    public func theme() -> AnyTheme {
+    public func themeStyle() -> AnyThemeStyle {
         switch self {
         case .minimalistic:
-            return MinimalisticTheme().eraseToAnyTheme()
+            return MinimalisticThemeStyle().eraseToAnyThemeStyle()
         }
     }
 }

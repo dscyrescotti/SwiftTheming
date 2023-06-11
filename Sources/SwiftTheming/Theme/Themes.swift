@@ -1,9 +1,9 @@
 import SwiftUI
 import Foundation
 
-public protocol Themes: Codable {
+public protocol Theme: Codable {
     var id: String { get }
 
     associatedtype Asset: Assets
-    func theme() -> AnyTheme
+    func themeStyle() -> AnyThemeStyle
 }

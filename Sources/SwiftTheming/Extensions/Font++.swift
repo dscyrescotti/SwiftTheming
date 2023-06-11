@@ -6,7 +6,7 @@ public extension Font {
     ///   - asset: asset for font
     ///   - appearance: preferred appearance to override current appearance
     ///   - theme: preferred theme to override current theme
-    init<ThemeCategory: Themes>(asset: ThemeCategory.Asset.FontAsset, appearance: PreferredAppearance?, theme: ThemeCategory?) {
+    init<ThemeProfile: Theme>(_ asset: ThemeProfile.Asset.FontAsset, appearance: PreferredAppearance?, theme: ThemeProfile?) {
         self = ThemeProvider.shared.font(for: asset, preferredAppearance: appearance, on: theme)
     }
 }

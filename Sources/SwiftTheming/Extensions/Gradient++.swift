@@ -6,7 +6,7 @@ public extension Gradient {
     ///   - asset: asset for gradient
     ///   - appearance: preferred appearance to override current appearance
     ///   - theme: preferred theme to override current theme
-    init<ThemeCategory: Themes>(asset: ThemeCategory.Asset.GradientAsset, appearance: PreferredAppearance?, theme: ThemeCategory?) {
+    init<ThemeProfile: Theme>(_ asset: ThemeProfile.Asset.GradientAsset, appearance: PreferredAppearance?, theme: ThemeProfile?) {
         self = ThemeProvider.shared.gradient(for: asset, preferredAppearance: appearance, on: theme)
     }
 }

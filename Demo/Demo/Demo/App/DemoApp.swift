@@ -13,6 +13,9 @@ struct DemoApp: App {
         WindowGroup {
             ContentView()
                 .themeEnvironment(AppTheme.minimalistic)
+                .onAppear {
+                    print("Hello SwiftTheming")
+                }
         }
     }
 }

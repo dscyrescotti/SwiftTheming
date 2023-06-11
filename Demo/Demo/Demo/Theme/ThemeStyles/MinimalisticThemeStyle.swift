@@ -1,5 +1,5 @@
 //
-//  MinimalisticTheme.swift
+//  MinimalisticThemeStyle.swift
 //  Demo
 //
 //  Created by Dscyre Scotti on 6/9/23.
@@ -8,8 +8,8 @@
 import SwiftUI
 import SwiftTheming
 
-struct MinimalisticTheme: Theme {
-    typealias ThemeCategory = AppTheme
+struct MinimalisticThemeStyle: ThemeStyle {
+    typealias ThemeProfile = AppTheme
 
 //    func colorSet(_ asset: AppTheme.Asset.ColorAsset) -> ColorSet {
 //        switch asset {

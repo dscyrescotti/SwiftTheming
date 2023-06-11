@@ -42,8 +42,8 @@ extension AddThemeMacro: MemberMacro {
         }
         let assetType = "\(themeType).Asset.\(extendedType)Asset"
         let structInit: DeclSyntax = """
-            init(_ asset: \(raw: assetType), appearance: PreferredAppearance? = nil, theme: \(raw: themeType)? = nil) {
-                self = \(raw: extendedType)(asset: asset, appearance: appearance, theme: theme)
+            init(asset: \(raw: assetType), appearance: PreferredAppearance? = nil, theme: \(raw: themeType)? = nil) {
+                self = \(raw: extendedType)(asset, appearance: appearance, theme: theme)
             }
         """
         return [structInit]

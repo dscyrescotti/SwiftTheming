@@ -6,15 +6,15 @@ public class ThemeProvider: ObservableObject {
     static var shared: ThemeProvider!
 
     /// A current theme of an app.
-    @Published var theme: any Themes
+    @Published var theme: any Theme
     /// A current color scheme of an app.
     @Published public private(set) var colorScheme: ColorScheme? = nil
     /// A current preferred appearance of an app.
     @Published public private(set) var preferredAppearance: PreferredAppearance
     private var cancellables: Set<AnyCancellable> = []
 
-    public init<ThemeCategory: Themes>(_ theme: ThemeCategory, _ preferredAppearance: PreferredAppearance) {
-        self.theme = UserDefaults.get(ThemeCategory.self, key: .theme) ?? theme
+    public init<ThemeProfile: Theme>(_ theme: ThemeProfile, _ preferredAppearance: PreferredAppearance) {
+        self.theme = UserDefaults.get(ThemeProfile.self, key: .theme) ?? theme
         self.preferredAppearance = UserDefaults.get(PreferredAppearance.self, key: .preferredAppearance) ?? preferredAppearance
         ThemeProvider.shared = self
     }
@@ -26,11 +26,11 @@ public class ThemeProvider: ObservableObject {
     ///   - preferredAppearance: preferred appearance to override
     ///   - theme: theme to override
     /// - Returns: color
-    func color<ThemeCategory: Themes>(for asset: ThemeCategory.Asset.ColorAsset, preferredAppearance: PreferredAppearance?, on theme: ThemeCategory?) -> Color {
-        guard let themeCategory = theme ?? (self.theme as? ThemeCategory) else {
-            fatalError("The underlying theme category doesn't match with \(ThemeCategory.self).")
+    func color<ThemeProfile: Theme>(for asset: ThemeProfile.Asset.ColorAsset, preferredAppearance: PreferredAppearance?, on theme: ThemeProfile?) -> Color {
+        guard let theme = theme ?? (self.theme as? ThemeProfile) else {
+            fatalError("The underlying theme category doesn't match with \(ThemeProfile.self).")
         }
-        let appearance = themeCategory.theme().colorSet(asset).appearance
+        let appearance = theme.themeStyle().colorSet(asset).appearance
         switch appearance {
         case .static(let color): return color
         case .dynamic(let light, let dark):
@@ -57,11 +57,11 @@ public class ThemeProvider: ObservableObject {
     ///   - preferredAppearance: preferred appearance to override
     ///   - theme: theme to override
     /// - Returns: image
-    func image<ThemeCategory: Themes>(for asset: ThemeCategory.Asset.ImageAsset, preferredAppearance: PreferredAppearance?, on theme: ThemeCategory?) -> Image {
-        guard let themeCategory = theme ?? (self.theme as? ThemeCategory) else {
-            fatalError("The underlying theme category doesn't match with \(ThemeCategory.self).")
+    func image<ThemeProfile: Theme>(for asset: ThemeProfile.Asset.ImageAsset, preferredAppearance: PreferredAppearance?, on theme: ThemeProfile?) -> Image {
+        guard let theme = theme ?? (self.theme as? ThemeProfile) else {
+            fatalError("The underlying theme category doesn't match with \(ThemeProfile.self).")
         }
-        let appearance = themeCategory.theme().imageSet(asset).appearance
+        let appearance = theme.themeStyle().imageSet(asset).appearance
         switch appearance {
         case .static(let image): return image
         case .dynamic(let light, let dark):
@@ -88,11 +88,11 @@ public class ThemeProvider: ObservableObject {
     ///   - preferredAppearance: preferred appearance to override
     ///   - theme: theme to override
     /// - Returns: font
-    func font<ThemeCategory: Themes>(for asset: ThemeCategory.Asset.FontAsset, preferredAppearance: PreferredAppearance?, on theme: ThemeCategory?) -> Font {
-        guard let themeCategory = theme ?? (self.theme as? ThemeCategory) else {
-            fatalError("The underlying theme category doesn't match with \(ThemeCategory.self).")
+    func font<ThemeProfile: Theme>(for asset: ThemeProfile.Asset.FontAsset, preferredAppearance: PreferredAppearance?, on theme: ThemeProfile?) -> Font {
+        guard let theme = theme ?? (self.theme as? ThemeProfile) else {
+            fatalError("The underlying theme category doesn't match with \(ThemeProfile.self).")
         }
-        let appearance = themeCategory.theme().fontSet(asset).appearance
+        let appearance = theme.themeStyle().fontSet(asset).appearance
         switch appearance {
         case .static(let font): return font
         case .dynamic(let light, let dark):
@@ -119,11 +119,11 @@ public class ThemeProvider: ObservableObject {
     ///   - preferredAppearance: preferred appearance to override
     ///   - theme: theme to override
     /// - Returns: gradient
-    func gradient<ThemeCategory: Themes>(for asset: ThemeCategory.Asset.GradientAsset, preferredAppearance: PreferredAppearance?, on theme: ThemeCategory?) -> Gradient {
-        guard let themeCategory = theme ?? (self.theme as? ThemeCategory) else {
-            fatalError("The underlying theme category doesn't match with \(ThemeCategory.self).")
+    func gradient<ThemeProfile: Theme>(for asset: ThemeProfile.Asset.GradientAsset, preferredAppearance: PreferredAppearance?, on theme: ThemeProfile?) -> Gradient {
+        guard let theme = theme ?? (self.theme as? ThemeProfile) else {
+            fatalError("The underlying theme category doesn't match with \(ThemeProfile.self).")
         }
-        let appearance = themeCategory.theme().gradientSet(asset).appearance
+        let appearance = theme.themeStyle().gradientSet(asset).appearance
         switch appearance {
         case .static(let gradient): return gradient
         case .dynamic(let light, let dark):
@@ -145,7 +145,7 @@ public class ThemeProvider: ObservableObject {
 
     /// A method to change the current theme of an app.
     /// - Parameter theme: theme to which the current theme of an app is changed
-    public func setTheme<ThemeCategory: Themes>(with theme: ThemeCategory) {
+    public func setTheme<ThemeProfile: Theme>(with theme: ThemeProfile) {
         guard self.theme.id != theme.id else { return }
         self.theme = theme
         UserDefaults.set(theme, key: .theme)

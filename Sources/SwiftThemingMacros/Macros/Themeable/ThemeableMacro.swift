@@ -14,7 +14,7 @@ extension ThemeableMacro: ConformanceMacro {
             context.diagnose(ThemeableMacroDiagnostic.requiresEnum.diagnose(at: node))
             return []
         }
-        return [("Themes", nil)]
+        return [("Theme", nil)]
     }
 }
 

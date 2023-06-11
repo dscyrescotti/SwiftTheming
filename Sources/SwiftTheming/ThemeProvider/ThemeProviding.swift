@@ -5,7 +5,7 @@ import SwiftUI
 public struct ThemeEnvironment: DynamicProperty {
     @EnvironmentObject private var themeProvider: ThemeProvider
 
-    public var wrappedValue: any Themes {
+    public var wrappedValue: any Theme {
         themeProvider.theme
     }
 

@@ -6,7 +6,7 @@ public extension Image {
     ///   - asset: asset for image
     ///   - appearance: preferred appearance to override current appearance
     ///   - theme: preferred theme to override current theme
-    init<ThemeCategory: Themes>(asset: ThemeCategory.Asset.ImageAsset, appearance: PreferredAppearance?, theme: ThemeCategory?) {
+    init<ThemeProfile: Theme>(_ asset: ThemeProfile.Asset.ImageAsset, appearance: PreferredAppearance?, theme: ThemeProfile?) {
         self = ThemeProvider.shared.image(for: asset, preferredAppearance: appearance, on: theme)
     }
 }

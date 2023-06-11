@@ -3,7 +3,7 @@ import SwiftUI
 public extension View {
     /// A modifier that initiates theme provider and inject view as an environment object. This modifier should be called only once at the top of view hierarchy.
     /// - Returns: view
-    func themeEnvironment<ThemeCategory: Themes>(_ theme: ThemeCategory, preferredAppearance: PreferredAppearance = .system) -> some View {
+    func themeEnvironment<ThemeProfile: Theme>(_ theme: ThemeProfile, preferredAppearance: PreferredAppearance = .system) -> some View {
         self.modifier(ThemeProvidingViewModifier(theme, preferredAppearance: preferredAppearance))
     }
 }
