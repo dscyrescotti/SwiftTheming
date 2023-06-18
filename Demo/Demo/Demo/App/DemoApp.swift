@@ -12,10 +12,11 @@ struct DemoApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .themeEnvironment(AppTheme.minimalistic)
-                .onAppear {
-                    print("Hello SwiftTheming")
-                }
+//                .themeEnvironment(AppTheme.minimalistic)
+//                .onAppear {
+//                    print("DEBUG:", AppTheme.Asset().identifier)
+//                    print(#file)
+//                }
         }
     }
 }

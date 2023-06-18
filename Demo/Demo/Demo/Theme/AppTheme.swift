@@ -8,8 +8,7 @@
 import SwiftUI
 import SwiftTheming
 
-@Themeable
-public enum AppTheme: String {
+public enum AppTheme: String, Theme {
     case minimalistic
 
     public var id: String {
@@ -20,6 +19,14 @@ public enum AppTheme: String {
         switch self {
         case .minimalistic:
             return MinimalisticThemeStyle().eraseToAnyThemeStyle()
+        }
+    }
+
+    public struct Asset: Assets {
+        public enum ColorAsset: ColorAssets {
+            case primaryBody
+            case secondaryBody
+            case primaryBackground
         }
     }
 }
