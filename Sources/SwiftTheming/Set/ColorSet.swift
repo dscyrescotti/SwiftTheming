@@ -24,4 +24,6 @@ public struct ColorSet {
     public init(light: Color, dark: Color) {
         self.appearance = .dynamic(light: light, dark: dark)
     }
+
+    static var empty: ColorSet = ColorSet(default: .white)
 }

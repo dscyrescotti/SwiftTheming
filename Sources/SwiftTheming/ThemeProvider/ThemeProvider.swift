@@ -146,7 +146,7 @@ public class ThemeProvider: ObservableObject {
     /// A method to change the current theme of an app.
     /// - Parameter theme: theme to which the current theme of an app is changed
     public func setTheme<ThemeProfile: Theme>(with theme: ThemeProfile) {
-        guard self.theme.id != theme.id else { return }
+        guard self.theme.identifier != theme.identifier else { return }
         self.theme = theme
         UserDefaults.set(theme, key: .theme)
     }

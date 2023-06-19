@@ -12,7 +12,7 @@ struct DemoApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-//                .themeEnvironment(AppTheme.minimalistic)
+                .themeEnvironment(AppTheme.dynamic("aura_theme"))
 //                .onAppear {
 //                    print("DEBUG:", AppTheme.Asset().identifier)
 //                    print(#file)

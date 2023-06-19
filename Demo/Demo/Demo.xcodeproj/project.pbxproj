@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EC378E5C2A343088003DE1AD /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC378E5B2A343088003DE1AD /* AppTheme.swift */; };
+		EC5719CA2A3F222E00733E2B /* aura_theme.yaml in Resources */ = {isa = PBXBuildFile; fileRef = EC5719C92A3F222E00733E2B /* aura_theme.yaml */; };
 		EC6E53682A33614B003DF52E /* DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E53672A33614B003DF52E /* DemoApp.swift */; };
 		EC6E536A2A33614B003DF52E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E53692A33614B003DF52E /* ContentView.swift */; };
 		EC6E536C2A33614C003DF52E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC6E536B2A33614C003DF52E /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		EC378E5B2A343088003DE1AD /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		EC5719C92A3F222E00733E2B /* aura_theme.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = aura_theme.yaml; sourceTree = "<group>"; };
 		EC6E53642A33614B003DF52E /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC6E53672A33614B003DF52E /* DemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoApp.swift; sourceTree = "<group>"; };
 		EC6E53692A33614B003DF52E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -46,6 +48,14 @@
 				ECABAA5F2A3603A600ADE903 /* MinimalisticThemeStyle.swift */,
 			);
 			path = ThemeStyles;
+			sourceTree = "<group>";
+		};
+		EC5719C82A3F219F00733E2B /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				EC5719C92A3F222E00733E2B /* aura_theme.yaml */,
+			);
+			path = Themes;
 			sourceTree = "<group>";
 		};
 		EC6E535B2A33614B003DF52E = {
@@ -98,6 +108,7 @@
 		EC6E53772A336165003DF52E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EC5719C82A3F219F00733E2B /* Themes */,
 				EC6E536B2A33614C003DF52E /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -198,6 +209,7 @@
 			files = (
 				EC6E53702A33614C003DF52E /* Preview Assets.xcassets in Resources */,
 				EC6E536C2A33614C003DF52E /* Assets.xcassets in Resources */,
+				EC5719CA2A3F222E00733E2B /* aura_theme.yaml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

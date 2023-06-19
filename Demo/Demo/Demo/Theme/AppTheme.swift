@@ -8,25 +8,33 @@
 import SwiftUI
 import SwiftTheming
 
-public enum AppTheme: String, Theme {
+public enum AppTheme: Theme {
     case minimalistic
+    case dynamic(String)
 
-    public var id: String {
-        self.rawValue
+    public var identifier: String {
+        switch self {
+        case .minimalistic: "minimalistic"
+        case .dynamic(let name): name
+        }
     }
 
     public func themeStyle() -> AnyThemeStyle {
         switch self {
         case .minimalistic:
-            return MinimalisticThemeStyle().eraseToAnyThemeStyle()
+            MinimalisticThemeStyle().eraseToAnyThemeStyle()
+        case .dynamic(let name):
+            DynamicThemeStyle(on: self, name: name).eraseToAnyThemeStyle()
         }
     }
 
     public struct Asset: Assets {
-        public enum ColorAsset: ColorAssets {
+        public enum ColorAsset: String, ColorAssets {
             case primaryBody
             case secondaryBody
             case primaryBackground
+
+            public var identifier: String { rawValue }
         }
     }
 }

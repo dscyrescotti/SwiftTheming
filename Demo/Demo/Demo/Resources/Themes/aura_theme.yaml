@@ -1,0 +1,11 @@
+color_assets:
+  - primary_body:
+      static: "#3C0058"
+    # name: aura_primary_body
+    # dynamic: 
+    #   light: #000000
+    #   dark: #FFFFFF
+  - secondary_body:
+      static: "#62008F"
+  - primary_background:
+      static: "#C891F3"

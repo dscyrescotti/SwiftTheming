@@ -7,10 +7,18 @@ public protocol Assets {
     associatedtype GradientAsset: GradientAssets
 }
 
-public protocol FontAssets { }
-public protocol ColorAssets { }
-public protocol ImageAssets { }
-public protocol GradientAssets { }
+public protocol FontAssets {
+    var identifier: String { get }
+}
+public protocol ColorAssets {
+    var identifier: String { get }
+}
+public protocol ImageAssets {
+    var identifier: String { get }
+}
+public protocol GradientAssets {
+    var identifier: String { get }
+}
 
 public extension Assets {
     typealias FontAsset = EmptyAsset
