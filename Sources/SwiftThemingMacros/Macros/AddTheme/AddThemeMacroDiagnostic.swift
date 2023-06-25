@@ -17,11 +17,11 @@ extension AddThemeMacroDiagnostic: DiagnosticMessage {
     var message: String {
         switch self {
         case .requiresExtension:
-            "'AddTheme' macro can only be applied to an extension"
+            "'@AddTheme' can only be applied to an extension"
         case .requiresSwiftUIView:
-            "'AddTheme' macro can only be applied to SwiftUI views - Color, Font, Image and Gradient"
+            "'@AddTheme' can only be applied to SwiftUI views - Color, Font, Image and Gradient"
         case .requiresArgument:
-            "'AddTheme' macro requires the type conforming to 'Themes' protocol as an argument"
+            "'@AddTheme' macro requires the type conforming to Themes protocol as an argument"
         }
     }
 

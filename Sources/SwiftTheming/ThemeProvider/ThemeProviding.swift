@@ -9,5 +9,9 @@ public struct ThemeEnvironment: DynamicProperty {
         themeProvider.theme
     }
 
+    public var projectedValue: ThemeProvider {
+        themeProvider
+    }
+
     public init() { }
 }

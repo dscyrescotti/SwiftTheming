@@ -20,4 +20,10 @@ class ThemeCache {
         guard let colorAsset = asset.colorAssets[identifier] else { return .empty }
         return colorAsset.colorSet
     }
+
+    static func imageSet(identifier: String, on themeKey: String) -> ImageSet {
+        guard let asset = shared.cache[themeKey] else { return .empty }
+        guard let imageAssets = asset.imageAssets[identifier] else { return .empty }
+        return imageAssets.imageSet
+    }
 }

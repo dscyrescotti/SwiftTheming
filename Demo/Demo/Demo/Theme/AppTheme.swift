@@ -36,6 +36,12 @@ public enum AppTheme: Theme {
 
             public var identifier: String { rawValue }
         }
+
+        public enum ImageAsset: String, ImageAssets {
+            case mainBackground
+
+            public var identifier: String { rawValue }
+        }
     }
 }
 

@@ -37,4 +37,10 @@ public struct ImageSet {
     public init(systemNameLight: String, systemNameDark: String) {
         self.appearance = .dynamic(light: Image(systemName: systemNameLight), dark: Image(systemName: systemNameDark))
     }
+
+    #if os(macOS)
+    static var empty: ImageSet = ImageSet(default: .init(nsImage: NSImage()))
+    #else
+    static var empty: ImageSet = ImageSet(default: .init(uiImage: UIImage()))
+    #endif
 }

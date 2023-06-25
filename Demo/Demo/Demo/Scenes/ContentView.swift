@@ -14,11 +14,13 @@ struct ContentView: View {
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
-                .foregroundColor(.accentColor)
             Text("Hello, world!")
         }
         .padding()
+        .foregroundStyle(Color(asset: .primaryBody))
         .background(Color(asset: .primaryBackground))
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Image(asset: .mainBackground))
     }
 }
 

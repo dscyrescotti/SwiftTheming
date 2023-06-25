@@ -16,6 +16,8 @@ public class ThemeProvider: ObservableObject {
     public init<ThemeProfile: Theme>(_ theme: ThemeProfile, _ preferredAppearance: PreferredAppearance) {
         self.theme = UserDefaults.get(ThemeProfile.self, key: .theme) ?? theme
         self.preferredAppearance = UserDefaults.get(PreferredAppearance.self, key: .preferredAppearance) ?? preferredAppearance
+        UserDefaults.set(self.theme, key: .theme)
+        UserDefaults.set(self.preferredAppearance, key: .preferredAppearance)
         ThemeProvider.shared = self
     }
 

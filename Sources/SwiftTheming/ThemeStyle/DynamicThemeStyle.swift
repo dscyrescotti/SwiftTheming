@@ -28,7 +28,10 @@ public struct DynamicThemeStyle<ThemeProfile: Theme>: ThemeStyle {
     }
 
     public func colorSet(_ asset: ThemeProfile.Asset.ColorAsset) -> ColorSet {
-        let identifier = asset.identifier
-        return ThemeCache.colorSet(identifier: identifier, on: name)
+        ThemeCache.colorSet(identifier: asset.identifier, on: name)
+    }
+
+    public func imageSet(_ asset: ThemeProfile.Asset.ImageAsset) -> ImageSet {
+        ThemeCache.imageSet(identifier: asset.identifier, on: name)
     }
 }
