@@ -15,13 +15,25 @@ public struct ImageSet {
     public init(name: String) {
         self.appearance = .static(Image(name))
     }
-    
+
+    public init(name light: String, dark: String) {
+        self.appearance = .dynamic(light: Image(light), dark: Image(dark))
+    }
+
     /// An initializer that defines a certain system icon for both light and dark appearances.
     /// - Parameter systemName: system icon name for both light and dark appearances
     public init(systemName: String) {
         self.appearance = .static(Image(systemName: systemName))
     }
-    
+
+    /// An initializer that defines system icons for light and dark appearances separately.
+    /// - Parameters:
+    ///   - light: system icon name for light appearance
+    ///   - dark: system icon name for dark appearance
+    public init(systemName light: String, dark: String) {
+        self.appearance = .dynamic(light: Image(systemName: light), dark: Image(systemName: dark))
+    }
+
     /// An initializer that defines images for light and dark appearances separately.
     /// - Parameters:
     ///   - light: image for light appearance
@@ -29,18 +41,6 @@ public struct ImageSet {
     public init(light: Image, dark: Image) {
         self.appearance = .dynamic(light: light, dark: dark)
     }
-    
-    /// An initializer that defines system icons for light and dark appearances separately.
-    /// - Parameters:
-    ///   - systemNameLight: system icon name for light appearance
-    ///   - systemNameDark: system icon name for dark appearance
-    public init(systemNameLight: String, systemNameDark: String) {
-        self.appearance = .dynamic(light: Image(systemName: systemNameLight), dark: Image(systemName: systemNameDark))
-    }
 
-    #if os(macOS)
-    static var empty: ImageSet = ImageSet(default: .init(nsImage: NSImage()))
-    #else
-    static var empty: ImageSet = ImageSet(default: .init(uiImage: UIImage()))
-    #endif
+    static var empty: ImageSet = ImageSet(default: .empty)
 }

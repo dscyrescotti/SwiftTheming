@@ -10,3 +10,11 @@ public extension Image {
         self = ThemeProvider.shared.image(for: asset, preferredAppearance: appearance, on: theme)
     }
 }
+
+extension Image {
+    #if os(macOS)
+    static var empty: Image = Image(nsImage: NSImage())
+    #else
+    static var empty: Image = Image(uiImage: UIImage())
+    #endif
+}
