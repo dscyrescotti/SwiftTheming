@@ -3,10 +3,12 @@ import Foundation
 struct DynamicAssets: Codable {
     var colorAssets: [String: DynamicColorAssets]
     var imageAssets: [String: DynamicImageAssets]
+    var fontAssets: [String: DynamicFontAssets]
 
     enum CodingKeys: String, CodingKey {
         case colorAssets = "color_assets"
         case imageAssets = "image_assets"
+        case fontAssets = "font_assets"
     }
 
     init(from decoder: Decoder) throws {
@@ -19,6 +21,12 @@ struct DynamicAssets: Codable {
         }
         let imageAssets = try container.decodeIfPresent([[String: DynamicImageAssets]].self, forKey: .imageAssets) ?? []
         self.imageAssets = imageAssets.reduce(into: [:]) { result, dict in
+            for (key, value) in dict {
+                result[key.camelCased()] = value
+            }
+        }
+        let fontAssets = try container.decodeIfPresent([[String: DynamicFontAssets]].self, forKey: .fontAssets) ?? []
+        self.fontAssets = fontAssets.reduce(into: [:]) { result, dict in
             for (key, value) in dict {
                 result[key.camelCased()] = value
             }

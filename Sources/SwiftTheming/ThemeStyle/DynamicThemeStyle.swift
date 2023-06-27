@@ -34,4 +34,8 @@ public struct DynamicThemeStyle<ThemeProfile: Theme>: ThemeStyle {
     public func imageSet(_ asset: ThemeProfile.Asset.ImageAsset) -> ImageSet {
         ThemeCache.imageSet(identifier: asset.identifier, on: name)
     }
+
+    public func fontSet(_ asset: ThemeProfile.Asset.FontAsset) -> FontSet {
+        ThemeCache.fontSet(identifier: asset.identifier, on: name)
+    }
 }

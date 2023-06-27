@@ -12,3 +12,13 @@ color_assets:
 image_assets:
   - main_background:
       name: aura_main_background
+font_assets:
+  - heading:
+      system:
+        light:
+          style: title3
+          weight: heavy
+        dark:
+          style: title2
+          weight: bold
+          design: rounded

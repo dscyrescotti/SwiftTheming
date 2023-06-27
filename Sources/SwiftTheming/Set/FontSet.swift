@@ -17,4 +17,6 @@ public struct FontSet {
     public init(light: Font, dark: Font) {
         self.appearance = .dynamic(light: light, dark: dark)
     }
+
+    static var empty: FontSet = FontSet(default: .body)
 }

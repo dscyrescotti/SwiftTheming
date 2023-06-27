@@ -26,4 +26,10 @@ class ThemeCache {
         guard let imageAssets = asset.imageAssets[identifier] else { return .empty }
         return imageAssets.imageSet
     }
+
+    static func fontSet(identifier: String, on themeKey: String) -> FontSet {
+        guard let asset = shared.cache[themeKey] else { return .empty }
+        guard let fontAssets = asset.fontAssets[identifier] else { return .empty }
+        return fontAssets.fontSet
+    }
 }

@@ -42,6 +42,12 @@ public enum AppTheme: Theme {
 
             public var identifier: String { rawValue }
         }
+
+        public enum FontAsset: String, FontAssets {
+            case heading
+
+            public var identifier: String { rawValue }
+        }
     }
 }
 
