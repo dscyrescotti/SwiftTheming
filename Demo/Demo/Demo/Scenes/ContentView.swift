@@ -16,6 +16,8 @@ struct ContentView: View {
                 .imageScale(.large)
             Text("Hello, world!")
                 .font(Font(asset: .heading))
+            Text("This is SwiftTheming")
+                .font(Font(asset: .heading2))
         }
         .padding()
         .foregroundStyle(Color(asset: .primaryBody))

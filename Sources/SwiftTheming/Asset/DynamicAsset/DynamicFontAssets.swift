@@ -2,10 +2,12 @@ import SwiftUI
 import Foundation
 
 struct DynamicFontAssets: Codable {
-    var system: DynamicFontSet?
+    var system: DynamicFontSet<SystemFont>?
+    var custom: DynamicFontSet<CustomFont>?
 
     enum CodingKeys: CodingKey {
         case system
+        case custom
     }
 
     init(from decoder: Decoder) throws {
@@ -16,8 +18,14 @@ struct DynamicFontAssets: Codable {
         if let system = try? container.decodeIfPresent(SystemFont.self, forKey: .system) {
             self.system = DynamicFontSet(any: system)
         }
-        if let system = try? container.decodeIfPresent(DynamicFontSet.self, forKey: .system) {
+        if let system = try? container.decodeIfPresent(DynamicFontSet<SystemFont>.self, forKey: .system) {
             self.system = system
+        }
+        if let custom = try? container.decodeIfPresent(CustomFont.self, forKey: .custom) {
+            self.custom = DynamicFontSet(any: custom)
+        }
+        if let custom = try? container.decodeIfPresent(DynamicFontSet<CustomFont>.self, forKey: .custom) {
+            self.custom = custom
         }
     }
 
@@ -28,14 +36,20 @@ struct DynamicFontAssets: Codable {
         if let light = system?.light?.font, let dark = system?.dark?.font {
             return FontSet(light: light, dark: dark)
         }
+        if let customFont = custom?.any?.font {
+            return FontSet(default: customFont)
+        }
+        if let light = custom?.light?.font, let dark = custom?.dark?.font {
+            return FontSet(light: light, dark: dark)
+        }
         return .empty
     }
 }
 
-struct DynamicFontSet: Codable {
-    var any: SystemFont?
-    var light: SystemFont?
-    var dark: SystemFont?
+struct DynamicFontSet<Font: Codable>: Codable {
+    var any: Font?
+    var light: Font?
+    var dark: Font?
 
     enum CodingKeys: CodingKey {
         case any
@@ -43,14 +57,14 @@ struct DynamicFontSet: Codable {
         case dark
     }
 
-    init(any: SystemFont) {
+    init(any: Font) {
         self.any = any
     }
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.light = try container.decode(SystemFont.self, forKey: .light)
-        self.dark = try container.decode(SystemFont.self, forKey: .dark)
+        self.light = try container.decode(Font.self, forKey: .light)
+        self.dark = try container.decode(Font.self, forKey: .dark)
     }
 }
 
@@ -74,6 +88,19 @@ struct SystemFont: Codable {
             }
         }
         return nil
+    }
+}
+
+struct CustomFont: Codable {
+    var name: String
+    var size: CGFloat
+    var relativeStyle: Font.TextStyle?
+
+    var font: Font? {
+        if let relativeStyle {
+            return Font.custom(name, size: size, relativeTo: relativeStyle)
+        }
+        return Font.custom(name, fixedSize: size)
     }
 }
 

@@ -22,3 +22,13 @@ font_assets:
           style: title2
           weight: bold
           design: rounded
+  - heading2:
+      custom:
+        light:
+          name: Georgia
+          size: 15
+          relative_style: title3
+        dark:
+          name: Georgia
+          size: 18
+          relative_style: title2

@@ -45,6 +45,7 @@ public enum AppTheme: Theme {
 
         public enum FontAsset: String, FontAssets {
             case heading
+            case heading2
 
             public var identifier: String { rawValue }
         }
