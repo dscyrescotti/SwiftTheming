@@ -21,6 +21,8 @@ struct ContentView: View {
         }
         .padding()
         .foregroundStyle(Color(asset: .primaryBody))
+        .background(Gradient(asset: .roseanna))
+        .padding()
         .background(Color(asset: .primaryBackground))
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Image(asset: .mainBackground))

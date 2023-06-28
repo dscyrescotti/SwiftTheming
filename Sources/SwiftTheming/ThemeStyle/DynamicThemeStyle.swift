@@ -38,4 +38,8 @@ public struct DynamicThemeStyle<ThemeProfile: Theme>: ThemeStyle {
     public func fontSet(_ asset: ThemeProfile.Asset.FontAsset) -> FontSet {
         ThemeCache.fontSet(identifier: asset.identifier, on: name)
     }
+
+    public func gradientSet(_ asset: ThemeProfile.Asset.GradientAsset) -> GradientSet {
+        ThemeCache.gradientSet(identifier: asset.identifier, on: name)
+    }
 }

@@ -17,4 +17,6 @@ public struct GradientSet {
     public init(light: Gradient, dark: Gradient) {
         self.appearance = .dynamic(light: light, dark: dark)
     }
+
+    static var empty: GradientSet = GradientSet(default: Gradient(colors: []))
 }

@@ -49,6 +49,12 @@ public enum AppTheme: Theme {
 
             public var identifier: String { rawValue }
         }
+
+        public enum GradientAsset: String, GradientAssets {
+            case roseanna
+
+            public var identifier: String { rawValue }
+        }
     }
 }
 

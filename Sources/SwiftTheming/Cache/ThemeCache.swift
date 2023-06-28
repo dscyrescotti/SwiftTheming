@@ -32,4 +32,10 @@ class ThemeCache {
         guard let fontAssets = asset.fontAssets[identifier] else { return .empty }
         return fontAssets.fontSet
     }
+
+    static func gradientSet(identifier: String, on themeKey: String) -> GradientSet {
+        guard let asset = shared.cache[themeKey] else { return .empty }
+        guard let gradientAssets = asset.gradientAssets[identifier] else { return .empty }
+        return gradientAssets.gradientSet
+    }
 }

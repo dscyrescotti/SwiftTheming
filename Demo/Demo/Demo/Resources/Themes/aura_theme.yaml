@@ -32,3 +32,16 @@ font_assets:
           name: Georgia
           size: 18
           relative_style: title2
+gradient_assets:
+  - roseanna:
+      stops:
+        light:
+          - color: "#AA0000"
+            location: 0.0
+          - color: "#AA6666"
+            location: 0.3
+        dark:
+          - color: "#00BB00"
+            location: 0.0
+          - color: "#88BB88"
+            location: 0.3
